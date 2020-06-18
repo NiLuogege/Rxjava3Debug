@@ -70,6 +70,7 @@ public final class RxJavaPlugins {
     @Nullable
     static volatile Function<? super ConnectableFlowable, ? extends ConnectableFlowable> onConnectableFlowableAssembly;
 
+    //被观察者被创建的时候会 调用
     @SuppressWarnings("rawtypes")
     @Nullable
     static volatile Function<? super Observable, ? extends Observable> onObservableAssembly;
@@ -101,6 +102,7 @@ public final class RxJavaPlugins {
     @Nullable
     static volatile BiFunction<? super Maybe, ? super MaybeObserver, ? extends MaybeObserver> onMaybeSubscribe;
 
+    //当被观察者 订阅 的时候 会被调用
     @SuppressWarnings("rawtypes")
     @Nullable
     static volatile BiFunction<? super Observable, ? super Observer, ? extends Observer> onObservableSubscribe;
@@ -929,8 +931,8 @@ public final class RxJavaPlugins {
     /**
      * Calls the associated hook function.
      * @param <T> the value type
-     * @param source the hook's input value
-     * @param observer the observer
+     * @param source the hook's input value 被观察者
+     * @param observer the observer  观察者
      * @return the value returned by the hook
      */
     @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -1049,6 +1051,7 @@ public final class RxJavaPlugins {
     @SuppressWarnings({ "rawtypes", "unchecked" })
     @NonNull
     public static <T> Observable<T> onAssembly(@NonNull Observable<T> source) {
+        //只有设置过 onObservableAssembly 这个钩子函数 他才不为null ，一般情况下 就等于null
         Function<? super Observable, ? extends Observable> f = onObservableAssembly;
         if (f != null) {
             return apply(f, source);

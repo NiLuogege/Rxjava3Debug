@@ -1743,7 +1743,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
     @NonNull
     @SchedulerSupport(SchedulerSupport.NONE)
     public static <T> Observable<T> create(@NonNull ObservableOnSubscribe<T> source) {
+        // 空检查
         Objects.requireNonNull(source, "source is null");
+        //这句代码一般情况下 相当于直接返回 ObservableCreate 对象
         return RxJavaPlugins.onAssembly(new ObservableCreate<>(source));
     }
 
@@ -13087,15 +13089,23 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
         return ls;
     }
 
+    /**
+     * 订阅
+     * @param observer the {@code Observer}, not {@code null}
+     */
     @SchedulerSupport(SchedulerSupport.NONE)
     @Override
     public final void subscribe(@NonNull Observer<? super T> observer) {
+        //空检查
         Objects.requireNonNull(observer, "observer is null");
         try {
+            //调用回调方法
             observer = RxJavaPlugins.onSubscribe(this, observer);
 
+            //再次 空检查
             Objects.requireNonNull(observer, "The RxJavaPlugins.onSubscribe hook returned a null Observer. Please change the handler provided to RxJavaPlugins.setOnObservableSubscribe for invalid null returns. Further reading: https://github.com/ReactiveX/RxJava/wiki/Plugins");
 
+            //调用真正的 订阅 方法（当前类中是抽象的 需要到子类中查看）
             subscribeActual(observer);
         } catch (NullPointerException e) { // NOPMD
             throw e;
@@ -13149,7 +13159,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
     @SchedulerSupport(SchedulerSupport.NONE)
     @NonNull
     public final <@NonNull E extends Observer<? super T>> E subscribeWith(E observer) {
+        //被观察者 订阅 观察者（其实按照常理来说应该是 观察者订阅 被观察者，但是 框架为了 流式编程 做了苟且）
         subscribe(observer);
+        //返回观察者
         return observer;
     }
 

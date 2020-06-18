@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Observable;
@@ -23,12 +24,33 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Observable.create(new ObservableOnSubscribe<String>() {
+        findViewById(R.id.btn_simple).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                simple();
+            }
+        });
+
+
+    }
+
+    /**
+     * 最简单的用例分析
+     */
+    private void simple() {
+        //1. 创建一个 ObservableCreate 对象（Observable的子类）
+        //2. ObservableOnSubscribe 赋值为 1 中 ObservableCreate的成员变量 source
+        //3. 返回 ObservableCreate 对象
+        Observable<String> observable = Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(@NonNull ObservableEmitter<String> emitter) throws Throwable {
-                emitter.onNext("jjjjjj");
+                emitter.onNext("hello rxjava3");
             }
-        }).subscribeWith(new Observer<String>() {
+        });
+
+
+        //1. 创建一个 Observer 对象
+        Observer<String> observer = observable.subscribeWith(new Observer<String>() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {
                 log("onSubscribe");
@@ -48,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete() {
                 log("onComplete");
-
             }
         });
     }
