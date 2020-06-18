@@ -10343,7 +10343,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
     @NonNull
     public final <R> Observable<R> map(@NonNull Function<? super T, ? extends R> mapper) {
         Objects.requireNonNull(mapper, "mapper is null");
-        //创建一个 ObservableMap 并返回
+        //创建一个 ObservableMap 并返回 ( this 指的是上一个 Observable （也就是需要变换的 Observable） )
         return RxJavaPlugins.onAssembly(new ObservableMap<>(this, mapper));
     }
 

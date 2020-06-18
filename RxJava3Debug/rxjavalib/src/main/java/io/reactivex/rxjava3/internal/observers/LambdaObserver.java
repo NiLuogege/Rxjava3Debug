@@ -60,6 +60,7 @@ public final class LambdaObserver<T> extends AtomicReference<Disposable>
     public void onNext(T t) {
         if (!isDisposed()) {
             try {
+                //调用 accept 方法
                 onNext.accept(t);
             } catch (Throwable e) {
                 Exceptions.throwIfFatal(e);

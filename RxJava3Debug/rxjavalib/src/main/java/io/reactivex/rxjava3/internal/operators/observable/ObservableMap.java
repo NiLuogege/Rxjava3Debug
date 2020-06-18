@@ -24,21 +24,33 @@ public final class ObservableMap<T, U> extends AbstractObservableWithUpstream<T,
     final Function<? super T, ? extends U> function;
 
     public ObservableMap(ObservableSource<T> source, Function<? super T, ? extends U> function) {
+        //记录上一个 Observable
         super(source);
         //记录传入的 function
         this.function = function;
     }
 
+    /**
+     * @param t 真实的观察者
+     */
     @Override
     public void subscribeActual(Observer<? super U> t) {
+        //1. 创建一个 MapObserver
+        //2. 调用上一个 Observable 的 subscribe
         source.subscribe(new MapObserver<T, U>(t, function));
     }
 
     static final class MapObserver<T, U> extends BasicFuseableObserver<T, U> {
         final Function<? super T, ? extends U> mapper;
 
+        /**
+         * @param actual 真实的观察者
+         * @param mapper 转换方法
+         */
         MapObserver(Observer<? super U> actual, Function<? super T, ? extends U> mapper) {
+            //actual 会赋值给 父类的 downstream
             super(actual);
+            //记录转换方法
             this.mapper = mapper;
         }
 
@@ -56,11 +68,14 @@ public final class ObservableMap<T, U> extends AbstractObservableWithUpstream<T,
             U v;
 
             try {
+                //调用 调用真正的 的 apply方法
                 v = Objects.requireNonNull(mapper.apply(t), "The mapper function returned a null value.");
             } catch (Throwable ex) {
                 fail(ex);
                 return;
             }
+
+            //调用下游订阅者 的 onNext
             downstream.onNext(v);
         }
 

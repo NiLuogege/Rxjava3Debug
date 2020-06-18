@@ -27,7 +27,7 @@ import io.reactivex.rxjava3.plugins.RxJavaPlugins;
  */
 public abstract class BasicFuseableObserver<T, R> implements Observer<T>, QueueDisposable<R> {
 
-    /** The downstream subscriber. */
+    /** The downstream subscriber.  下游订阅者*/
     protected final Observer<? super R> downstream;
 
     /** The upstream subscription. */

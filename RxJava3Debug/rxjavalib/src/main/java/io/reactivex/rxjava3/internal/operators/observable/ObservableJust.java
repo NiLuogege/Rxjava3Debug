@@ -25,6 +25,7 @@ public final class ObservableJust<T> extends Observable<T> implements ScalarSupp
 
     private final T value;
     public ObservableJust(final T value) {
+        //调用 just 时 传入的值
         this.value = value;
     }
 
