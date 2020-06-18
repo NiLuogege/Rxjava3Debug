@@ -35,8 +35,8 @@ public final class ObservableMap<T, U> extends AbstractObservableWithUpstream<T,
      */
     @Override
     public void subscribeActual(Observer<? super U> t) {
-        //1. 创建一个 MapObserver
-        //2. 调用上一个 Observable 的 subscribe
+        //1. 创建一个 MapObserver 用于封装 下游观察者 和 自身的转换方法
+        //2. 调用上游 Observable 的 subscribe
         source.subscribe(new MapObserver<T, U>(t, function));
     }
 

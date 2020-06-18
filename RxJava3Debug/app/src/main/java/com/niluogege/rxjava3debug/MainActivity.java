@@ -118,6 +118,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //1. 调用三个参数的 subscribe 方法 ,  onError 和 onComplete 会分别被填充为 Functions.ON_ERROR_MISSING 和 Functions.EMPTY_ACTION
+        //2. 创建一个 LambdaObserver 用于整合 onNext, onError, onComplete, onSubscribe
+        //3. 调用 ObservableMap 的 subscribe 方法开始订阅
+        //4. 调用 ObservableMap 的 subscribeActual
+
+        //5. 创建一个 MapObserver 用于封装 下游观察者（LambdaObserver） 和 自身的转换方法
+        //6. 调用 ObservableJust 的 subscribe (入参是 MapObserver ) 从而调用到 ObservableJust 的 subscribeActual
+        //7. 创建 ScalarDisposable 用于封装 观察者 和 just 中传入的值
+
+        //8. 回调观察者 的 onSubscribe 方法
+
+        //9. 执行 ScalarDisposable 的 run 方法
+        //10. 调用 的 MapObserver onNext 方法
+        //11. 调用 map 中的 apply 回调方法
+        //12. 调用 下游观察者（LambdaObserver）的 onNext方法
+        //13. 调用 Consumer 的 accept 方法
+
+        //从这个调用链来看在
+        //  1. 订阅操作 过程中 操作流是向上的  真正的观察者（LambdaObserver） 被  MapObserver 封装起来
+        //  2. 订阅真正执行的 过程中 操作流程下向下的 先执行 MapObserver 的 onNext 再执行 真正的观察者（LambdaObserver） 的 onNext
+        //这个特点现在看来不是很明显 是因为 我们的变换操作太少了，如果有多个变换 那就会很明显
+
         Disposable disposable = observableBitmap.subscribe(new Consumer<Bitmap>() {
             @Override
             public void accept(Bitmap bitmap) throws Throwable {
