@@ -168,7 +168,11 @@ public class MainActivity extends AppCompatActivity {
      * 该方法的含义是 飞机先变成汽车 ，汽车在变成 变形金刚 ，然后去打仗 （领会精神就行）
      */
     private void transforms() {
+        //1. 创建一个 ObservableJust
+        //2. 将 item 保存到  ObservableJust 中
+        //3. 返回 ObservableJust
         Observable<Arplane> arplaneObservable = Observable.just(new Arplane());
+
         Observable<Car> carObservable = arplaneObservable.flatMap(new Function<Arplane, ObservableSource<Car>>() {
 
             @Override
@@ -193,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onNext(@NonNull Transformer transformer) {
-                Toast.makeText(MainActivity.this,transformer.fight(),Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, transformer.fight(), Toast.LENGTH_LONG).show();
             }
 
             @Override
