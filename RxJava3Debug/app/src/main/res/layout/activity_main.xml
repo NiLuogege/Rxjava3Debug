@@ -13,4 +13,16 @@
         android:layout_height="50dp"
         android:text="最简单的用例分析" />
 
+    <Button
+        android:id="@+id/btn_transform"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="事件变换" />
+
+    <ImageView
+        android:id="@+id/iv_transform"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
+
 </LinearLayout>

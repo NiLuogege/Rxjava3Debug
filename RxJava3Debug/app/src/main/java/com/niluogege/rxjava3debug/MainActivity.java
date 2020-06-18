@@ -1,10 +1,16 @@
 package com.niluogege.rxjava3debug;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.VectorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Observable;
@@ -12,8 +18,12 @@ import io.reactivex.rxjava3.core.ObservableEmitter;
 import io.reactivex.rxjava3.core.ObservableOnSubscribe;
 import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.functions.Consumer;
+import io.reactivex.rxjava3.functions.Function;
 
 public class MainActivity extends AppCompatActivity {
+
+    private ImageView iv_transform;
 
     private void log(String str) {
         Log.e("MainActivity", "str= " + str);
@@ -28,6 +38,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 simple();
+            }
+        });
+
+        iv_transform = findViewById(R.id.iv_transform);
+        findViewById(R.id.btn_transform).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                transform();
             }
         });
 
@@ -76,6 +94,27 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete() {
                 log("onComplete");
+            }
+        });
+    }
+
+    /**
+     * 事件变换用例分析
+     * subscribe 的时候 这里用了 Consumer  ，当然 也可以直接 new Observer 。
+     */
+    private void transform() {
+        Observable<Integer> observableInteger = Observable.just(R.drawable.ic_launcher);
+
+        Observable<Bitmap> observableBitmap = observableInteger.map(new Function<Integer, Bitmap>() {
+            @Override
+            public Bitmap apply(Integer integer) throws Throwable {
+                return BitmapFactory.decodeResource(getResources(), integer);
+            }
+        });
+        Disposable disposable = observableBitmap.subscribe(new Consumer<Bitmap>() {
+            @Override
+            public void accept(Bitmap bitmap) throws Throwable {
+                iv_transform.setImageBitmap(bitmap);
             }
         });
     }
