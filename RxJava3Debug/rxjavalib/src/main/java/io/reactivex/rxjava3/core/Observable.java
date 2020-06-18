@@ -9003,7 +9003,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      * @param mapper
      *            a function that, when applied to an item emitted by the current {@code Observable}, returns an
      *            {@code ObservableSource}
-     * @param delayErrors
+     * @param delayErrors 是否延迟 报错
      *            if {@code true}, exceptions from the current {@code Observable} and all inner {@code ObservableSource}s are delayed until all of them terminate
      *            if {@code false}, the first one signaling an exception will terminate the whole sequence immediately
      * @return the new {@code Observable} instance
@@ -9033,9 +9033,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      * @param mapper
      *            a function that, when applied to an item emitted by the current {@code Observable}, returns an
      *            {@code ObservableSource}
-     * @param maxConcurrency
+     * @param maxConcurrency 最大同时订阅量
      *         the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
-     * @param delayErrors
+     * @param delayErrors 是否延迟 报错
      *            if {@code true}, exceptions from the current {@code Observable} and all inner {@code ObservableSource}s are delayed until all of them terminate
      *            if {@code false}, the first one signaling an exception will terminate the whole sequence immediately
      * @return the new {@code Observable} instance
@@ -9067,12 +9067,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      * @param mapper
      *            a function that, when applied to an item emitted by the current {@code Observable}, returns an
      *            {@code ObservableSource}
-     * @param maxConcurrency
+     * @param maxConcurrency 最大同时订阅量
      *         the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
-     * @param delayErrors
+     * @param delayErrors 是否延迟 报错
      *            if {@code true}, exceptions from the current {@code Observable} and all inner {@code ObservableSource}s are delayed until all of them terminate
      *            if {@code false}, the first one signaling an exception will terminate the whole sequence immediately
-     * @param bufferSize
+     * @param bufferSize 缓存大小
      *            the number of elements expected from each inner {@code ObservableSource} to be buffered
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code mapper} is {@code null}
