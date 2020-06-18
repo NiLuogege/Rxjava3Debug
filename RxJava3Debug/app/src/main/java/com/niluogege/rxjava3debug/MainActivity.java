@@ -45,11 +45,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void subscribe(@NonNull ObservableEmitter<String> emitter) throws Throwable {
                 emitter.onNext("hello rxjava3");
+                emitter.onComplete();
             }
         });
 
 
         //1. 创建一个 Observer 对象
+        //2. 调用到 ObservableCreate 的 subscribeActual 方法进行真正的 订阅
+        //3. 创建 CreateEmitter(解释上面的 ObservableEmitter对象) 对 observer 进行包装和增强
+        //4. 回调 Observer的 onSubscribe 方法
+        //5. 调用 ObservableOnSubscribe 的 subscribe
+        //6. 因为 subscribe 中依次调用了 ObservableEmitter 的  onNext 和 onComplete 所以 会一次调用  Observer 的 onNext 和 onComplete
         Observer<String> observer = observable.subscribeWith(new Observer<String>() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {

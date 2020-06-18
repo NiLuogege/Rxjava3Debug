@@ -13099,7 +13099,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
         //空检查
         Objects.requireNonNull(observer, "observer is null");
         try {
-            //调用回调方法
+            //调用 钩子 方法
             observer = RxJavaPlugins.onSubscribe(this, observer);
 
             //再次 空检查
