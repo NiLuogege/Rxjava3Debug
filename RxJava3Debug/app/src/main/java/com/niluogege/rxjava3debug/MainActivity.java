@@ -11,11 +11,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.niluogege.rxjava3debug.bean.Arplane;
+import com.niluogege.rxjava3debug.bean.Car;
+import com.niluogege.rxjava3debug.bean.Transformer;
 
 import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.ObservableEmitter;
 import io.reactivex.rxjava3.core.ObservableOnSubscribe;
+import io.reactivex.rxjava3.core.ObservableSource;
 import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.functions.Consumer;
@@ -46,6 +52,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 transform();
+            }
+        });
+
+        findViewById(R.id.btn_transforms).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                transforms();
             }
         });
 
@@ -144,6 +157,53 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void accept(Bitmap bitmap) throws Throwable {
                 iv_transform.setImageBitmap(bitmap);
+            }
+        });
+    }
+
+
+    /**
+     * 多次事件变换用例分析
+     * <p>
+     * 该方法的含义是 飞机先变成汽车 ，汽车在变成 变形金刚 ，然后去打仗 （领会精神就行）
+     */
+    private void transforms() {
+        Observable<Arplane> arplaneObservable = Observable.just(new Arplane());
+        Observable<Car> carObservable = arplaneObservable.flatMap(new Function<Arplane, ObservableSource<Car>>() {
+
+            @Override
+            public ObservableSource<Car> apply(Arplane arplane) throws Throwable {
+                @NonNull Observable<Car> carObservable = Observable.just(new Car());
+                return carObservable;
+            }
+        });
+
+        Observable<Transformer> transformerObservable = carObservable.map(new Function<Car, Transformer>() {
+            @Override
+            public Transformer apply(Car car) throws Throwable {
+                return new Transformer();
+            }
+        });
+
+        transformerObservable.subscribe(new Observer<Transformer>() {
+            @Override
+            public void onSubscribe(@NonNull Disposable d) {
+                log("onSubscribe");
+            }
+
+            @Override
+            public void onNext(@NonNull Transformer transformer) {
+                Toast.makeText(MainActivity.this,transformer.fight(),Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onError(@NonNull Throwable e) {
+                log("onError= " + e.getLocalizedMessage());
+            }
+
+            @Override
+            public void onComplete() {
+                log("onComplete");
             }
         });
     }

@@ -17,12 +17,18 @@
         android:id="@+id/btn_transform"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="事件变换" />
+        android:text="一次事件变换" />
 
     <ImageView
         android:id="@+id/iv_transform"
         android:layout_width="100dp"
         android:layout_height="100dp" />
+
+    <Button
+        android:id="@+id/btn_transforms"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="多次事件变换" />
 
 
 </LinearLayout>
