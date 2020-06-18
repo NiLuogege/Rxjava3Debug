@@ -25,6 +25,7 @@ public final class ObservableMap<T, U> extends AbstractObservableWithUpstream<T,
 
     public ObservableMap(ObservableSource<T> source, Function<? super T, ? extends U> function) {
         super(source);
+        //记录传入的 function
         this.function = function;
     }
 

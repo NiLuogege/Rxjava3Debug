@@ -103,14 +103,21 @@ public class MainActivity extends AppCompatActivity {
      * subscribe 的时候 这里用了 Consumer  ，当然 也可以直接 new Observer 。
      */
     private void transform() {
+        //1. 创建一个 ObservableJust
+        //2. 将 item 保存到  ObservableJust 中
+        //3. 返回 ObservableJust
         Observable<Integer> observableInteger = Observable.just(R.drawable.ic_launcher);
 
+        //1. 创建一个 ObservableMap
+        //2. 将创建的 function 记录到 ObservableMap 中
+        //3. 返回 ObservableMap
         Observable<Bitmap> observableBitmap = observableInteger.map(new Function<Integer, Bitmap>() {
             @Override
             public Bitmap apply(Integer integer) throws Throwable {
                 return BitmapFactory.decodeResource(getResources(), integer);
             }
         });
+
         Disposable disposable = observableBitmap.subscribe(new Consumer<Bitmap>() {
             @Override
             public void accept(Bitmap bitmap) throws Throwable {

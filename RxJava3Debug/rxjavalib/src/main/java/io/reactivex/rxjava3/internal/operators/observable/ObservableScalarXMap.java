@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2016-present, RxJava Contributors.
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in
  * compliance with the License. You may obtain a copy of the License at
- *
+ * <p>
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
  * Unless required by applicable law or agreed to in writing, software distributed under the License is
  * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See
  * the License for the specific language governing permissions and limitations under the License.
@@ -45,13 +45,13 @@ public final class ObservableScalarXMap {
      */
     @SuppressWarnings("unchecked")
     public static <T, R> boolean tryScalarXMapSubscribe(ObservableSource<T> source,
-            Observer<? super R> observer,
-            Function<? super T, ? extends ObservableSource<? extends R>> mapper) {
+                                                        Observer<? super R> observer,
+                                                        Function<? super T, ? extends ObservableSource<? extends R>> mapper) {
         if (source instanceof Supplier) {
             T t;
 
             try {
-                t = ((Supplier<T>)source).get();
+                t = ((Supplier<T>) source).get();
             } catch (Throwable ex) {
                 Exceptions.throwIfFatal(ex);
                 EmptyDisposable.error(ex, observer);
@@ -77,7 +77,7 @@ public final class ObservableScalarXMap {
                 R u;
 
                 try {
-                    u = ((Supplier<R>)r).get();
+                    u = ((Supplier<R>) r).get();
                 } catch (Throwable ex) {
                     Exceptions.throwIfFatal(ex);
                     EmptyDisposable.error(ex, observer);
@@ -111,7 +111,7 @@ public final class ObservableScalarXMap {
      * @return the new Observable instance
      */
     public static <T, U> Observable<U> scalarXMap(T value,
-            Function<? super T, ? extends ObservableSource<? extends U>> mapper) {
+                                                  Function<? super T, ? extends ObservableSource<? extends U>> mapper) {
         return RxJavaPlugins.onAssembly(new ScalarXMapObservable<>(value, mapper));
     }
 
@@ -128,7 +128,7 @@ public final class ObservableScalarXMap {
         final Function<? super T, ? extends ObservableSource<? extends R>> mapper;
 
         ScalarXMapObservable(T value,
-                Function<? super T, ? extends ObservableSource<? extends R>> mapper) {
+                             Function<? super T, ? extends ObservableSource<? extends R>> mapper) {
             this.value = value;
             this.mapper = mapper;
         }
@@ -148,7 +148,7 @@ public final class ObservableScalarXMap {
                 R u;
 
                 try {
-                    u = ((Supplier<R>)other).get();
+                    u = ((Supplier<R>) other).get();
                 } catch (Throwable ex) {
                     Exceptions.throwIfFatal(ex);
                     EmptyDisposable.error(ex, observer);
@@ -174,8 +174,8 @@ public final class ObservableScalarXMap {
      * @param <T> the value type
      */
     public static final class ScalarDisposable<T>
-    extends AtomicInteger
-    implements QueueDisposable<T>, Runnable {
+            extends AtomicInteger
+            implements QueueDisposable<T>, Runnable {
 
         private static final long serialVersionUID = 3880992722410194083L;
 
@@ -245,9 +245,11 @@ public final class ObservableScalarXMap {
         @Override
         public void run() {
             if (get() == START && compareAndSet(START, ON_NEXT)) {
+                //调用 观察者的 onNext
                 observer.onNext(value);
                 if (get() == ON_NEXT) {
                     lazySet(ON_COMPLETE);
+                    //调用 观察者的 onComplete
                     observer.onComplete();
                 }
             }

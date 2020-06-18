@@ -30,8 +30,11 @@ public final class ObservableJust<T> extends Observable<T> implements ScalarSupp
 
     @Override
     protected void subscribeActual(Observer<? super T> observer) {
+        //创建 ScalarDisposable
         ScalarDisposable<T> sd = new ScalarDisposable<>(observer, value);
+        //回调观察者 的 onSubscribe
         observer.onSubscribe(sd);
+        //执行 sd.run
         sd.run();
     }
 
