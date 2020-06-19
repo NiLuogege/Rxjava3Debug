@@ -10051,6 +10051,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
     public final Observable<T> observeOn(@NonNull Scheduler scheduler, boolean delayError, int bufferSize) {
         Objects.requireNonNull(scheduler, "scheduler is null");
         ObjectHelper.verifyPositive(bufferSize, "bufferSize");
+        //创建一个 ObservableObserveOn 并记录 当前 被观察者 并返回
         return RxJavaPlugins.onAssembly(new ObservableObserveOn<>(this, scheduler, delayError, bufferSize));
     }
 

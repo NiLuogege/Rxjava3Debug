@@ -29,6 +29,7 @@ public final class ObservableObserveOn<T> extends AbstractObservableWithUpstream
     final boolean delayError;
     final int bufferSize;
     public ObservableObserveOn(ObservableSource<T> source, Scheduler scheduler, boolean delayError, int bufferSize) {
+        //上游被观察者
         super(source);
         this.scheduler = scheduler;
         this.delayError = delayError;
@@ -37,11 +38,14 @@ public final class ObservableObserveOn<T> extends AbstractObservableWithUpstream
 
     @Override
     protected void subscribeActual(Observer<? super T> observer) {
-        if (scheduler instanceof TrampolineScheduler) {
+        if (scheduler instanceof TrampolineScheduler) {//如果是 TrampolineScheduler
             source.subscribe(observer);
         } else {
+            //创建一个 Scheduler.Worker
             Scheduler.Worker w = scheduler.createWorker();
 
+            //1. 创建一个 ObserveOnObserver 的 observer 用于保存 下游的 observer
+            //2. 调用上游  被观察者  subscribe
             source.subscribe(new ObserveOnObserver<>(observer, w, delayError, bufferSize));
         }
     }

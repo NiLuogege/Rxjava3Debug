@@ -27,6 +27,8 @@ import io.reactivex.rxjava3.core.Scheduler;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.functions.Consumer;
 import io.reactivex.rxjava3.functions.Function;
+import io.reactivex.rxjava3.internal.schedulers.IoScheduler;
+import io.reactivex.rxjava3.internal.schedulers.SingleScheduler;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
@@ -286,10 +288,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Observable<Integer> subscribeOnObservable = createObservable.subscribeOn(Schedulers.io());
+        IoScheduler ioScheduler = (IoScheduler) Schedulers.io();
+        Observable<Integer> subscribeOnObservable = createObservable.subscribeOn(ioScheduler);
 
 
-        Observable<Integer> observeOnObservable = subscribeOnObservable.observeOn(Schedulers.single());
+        SingleScheduler singleScheduler = (SingleScheduler) Schedulers.single();
+        Observable<Integer> observeOnObservable = subscribeOnObservable.observeOn(singleScheduler);
 
 
         Observer<Integer> observer = observeOnObservable.subscribeWith(new Observer<Integer>() {

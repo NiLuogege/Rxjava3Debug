@@ -1,11 +1,11 @@
 /**
  * Copyright (c) 2016-present, RxJava Contributors.
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in
  * compliance with the License. You may obtain a copy of the License at
- *
+ * <p>
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
  * Unless required by applicable law or agreed to in writing, software distributed under the License is
  * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See
  * the License for the specific language governing permissions and limitations under the License.
@@ -23,14 +23,18 @@ public final class ObservableSubscribeOn<T> extends AbstractObservableWithUpstre
     final Scheduler scheduler;
 
     public ObservableSubscribeOn(ObservableSource<T> source, Scheduler scheduler) {
+        ////上游被观察者
         super(source);
         this.scheduler = scheduler;
     }
 
     @Override
     public void subscribeActual(final Observer<? super T> observer) {
+        //创建一个 SubscribeOnObserver 类型的observer 封装 下游传上了的 observer
         final SubscribeOnObserver<T> parent = new SubscribeOnObserver<>(observer);
 
+        //调用 下游 observer 的  onSubscribe 方法
+        // 这也是为什么 观察者 的 onSubscribe 是不会受 线程切换影响的原因
         observer.onSubscribe(parent);
 
         parent.setDisposable(scheduler.scheduleDirect(new SubscribeTask(parent)));
