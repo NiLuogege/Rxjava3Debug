@@ -94,8 +94,7 @@ import io.reactivex.rxjava3.schedulers.*;
  * d.dispose();
  * </code></pre>
  *
- * @param <T>
- *            the type of the items emitted by the {@code Observable}
+ * @param <T> the type of the items emitted by the {@code Observable}
  * @see Flowable
  * @see io.reactivex.rxjava3.observers.DisposableObserver
  */
@@ -111,10 +110,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code amb} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the common element type
-     * @param sources
-     *            an {@code Iterable} of {@code ObservableSource} sources competing to react first. A subscription to each source will
-     *            occur in the same order as in the {@code Iterable}.
+     * @param <T>     the common element type
+     * @param sources an {@code Iterable} of {@code ObservableSource} sources competing to react first. A subscription to each source will
+     *                occur in the same order as in the {@code Iterable}.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code sources} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/amb.html">ReactiveX operators documentation: Amb</a>
@@ -137,10 +135,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code ambArray} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the common element type
-     * @param sources
-     *            an array of {@code ObservableSource} sources competing to react first. A subscription to each source will
-     *            occur in the same order as in the array.
+     * @param <T>     the common element type
+     * @param sources an array of {@code ObservableSource} sources competing to react first. A subscription to each source will
+     *                occur in the same order as in the array.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code sources} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/amb.html">ReactiveX operators documentation: Amb</a>
@@ -167,6 +164,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      * <p>Delegates to {@link Flowable#bufferSize} but is public for convenience.
      * <p>The value can be overridden via system parameter {@code rx3.buffer-size}
      * <em>before</em> the {@link Flowable} class is loaded.
+     *
      * @return the default 'island' size or capacity-increment hint
      */
     @CheckReturnValue
@@ -197,14 +195,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code combineLatest} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T>
-     *            the common base type of source values
-     * @param <R>
-     *            the result type
-     * @param sources
-     *            the collection of source {@code ObservableSource}s
-     * @param combiner
-     *            the aggregation function used to combine the items emitted by the returned {@code ObservableSource}s
+     * @param <T>      the common base type of source values
+     * @param <R>      the result type
+     * @param sources  the collection of source {@code ObservableSource}s
+     * @param combiner the aggregation function used to combine the items emitted by the returned {@code ObservableSource}s
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code sources} or {@code combiner} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/combinelatest.html">ReactiveX operators documentation: CombineLatest</a>
@@ -241,18 +235,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code combineLatest} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T>
-     *            the common base type of source values
-     * @param <R>
-     *            the result type
-     * @param sources
-     *            the collection of source {@code ObservableSource}s
-     * @param combiner
-     *            the aggregation function used to combine the items emitted by the returned {@code ObservableSource}s
-     * @param bufferSize
-     *            the expected number of row combination items to be buffered internally
+     * @param <T>        the common base type of source values
+     * @param <R>        the result type
+     * @param sources    the collection of source {@code ObservableSource}s
+     * @param combiner   the aggregation function used to combine the items emitted by the returned {@code ObservableSource}s
+     * @param bufferSize the expected number of row combination items to be buffered internally
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code sources} or {@code combiner} is {@code null}
+     * @throws NullPointerException     if {@code sources} or {@code combiner} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/combinelatest.html">ReactiveX operators documentation: CombineLatest</a>
      */
@@ -294,14 +283,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code combineLatestArray} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T>
-     *            the common base type of source values
-     * @param <R>
-     *            the result type
-     * @param sources
-     *            the collection of source {@code ObservableSource}s
-     * @param combiner
-     *            the aggregation function used to combine the items emitted by the {@code ObservableSource}s
+     * @param <T>      the common base type of source values
+     * @param <R>      the result type
+     * @param sources  the collection of source {@code ObservableSource}s
+     * @param combiner the aggregation function used to combine the items emitted by the {@code ObservableSource}s
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code sources} or {@code combiner} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/combinelatest.html">ReactiveX operators documentation: CombineLatest</a>
@@ -338,18 +323,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code combineLatestArray} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T>
-     *            the common base type of source values
-     * @param <R>
-     *            the result type
-     * @param sources
-     *            the collection of source {@code ObservableSource}s
-     * @param combiner
-     *            the aggregation function used to combine the items emitted by the {@code ObservableSource}s
-     * @param bufferSize
-     *            the expected number of row combination items to be buffered internally
+     * @param <T>        the common base type of source values
+     * @param <R>        the result type
+     * @param sources    the collection of source {@code ObservableSource}s
+     * @param combiner   the aggregation function used to combine the items emitted by the {@code ObservableSource}s
+     * @param bufferSize the expected number of row combination items to be buffered internally
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code sources} or {@code combiner} is {@code null}
+     * @throws NullPointerException     if {@code sources} or {@code combiner} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/combinelatest.html">ReactiveX operators documentation: CombineLatest</a>
      */
@@ -386,15 +366,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code combineLatest} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T1> the element type of the first source
-     * @param <T2> the element type of the second source
-     * @param <R> the combined output type
-     * @param source1
-     *            the first source {@code ObservableSource}
-     * @param source2
-     *            the second source {@code ObservableSource}
-     * @param combiner
-     *            the aggregation function used to combine the items emitted by the {@code ObservableSource}s
+     * @param <T1>     the element type of the first source
+     * @param <T2>     the element type of the second source
+     * @param <R>      the combined output type
+     * @param source1  the first source {@code ObservableSource}
+     * @param source2  the second source {@code ObservableSource}
+     * @param combiner the aggregation function used to combine the items emitted by the {@code ObservableSource}s
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2} or {@code combiner} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/combinelatest.html">ReactiveX operators documentation: CombineLatest</a>
@@ -427,18 +404,14 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code combineLatest} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T1> the element type of the first source
-     * @param <T2> the element type of the second source
-     * @param <T3> the element type of the third source
-     * @param <R> the combined output type
-     * @param source1
-     *            the first source {@code ObservableSource}
-     * @param source2
-     *            the second source {@code ObservableSource}
-     * @param source3
-     *            the third source {@code ObservableSource}
-     * @param combiner
-     *            the aggregation function used to combine the items emitted by the {@code ObservableSource}s
+     * @param <T1>     the element type of the first source
+     * @param <T2>     the element type of the second source
+     * @param <T3>     the element type of the third source
+     * @param <R>      the combined output type
+     * @param source1  the first source {@code ObservableSource}
+     * @param source2  the second source {@code ObservableSource}
+     * @param source3  the third source {@code ObservableSource}
+     * @param combiner the aggregation function used to combine the items emitted by the {@code ObservableSource}s
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2}, {@code source3} or {@code combiner} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/combinelatest.html">ReactiveX operators documentation: CombineLatest</a>
@@ -473,21 +446,16 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code combineLatest} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T1> the element type of the first source
-     * @param <T2> the element type of the second source
-     * @param <T3> the element type of the third source
-     * @param <T4> the element type of the fourth source
-     * @param <R> the combined output type
-     * @param source1
-     *            the first source {@code ObservableSource}
-     * @param source2
-     *            the second source {@code ObservableSource}
-     * @param source3
-     *            the third source {@code ObservableSource}
-     * @param source4
-     *            the fourth source {@code ObservableSource}
-     * @param combiner
-     *            the aggregation function used to combine the items emitted by the {@code ObservableSource}s
+     * @param <T1>     the element type of the first source
+     * @param <T2>     the element type of the second source
+     * @param <T3>     the element type of the third source
+     * @param <T4>     the element type of the fourth source
+     * @param <R>      the combined output type
+     * @param source1  the first source {@code ObservableSource}
+     * @param source2  the second source {@code ObservableSource}
+     * @param source3  the third source {@code ObservableSource}
+     * @param source4  the fourth source {@code ObservableSource}
+     * @param combiner the aggregation function used to combine the items emitted by the {@code ObservableSource}s
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2}, {@code source3},
      *                              {@code source4} or {@code combiner} is {@code null}
@@ -524,24 +492,18 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code combineLatest} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T1> the element type of the first source
-     * @param <T2> the element type of the second source
-     * @param <T3> the element type of the third source
-     * @param <T4> the element type of the fourth source
-     * @param <T5> the element type of the fifth source
-     * @param <R> the combined output type
-     * @param source1
-     *            the first source {@code ObservableSource}
-     * @param source2
-     *            the second source {@code ObservableSource}
-     * @param source3
-     *            the third source {@code ObservableSource}
-     * @param source4
-     *            the fourth source {@code ObservableSource}
-     * @param source5
-     *            the fifth source {@code ObservableSource}
-     * @param combiner
-     *            the aggregation function used to combine the items emitted by the {@code ObservableSource}s
+     * @param <T1>     the element type of the first source
+     * @param <T2>     the element type of the second source
+     * @param <T3>     the element type of the third source
+     * @param <T4>     the element type of the fourth source
+     * @param <T5>     the element type of the fifth source
+     * @param <R>      the combined output type
+     * @param source1  the first source {@code ObservableSource}
+     * @param source2  the second source {@code ObservableSource}
+     * @param source3  the third source {@code ObservableSource}
+     * @param source4  the fourth source {@code ObservableSource}
+     * @param source5  the fifth source {@code ObservableSource}
+     * @param combiner the aggregation function used to combine the items emitted by the {@code ObservableSource}s
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2}, {@code source3},
      *                              {@code source4}, {@code source5} or {@code combiner} is {@code null}
@@ -580,27 +542,20 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code combineLatest} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T1> the element type of the first source
-     * @param <T2> the element type of the second source
-     * @param <T3> the element type of the third source
-     * @param <T4> the element type of the fourth source
-     * @param <T5> the element type of the fifth source
-     * @param <T6> the element type of the sixth source
-     * @param <R> the combined output type
-     * @param source1
-     *            the first source {@code ObservableSource}
-     * @param source2
-     *            the second source {@code ObservableSource}
-     * @param source3
-     *            the third source {@code ObservableSource}
-     * @param source4
-     *            the fourth source {@code ObservableSource}
-     * @param source5
-     *            the fifth source {@code ObservableSource}
-     * @param source6
-     *            the sixth source {@code ObservableSource}
-     * @param combiner
-     *            the aggregation function used to combine the items emitted by the {@code ObservableSource}s
+     * @param <T1>     the element type of the first source
+     * @param <T2>     the element type of the second source
+     * @param <T3>     the element type of the third source
+     * @param <T4>     the element type of the fourth source
+     * @param <T5>     the element type of the fifth source
+     * @param <T6>     the element type of the sixth source
+     * @param <R>      the combined output type
+     * @param source1  the first source {@code ObservableSource}
+     * @param source2  the second source {@code ObservableSource}
+     * @param source3  the third source {@code ObservableSource}
+     * @param source4  the fourth source {@code ObservableSource}
+     * @param source5  the fifth source {@code ObservableSource}
+     * @param source6  the sixth source {@code ObservableSource}
+     * @param combiner the aggregation function used to combine the items emitted by the {@code ObservableSource}s
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2}, {@code source3},
      *                              {@code source4}, {@code source5}, {@code source6} or {@code combiner} is {@code null}
@@ -640,30 +595,22 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code combineLatest} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T1> the element type of the first source
-     * @param <T2> the element type of the second source
-     * @param <T3> the element type of the third source
-     * @param <T4> the element type of the fourth source
-     * @param <T5> the element type of the fifth source
-     * @param <T6> the element type of the sixth source
-     * @param <T7> the element type of the seventh source
-     * @param <R> the combined output type
-     * @param source1
-     *            the first source {@code ObservableSource}
-     * @param source2
-     *            the second source {@code ObservableSource}
-     * @param source3
-     *            the third source {@code ObservableSource}
-     * @param source4
-     *            the fourth source {@code ObservableSource}
-     * @param source5
-     *            the fifth source {@code ObservableSource}
-     * @param source6
-     *            the sixth source {@code ObservableSource}
-     * @param source7
-     *            the seventh source {@code ObservableSource}
-     * @param combiner
-     *            the aggregation function used to combine the items emitted by the {@code ObservableSource}s
+     * @param <T1>     the element type of the first source
+     * @param <T2>     the element type of the second source
+     * @param <T3>     the element type of the third source
+     * @param <T4>     the element type of the fourth source
+     * @param <T5>     the element type of the fifth source
+     * @param <T6>     the element type of the sixth source
+     * @param <T7>     the element type of the seventh source
+     * @param <R>      the combined output type
+     * @param source1  the first source {@code ObservableSource}
+     * @param source2  the second source {@code ObservableSource}
+     * @param source3  the third source {@code ObservableSource}
+     * @param source4  the fourth source {@code ObservableSource}
+     * @param source5  the fifth source {@code ObservableSource}
+     * @param source6  the sixth source {@code ObservableSource}
+     * @param source7  the seventh source {@code ObservableSource}
+     * @param combiner the aggregation function used to combine the items emitted by the {@code ObservableSource}s
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2}, {@code source3},
      *                              {@code source4}, {@code source5}, {@code source6},
@@ -706,33 +653,24 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code combineLatest} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T1> the element type of the first source
-     * @param <T2> the element type of the second source
-     * @param <T3> the element type of the third source
-     * @param <T4> the element type of the fourth source
-     * @param <T5> the element type of the fifth source
-     * @param <T6> the element type of the sixth source
-     * @param <T7> the element type of the seventh source
-     * @param <T8> the element type of the eighth source
-     * @param <R> the combined output type
-     * @param source1
-     *            the first source {@code ObservableSource}
-     * @param source2
-     *            the second source {@code ObservableSource}
-     * @param source3
-     *            the third source {@code ObservableSource}
-     * @param source4
-     *            the fourth source {@code ObservableSource}
-     * @param source5
-     *            the fifth source {@code ObservableSource}
-     * @param source6
-     *            the sixth source {@code ObservableSource}
-     * @param source7
-     *            the seventh source {@code ObservableSource}
-     * @param source8
-     *            the eighth source {@code ObservableSource}
-     * @param combiner
-     *            the aggregation function used to combine the items emitted by the {@code ObservableSource}s
+     * @param <T1>     the element type of the first source
+     * @param <T2>     the element type of the second source
+     * @param <T3>     the element type of the third source
+     * @param <T4>     the element type of the fourth source
+     * @param <T5>     the element type of the fifth source
+     * @param <T6>     the element type of the sixth source
+     * @param <T7>     the element type of the seventh source
+     * @param <T8>     the element type of the eighth source
+     * @param <R>      the combined output type
+     * @param source1  the first source {@code ObservableSource}
+     * @param source2  the second source {@code ObservableSource}
+     * @param source3  the third source {@code ObservableSource}
+     * @param source4  the fourth source {@code ObservableSource}
+     * @param source5  the fifth source {@code ObservableSource}
+     * @param source6  the sixth source {@code ObservableSource}
+     * @param source7  the seventh source {@code ObservableSource}
+     * @param source8  the eighth source {@code ObservableSource}
+     * @param combiner the aggregation function used to combine the items emitted by the {@code ObservableSource}s
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2}, {@code source3},
      *                              {@code source4}, {@code source5}, {@code source6},
@@ -776,36 +714,26 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code combineLatest} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T1> the element type of the first source
-     * @param <T2> the element type of the second source
-     * @param <T3> the element type of the third source
-     * @param <T4> the element type of the fourth source
-     * @param <T5> the element type of the fifth source
-     * @param <T6> the element type of the sixth source
-     * @param <T7> the element type of the seventh source
-     * @param <T8> the element type of the eighth source
-     * @param <T9> the element type of the ninth source
-     * @param <R> the combined output type
-     * @param source1
-     *            the first source {@code ObservableSource}
-     * @param source2
-     *            the second source {@code ObservableSource}
-     * @param source3
-     *            the third source {@code ObservableSource}
-     * @param source4
-     *            the fourth source {@code ObservableSource}
-     * @param source5
-     *            the fifth source {@code ObservableSource}
-     * @param source6
-     *            the sixth source {@code ObservableSource}
-     * @param source7
-     *            the seventh source {@code ObservableSource}
-     * @param source8
-     *            the eighth source {@code ObservableSource}
-     * @param source9
-     *            the ninth source {@code ObservableSource}
-     * @param combiner
-     *            the aggregation function used to combine the items emitted by the {@code ObservableSource}s
+     * @param <T1>     the element type of the first source
+     * @param <T2>     the element type of the second source
+     * @param <T3>     the element type of the third source
+     * @param <T4>     the element type of the fourth source
+     * @param <T5>     the element type of the fifth source
+     * @param <T6>     the element type of the sixth source
+     * @param <T7>     the element type of the seventh source
+     * @param <T8>     the element type of the eighth source
+     * @param <T9>     the element type of the ninth source
+     * @param <R>      the combined output type
+     * @param source1  the first source {@code ObservableSource}
+     * @param source2  the second source {@code ObservableSource}
+     * @param source3  the third source {@code ObservableSource}
+     * @param source4  the fourth source {@code ObservableSource}
+     * @param source5  the fifth source {@code ObservableSource}
+     * @param source6  the sixth source {@code ObservableSource}
+     * @param source7  the seventh source {@code ObservableSource}
+     * @param source8  the eighth source {@code ObservableSource}
+     * @param source9  the ninth source {@code ObservableSource}
+     * @param combiner the aggregation function used to combine the items emitted by the {@code ObservableSource}s
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2}, {@code source3},
      *                              {@code source4}, {@code source5}, {@code source6},
@@ -859,14 +787,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code combineLatestArrayDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T>
-     *            the common base type of source values
-     * @param <R>
-     *            the result type
-     * @param sources
-     *            the collection of source {@code ObservableSource}s
-     * @param combiner
-     *            the aggregation function used to combine the items emitted by the {@code ObservableSource}s
+     * @param <T>      the common base type of source values
+     * @param <R>      the result type
+     * @param sources  the collection of source {@code ObservableSource}s
+     * @param combiner the aggregation function used to combine the items emitted by the {@code ObservableSource}s
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code sources} or {@code combiner} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/combinelatest.html">ReactiveX operators documentation: CombineLatest</a>
@@ -904,18 +828,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code combineLatestArrayDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T>
-     *            the common base type of source values
-     * @param <R>
-     *            the result type
-     * @param sources
-     *            the collection of source {@code ObservableSource}s
-     * @param combiner
-     *            the aggregation function used to combine the items emitted by the {@code ObservableSource}s
-     * @param bufferSize
-     *            the expected number of row combination items to be buffered internally
+     * @param <T>        the common base type of source values
+     * @param <R>        the result type
+     * @param sources    the collection of source {@code ObservableSource}s
+     * @param combiner   the aggregation function used to combine the items emitted by the {@code ObservableSource}s
+     * @param bufferSize the expected number of row combination items to be buffered internally
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code sources} or {@code combiner} is {@code null}
+     * @throws NullPointerException     if {@code sources} or {@code combiner} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/combinelatest.html">ReactiveX operators documentation: CombineLatest</a>
      */
@@ -959,14 +878,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code combineLatestDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T>
-     *            the common base type of source values
-     * @param <R>
-     *            the result type
-     * @param sources
-     *            the {@code Iterable} of source {@code ObservableSource}s
-     * @param combiner
-     *            the aggregation function used to combine the items emitted by the {@code ObservableSource}s
+     * @param <T>      the common base type of source values
+     * @param <R>      the result type
+     * @param sources  the {@code Iterable} of source {@code ObservableSource}s
+     * @param combiner the aggregation function used to combine the items emitted by the {@code ObservableSource}s
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code sources} or {@code combiner} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/combinelatest.html">ReactiveX operators documentation: CombineLatest</a>
@@ -1003,18 +918,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code combineLatestDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T>
-     *            the common base type of source values
-     * @param <R>
-     *            the result type
-     * @param sources
-     *            the collection of source {@code ObservableSource}s
-     * @param combiner
-     *            the aggregation function used to combine the items emitted by the {@code ObservableSource}s
-     * @param bufferSize
-     *            the expected number of row combination items to be buffered internally
+     * @param <T>        the common base type of source values
+     * @param <R>        the result type
+     * @param sources    the collection of source {@code ObservableSource}s
+     * @param combiner   the aggregation function used to combine the items emitted by the {@code ObservableSource}s
+     * @param bufferSize the expected number of row combination items to be buffered internally
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code sources} or {@code combiner} is {@code null}
+     * @throws NullPointerException     if {@code sources} or {@code combiner} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/combinelatest.html">ReactiveX operators documentation: CombineLatest</a>
      */
@@ -1041,7 +951,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code concat} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <T> the common value type of the sources
+     *
+     * @param <T>     the common value type of the sources
      * @param sources the {@code Iterable} sequence of {@code ObservableSource}s
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code sources} is {@code null}
@@ -1065,9 +976,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concat} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param sources
-     *            an {@code ObservableSource} that emits {@code ObservableSource}s
+     * @param <T>     the common element base type
+     * @param sources an {@code ObservableSource} that emits {@code ObservableSource}s
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code sources} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/concat.html">ReactiveX operators documentation: Concat</a>
@@ -1089,13 +999,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concat} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param sources
-     *            an {@code ObservableSource} that emits {@code ObservableSource}s
-     * @param bufferSize
-     *            the number of inner {@code ObservableSource}s expected to be buffered.
+     * @param <T>        the common element base type
+     * @param sources    an {@code ObservableSource} that emits {@code ObservableSource}s
+     * @param bufferSize the number of inner {@code ObservableSource}s expected to be buffered.
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code sources} is {@code null}
+     * @throws NullPointerException     if {@code sources} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/concat.html">ReactiveX operators documentation: Concat</a>
      */
@@ -1119,11 +1027,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concat} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param source1
-     *            an {@code ObservableSource} to be concatenated
-     * @param source2
-     *            an {@code ObservableSource} to be concatenated
+     * @param <T>     the common element base type
+     * @param source1 an {@code ObservableSource} to be concatenated
+     * @param source2 an {@code ObservableSource} to be concatenated
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1} or {@code source2} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/concat.html">ReactiveX operators documentation: Concat</a>
@@ -1147,13 +1053,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concat} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param source1
-     *            an {@code ObservableSource} to be concatenated
-     * @param source2
-     *            an {@code ObservableSource} to be concatenated
-     * @param source3
-     *            an {@code ObservableSource} to be concatenated
+     * @param <T>     the common element base type
+     * @param source1 an {@code ObservableSource} to be concatenated
+     * @param source2 an {@code ObservableSource} to be concatenated
+     * @param source3 an {@code ObservableSource} to be concatenated
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2} or {@code source3} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/concat.html">ReactiveX operators documentation: Concat</a>
@@ -1180,15 +1083,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concat} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param source1
-     *            an {@code ObservableSource} to be concatenated
-     * @param source2
-     *            an {@code ObservableSource} to be concatenated
-     * @param source3
-     *            an {@code ObservableSource} to be concatenated
-     * @param source4
-     *            an {@code ObservableSource} to be concatenated
+     * @param <T>     the common element base type
+     * @param source1 an {@code ObservableSource} to be concatenated
+     * @param source2 an {@code ObservableSource} to be concatenated
+     * @param source3 an {@code ObservableSource} to be concatenated
+     * @param source4 an {@code ObservableSource} to be concatenated
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2}, {@code source3} or {@code source4} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/concat.html">ReactiveX operators documentation: Concat</a>
@@ -1216,8 +1115,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code concatArray} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
+     *
      * @param sources the array of sources
-     * @param <T> the common base value type
+     * @param <T>     the common base value type
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code sources} is {@code null}
      */
@@ -1246,8 +1146,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code concatArrayDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
+     *
      * @param sources the array of sources
-     * @param <T> the common base value type
+     * @param <T>     the common base value type
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code sources} is {@code null}
      */
@@ -1280,7 +1181,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>This method does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <T> the value type
+     *
+     * @param <T>     the value type
      * @param sources an array of {@code ObservableSource}s that need to be eagerly concatenated
      * @return the new {@code Observable} instance with the specified concatenation behavior
      * @throws NullPointerException if {@code sources} is {@code null}
@@ -1306,13 +1208,14 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>This method does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <T> the value type
-     * @param sources an array of {@code ObservableSource}s that need to be eagerly concatenated
+     *
+     * @param <T>            the value type
+     * @param sources        an array of {@code ObservableSource}s that need to be eagerly concatenated
      * @param maxConcurrency the maximum number of concurrent subscriptions at a time, {@link Integer#MAX_VALUE}
      *                       is interpreted as indication to subscribe to all sources at once
-     * @param bufferSize the number of elements expected from each {@code ObservableSource} to be buffered
+     * @param bufferSize     the number of elements expected from each {@code ObservableSource} to be buffered
      * @return the new {@code Observable} instance with the specified concatenation behavior
-     * @throws NullPointerException if {@code sources} is {@code null}
+     * @throws NullPointerException     if {@code sources} is {@code null}
      * @throws IllegalArgumentException if {@code maxConcurrency} or {@code bufferSize} is non-positive
      * @since 2.0
      */
@@ -1338,7 +1241,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>This method does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <T> the value type
+     *
+     * @param <T>     the value type
      * @param sources an array of {@code ObservableSource}s that need to be eagerly concatenated
      * @return the new {@code Observable} instance with the specified concatenation behavior
      * @throws NullPointerException if {@code sources} is {@code null}
@@ -1365,13 +1269,14 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>This method does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <T> the value type
-     * @param sources an array of {@code ObservableSource}s that need to be eagerly concatenated
+     *
+     * @param <T>            the value type
+     * @param sources        an array of {@code ObservableSource}s that need to be eagerly concatenated
      * @param maxConcurrency the maximum number of concurrent subscriptions at a time, {@link Integer#MAX_VALUE}
      *                       is interpreted as indication to subscribe to all sources at once
-     * @param bufferSize the number of elements expected from each {@code ObservableSource} to be buffered
+     * @param bufferSize     the number of elements expected from each {@code ObservableSource} to be buffered
      * @return the new {@code Observable} instance with the specified concatenation behavior
-     * @throws NullPointerException if {@code sources} is {@code null}
+     * @throws NullPointerException     if {@code sources} is {@code null}
      * @throws IllegalArgumentException if {@code maxConcurrency} or {@code bufferSize} is non-positive
      * @since 2.2.1 - experimental
      */
@@ -1386,8 +1291,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
 
     /**
      * Concatenates the {@link Iterable} sequence of {@link ObservableSource}s into a single {@code Observable} sequence
-     *  by subscribing to each {@code ObservableSource}, one after the other, one at a time and delays any errors till
-     *  the all inner {@code ObservableSource}s terminate.
+     * by subscribing to each {@code ObservableSource}, one after the other, one at a time and delays any errors till
+     * the all inner {@code ObservableSource}s terminate.
      * <p>
      * <img width="640" height="380" src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/concatDelayError.v3.png" alt="">
      * <dl>
@@ -1395,7 +1300,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the common element base type
+     * @param <T>     the common element base type
      * @param sources the {@code Iterable} sequence of {@code ObservableSource}s
      * @return the new {@code Observable} with the concatenating behavior
      * @throws NullPointerException if {@code sources} is {@code null}
@@ -1411,7 +1316,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
     /**
      * Concatenates the {@link ObservableSource} sequence of {@code ObservableSource}s into a single {@code Observable} sequence
      * by subscribing to each inner {@code ObservableSource}, one after the other, one at a time and delays any errors till the
-     *  all inner and the outer {@code ObservableSource}s terminate.
+     * all inner and the outer {@code ObservableSource}s terminate.
      * <p>
      * <img width="640" height="380" src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/concatDelayError.v3.png" alt="">
      * <dl>
@@ -1419,7 +1324,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the common element base type
+     * @param <T>     the common element base type
      * @param sources the {@code ObservableSource} sequence of {@code ObservableSource}s
      * @return the new {@code Observable} with the concatenating behavior
      * @throws NullPointerException if {@code sources} is {@code null}
@@ -1441,13 +1346,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param sources the {@code ObservableSource} sequence of {@code ObservableSource}s
+     * @param <T>        the common element base type
+     * @param sources    the {@code ObservableSource} sequence of {@code ObservableSource}s
      * @param bufferSize the number of inner {@code ObservableSource}s expected to be buffered
      * @param tillTheEnd if {@code true}, exceptions from the outer and all inner {@code ObservableSource}s are delayed to the end
      *                   if {@code false}, exception from the outer {@code ObservableSource} is delayed till the active {@code ObservableSource} terminates
      * @return the new {@code Observable} with the concatenating behavior
-     * @throws NullPointerException if {@code sources} is {@code null}
+     * @throws NullPointerException     if {@code sources} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      */
     @SuppressWarnings({"rawtypes", "unchecked"})
@@ -1472,7 +1377,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>This method does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <T> the value type
+     *
+     * @param <T>     the value type
      * @param sources a sequence of {@code ObservableSource}s that need to be eagerly concatenated
      * @return the new {@code Observable} instance with the specified concatenation behavior
      * @throws NullPointerException if {@code sources} is {@code null}
@@ -1498,13 +1404,14 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>This method does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <T> the value type
-     * @param sources a sequence of {@code ObservableSource}s that need to be eagerly concatenated
+     *
+     * @param <T>            the value type
+     * @param sources        a sequence of {@code ObservableSource}s that need to be eagerly concatenated
      * @param maxConcurrency the maximum number of concurrently running inner {@code ObservableSource}s; {@link Integer#MAX_VALUE}
      *                       is interpreted as all inner {@code ObservableSource}s can be active at the same time
-     * @param bufferSize the number of elements expected from each inner {@code ObservableSource} to be buffered
+     * @param bufferSize     the number of elements expected from each inner {@code ObservableSource} to be buffered
      * @return the new {@code Observable} instance with the specified concatenation behavior
-     * @throws NullPointerException if {@code sources} is {@code null}
+     * @throws NullPointerException     if {@code sources} is {@code null}
      * @throws IllegalArgumentException if {@code maxConcurrency} or {@code bufferSize} is non-positive
      * @since 2.0
      */
@@ -1528,7 +1435,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>This method does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <T> the value type
+     *
+     * @param <T>     the value type
      * @param sources a sequence of {@code ObservableSource}s that need to be eagerly concatenated
      * @return the new {@code Observable} instance with the specified concatenation behavior
      * @throws NullPointerException if {@code sources} is {@code null}
@@ -1555,13 +1463,14 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>This method does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <T> the value type
-     * @param sources a sequence of {@code ObservableSource}s that need to be eagerly concatenated
+     *
+     * @param <T>            the value type
+     * @param sources        a sequence of {@code ObservableSource}s that need to be eagerly concatenated
      * @param maxConcurrency the maximum number of concurrently running inner {@code ObservableSource}s; {@link Integer#MAX_VALUE}
      *                       is interpreted as all inner {@code ObservableSource}s can be active at the same time
-     * @param bufferSize the number of inner {@code ObservableSource} expected to be buffered
+     * @param bufferSize     the number of inner {@code ObservableSource} expected to be buffered
      * @return the new {@code Observable} instance with the specified concatenation behavior
-     * @throws NullPointerException if {@code sources} is {@code null}
+     * @throws NullPointerException     if {@code sources} is {@code null}
      * @throws IllegalArgumentException if {@code maxConcurrency} or {@code bufferSize} is non-positive
      * @since 2.0
      */
@@ -1586,7 +1495,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>This method does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <T> the value type
+     *
+     * @param <T>     the value type
      * @param sources a sequence of {@code ObservableSource}s that need to be eagerly concatenated
      * @return the new {@code Observable} instance with the specified concatenation behavior
      * @throws NullPointerException if {@code sources} is {@code null}
@@ -1613,13 +1523,14 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>This method does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <T> the value type
-     * @param sources a sequence of {@code ObservableSource}s that need to be eagerly concatenated
+     *
+     * @param <T>            the value type
+     * @param sources        a sequence of {@code ObservableSource}s that need to be eagerly concatenated
      * @param maxConcurrency the maximum number of concurrently running inner {@code ObservableSource}s; {@link Integer#MAX_VALUE}
      *                       is interpreted as all inner {@code ObservableSource}s can be active at the same time
-     * @param bufferSize the number of elements expected from each inner {@code ObservableSource} to be buffered
+     * @param bufferSize     the number of elements expected from each inner {@code ObservableSource} to be buffered
      * @return the new {@code Observable} instance with the specified concatenation behavior
-     * @throws NullPointerException if {@code sources} is {@code null}
+     * @throws NullPointerException     if {@code sources} is {@code null}
      * @throws IllegalArgumentException if {@code maxConcurrency} or {@code bufferSize} is non-positive
      * @since 3.0.0
      */
@@ -1644,7 +1555,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>This method does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <T> the value type
+     *
+     * @param <T>     the value type
      * @param sources a sequence of {@code ObservableSource}s that need to be eagerly concatenated
      * @return the new {@code Observable} instance with the specified concatenation behavior
      * @throws NullPointerException if {@code sources} is {@code null}
@@ -1670,13 +1582,14 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>This method does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <T> the value type
-     * @param sources a sequence of {@code ObservableSource}s that need to be eagerly concatenated
+     *
+     * @param <T>            the value type
+     * @param sources        a sequence of {@code ObservableSource}s that need to be eagerly concatenated
      * @param maxConcurrency the maximum number of concurrently running inner {@code ObservableSource}s; {@link Integer#MAX_VALUE}
      *                       is interpreted as all inner {@code ObservableSource}s can be active at the same time
-     * @param bufferSize the number of inner {@code ObservableSource} expected to be buffered
+     * @param bufferSize     the number of inner {@code ObservableSource} expected to be buffered
      * @return the new {@code Observable} instance with the specified concatenation behavior
-     * @throws NullPointerException if {@code sources} is {@code null}
+     * @throws NullPointerException     if {@code sources} is {@code null}
      * @throws IllegalArgumentException if {@code maxConcurrency} or {@code bufferSize} is non-positive
      * @since 3.0.0
      */
@@ -1731,7 +1644,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code create} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the element type
+     * @param <T>    the element type
      * @param source the emitter that is called when an {@code Observer} subscribes to the returned {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source} is {@code null}
@@ -1764,11 +1677,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code defer} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param supplier
-     *            the {@code ObservableSource} factory function to invoke for each {@code Observer} that subscribes to the
-     *            resulting {@code Observable}
-     * @param <T>
-     *            the type of the items emitted by the {@code ObservableSource}
+     * @param supplier the {@code ObservableSource} factory function to invoke for each {@code Observer} that subscribes to the
+     *                 resulting {@code Observable}
+     * @param <T>      the type of the items emitted by the {@code ObservableSource}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code supplier} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/defer.html">ReactiveX operators documentation: Defer</a>
@@ -1791,8 +1702,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code empty} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T>
-     *            the type of the items (ostensibly) emitted by the {@code Observable}
+     * @param <T> the type of the items (ostensibly) emitted by the {@code Observable}
      * @return the shared {@code Observable} instance
      * @see <a href="http://reactivex.io/documentation/operators/empty-never-throw.html">ReactiveX operators documentation: Empty</a>
      */
@@ -1814,10 +1724,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code error} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param supplier
-     *            a {@link Supplier} factory to return a {@link Throwable} for each individual {@code Observer}
-     * @param <T>
-     *            the type of the items (ostensibly) emitted by the {@code Observable}
+     * @param supplier a {@link Supplier} factory to return a {@link Throwable} for each individual {@code Observer}
+     * @param <T>      the type of the items (ostensibly) emitted by the {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code supplier} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/empty-never-throw.html">ReactiveX operators documentation: Throw</a>
@@ -1840,10 +1748,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code error} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param throwable
-     *            the particular {@link Throwable} to pass to {@link Observer#onError onError}
-     * @param <T>
-     *            the type of the items (ostensibly) emitted by the {@code Observable}
+     * @param throwable the particular {@link Throwable} to pass to {@link Observer#onError onError}
+     * @param <T>       the type of the items (ostensibly) emitted by the {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code throwable} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/empty-never-throw.html">ReactiveX operators documentation: Throw</a>
@@ -1872,7 +1778,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  {@link RxJavaPlugins#onError(Throwable)} as an {@link io.reactivex.rxjava3.exceptions.UndeliverableException UndeliverableException}.
      *  </dd>
      * </dl>
-     * @param <T> the target type
+     *
+     * @param <T>    the target type
      * @param action the {@code Action} to run for each subscriber
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code action} is {@code null}
@@ -1895,10 +1802,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code fromArray} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param items
-     *            the array of elements
-     * @param <T>
-     *            the type of items in the array and the type of items to be emitted by the resulting {@code Observable}
+     * @param items the array of elements
+     * @param <T>   the type of items in the array and the type of items to be emitted by the resulting {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code items} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/from.html">ReactiveX operators documentation: From</a>
@@ -1937,11 +1842,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *   {@link RxJavaPlugins#onError(Throwable)} as an {@link UndeliverableException}.
      *   </dd>
      * </dl>
-     * @param callable
-     *         a function, the execution of which should be deferred; {@code fromCallable} will invoke this
-     *         function only when an observer subscribes to the {@code Observable} that {@code fromCallable} returns
-     * @param <T>
-     *         the type of the item returned by the {@code Callable} and emitted by the {@code Observable}
+     *
+     * @param callable a function, the execution of which should be deferred; {@code fromCallable} will invoke this
+     *                 function only when an observer subscribes to the {@code Observable} that {@code fromCallable} returns
+     * @param <T>      the type of the item returned by the {@code Callable} and emitted by the {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code callable} is {@code null}
      * @see #defer(Supplier)
@@ -1964,7 +1868,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code fromCompletable} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <T> the target type
+     *
+     * @param <T>               the target type
      * @param completableSource the {@code CompletableSource} to convert from
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code completableSource} is {@code null}
@@ -1998,11 +1903,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code fromFuture} does not operate by default on a particular {@code Scheduler}.</dd>
      * </dl>
      *
-     * @param future
-     *            the source {@code Future}
-     * @param <T>
-     *            the type of object that the {@code Future} returns, and also the type of item to be emitted by
-     *            the resulting {@code Observable}
+     * @param future the source {@code Future}
+     * @param <T>    the type of object that the {@code Future} returns, and also the type of item to be emitted by
+     *               the resulting {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code future} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/from.html">ReactiveX operators documentation: From</a>
@@ -2036,15 +1939,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code fromFuture} does not operate by default on a particular {@code Scheduler}.</dd>
      * </dl>
      *
-     * @param future
-     *            the source {@code Future}
-     * @param timeout
-     *            the maximum time to wait before calling {@code get}
-     * @param unit
-     *            the {@link TimeUnit} of the {@code timeout} argument
-     * @param <T>
-     *            the type of object that the {@code Future} returns, and also the type of item to be emitted by
-     *            the resulting {@code Observable}
+     * @param future  the source {@code Future}
+     * @param timeout the maximum time to wait before calling {@code get}
+     * @param unit    the {@link TimeUnit} of the {@code timeout} argument
+     * @param <T>     the type of object that the {@code Future} returns, and also the type of item to be emitted by
+     *                the resulting {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code future} or {@code unit} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/from.html">ReactiveX operators documentation: From</a>
@@ -2067,11 +1966,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code fromIterable} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param source
-     *            the source {@code Iterable} sequence
-     * @param <T>
-     *            the type of items in the {@code Iterable} sequence and the type of items to be emitted by the
-     *            resulting {@code Observable}
+     * @param source the source {@code Iterable} sequence
+     * @param <T>    the type of items in the {@code Iterable} sequence and the type of items to be emitted by the
+     *               resulting {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/from.html">ReactiveX operators documentation: From</a>
@@ -2095,7 +1992,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code fromMaybe} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <T> the value type of the {@code MaybeSource} element
+     *
+     * @param <T>   the value type of the {@code MaybeSource} element
      * @param maybe the {@code MaybeSource} instance to subscribe to, not {@code null}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code maybe} is {@code null}
@@ -2131,7 +2029,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code fromPublisher} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <T> the value type of the flow
+     *
+     * @param <T>       the value type of the flow
      * @param publisher the {@code Publisher} to convert
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code publisher} is {@code null}
@@ -2162,6 +2061,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  {@link RxJavaPlugins#onError(Throwable)} as an {@link io.reactivex.rxjava3.exceptions.UndeliverableException UndeliverableException}.
      *  </dd>
      * </dl>
+     *
      * @param <T> the target type
      * @param run the {@code Runnable} to run for each observer
      * @return the new {@code Observable} instance
@@ -2185,7 +2085,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code fromSingle} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <T> the value type of the {@code SingleSource} element
+     *
+     * @param <T>    the value type of the {@code SingleSource} element
      * @param source the {@code SingleSource} instance to subscribe to, not {@code null}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source} is {@code null}
@@ -2218,11 +2119,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *   {@link RxJavaPlugins#onError(Throwable)} as an {@link UndeliverableException}.
      *   </dd>
      * </dl>
-     * @param supplier
-     *         a function, the execution of which should be deferred; {@code fromSupplier} will invoke this
-     *         function only when an observer subscribes to the {@code Observable} that {@code fromSupplier} returns
-     * @param <T>
-     *         the type of the item emitted by the {@code Observable}
+     *
+     * @param supplier a function, the execution of which should be deferred; {@code fromSupplier} will invoke this
+     *                 function only when an observer subscribes to the {@code Observable} that {@code fromSupplier} returns
+     * @param <T>      the type of the item emitted by the {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code supplier} is {@code null}
      * @see #defer(Supplier)
@@ -2251,11 +2151,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code generate} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the generated value type
+     * @param <T>       the generated value type
      * @param generator the {@link Consumer} called in a loop after a downstream {@link Observer} has
-     * subscribed. The callback then should call {@code onNext}, {@code onError} or
-     * {@code onComplete} to signal a value or a terminal event. Signaling multiple {@code onNext}
-     * in a call will make the operator signal {@link IllegalStateException}.
+     *                  subscribed. The callback then should call {@code onNext}, {@code onError} or
+     *                  {@code onComplete} to signal a value or a terminal event. Signaling multiple {@code onNext}
+     *                  in a call will make the operator signal {@link IllegalStateException}.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code generator} is {@code null}
      */
@@ -2282,13 +2182,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code generate} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <S> the type of the per-{@link Observer} state
-     * @param <T> the generated value type
+     * @param <S>          the type of the per-{@link Observer} state
+     * @param <T>          the generated value type
      * @param initialState the {@link Supplier} to generate the initial state for each {@code Observer}
-     * @param generator the {@link BiConsumer} called in a loop after a downstream {@code Observer} has
-     * subscribed. The callback then should call {@code onNext}, {@code onError} or
-     * {@code onComplete} to signal a value or a terminal event. Signaling multiple {@code onNext}
-     * in a call will make the operator signal {@link IllegalStateException}.
+     * @param generator    the {@link BiConsumer} called in a loop after a downstream {@code Observer} has
+     *                     subscribed. The callback then should call {@code onNext}, {@code onError} or
+     *                     {@code onComplete} to signal a value or a terminal event. Signaling multiple {@code onNext}
+     *                     in a call will make the operator signal {@link IllegalStateException}.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code initialState} or {@code generator} is {@code null}
      */
@@ -2314,15 +2214,15 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code generate} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <S> the type of the per-{@link Observer} state
-     * @param <T> the generated value type
+     * @param <S>          the type of the per-{@link Observer} state
+     * @param <T>          the generated value type
      * @param initialState the {@link Supplier} to generate the initial state for each {@code Observer}
-     * @param generator the {@link BiConsumer} called in a loop after a downstream {@code Observer} has
-     * subscribed. The callback then should call {@code onNext}, {@code onError} or
-     * {@code onComplete} to signal a value or a terminal event. Signaling multiple {@code onNext}
-     * in a call will make the operator signal {@link IllegalStateException}.
+     * @param generator    the {@link BiConsumer} called in a loop after a downstream {@code Observer} has
+     *                     subscribed. The callback then should call {@code onNext}, {@code onError} or
+     *                     {@code onComplete} to signal a value or a terminal event. Signaling multiple {@code onNext}
+     *                     in a call will make the operator signal {@link IllegalStateException}.
      * @param disposeState the {@link Consumer} that is called with the current state when the generator
-     * terminates the sequence or it gets disposed
+     *                     terminates the sequence or it gets disposed
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code initialState}, {@code generator} or {@code disposeState} is {@code null}
      */
@@ -2351,14 +2251,14 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code generate} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <S> the type of the per-{@link Observer} state
-     * @param <T> the generated value type
+     * @param <S>          the type of the per-{@link Observer} state
+     * @param <T>          the generated value type
      * @param initialState the {@link Supplier} to generate the initial state for each {@code Observer}
-     * @param generator the {@link BiConsumer} called in a loop after a downstream {@code Observer} has
-     * subscribed. The callback then should call {@code onNext}, {@code onError} or
-     * {@code onComplete} to signal a value or a terminal event and should return a (new) state for
-     * the next invocation. Signaling multiple {@code onNext}
-     * in a call will make the operator signal {@link IllegalStateException}.
+     * @param generator    the {@link BiConsumer} called in a loop after a downstream {@code Observer} has
+     *                     subscribed. The callback then should call {@code onNext}, {@code onError} or
+     *                     {@code onComplete} to signal a value or a terminal event and should return a (new) state for
+     *                     the next invocation. Signaling multiple {@code onNext}
+     *                     in a call will make the operator signal {@link IllegalStateException}.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code initialState} or {@code generator} is {@code null}
      */
@@ -2383,16 +2283,16 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code generate} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <S> the type of the per-{@link Observer} state
-     * @param <T> the generated value type
+     * @param <S>          the type of the per-{@link Observer} state
+     * @param <T>          the generated value type
      * @param initialState the {@link Supplier} to generate the initial state for each {@code Observer}
-     * @param generator the {@link BiConsumer} called in a loop after a downstream {@code Observer} has
-     * subscribed. The callback then should call {@code onNext}, {@code onError} or
-     * {@code onComplete} to signal a value or a terminal event and should return a (new) state for
-     * the next invocation. Signaling multiple {@code onNext}
-     * in a call will make the operator signal {@link IllegalStateException}.
+     * @param generator    the {@link BiConsumer} called in a loop after a downstream {@code Observer} has
+     *                     subscribed. The callback then should call {@code onNext}, {@code onError} or
+     *                     {@code onComplete} to signal a value or a terminal event and should return a (new) state for
+     *                     the next invocation. Signaling multiple {@code onNext}
+     *                     in a call will make the operator signal {@link IllegalStateException}.
      * @param disposeState the {@link Consumer} that is called with the current state when the generator
-     * terminates the sequence or it gets disposed
+     *                     terminates the sequence or it gets disposed
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code initialState}, {@code generator} or {@code disposeState} is {@code null}
      */
@@ -2417,15 +2317,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code interval} operates by default on the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param initialDelay
-     *            the initial delay time to wait before emitting the first value of 0L
-     * @param period
-     *            the period of time between emissions of the subsequent numbers
-     * @param unit
-     *            the time unit for both {@code initialDelay} and {@code period}
+     * @param initialDelay the initial delay time to wait before emitting the first value of 0L
+     * @param period       the period of time between emissions of the subsequent numbers
+     * @param unit         the time unit for both {@code initialDelay} and {@code period}
      * @return the new {@code Observable} instance
-     * @see <a href="http://reactivex.io/documentation/operators/interval.html">ReactiveX operators documentation: Interval</a>
      * @throws NullPointerException if {@code unit} is {@code null}
+     * @see <a href="http://reactivex.io/documentation/operators/interval.html">ReactiveX operators documentation: Interval</a>
      * @since 1.0.12
      */
     @CheckReturnValue
@@ -2445,18 +2342,14 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@code Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param initialDelay
-     *            the initial delay time to wait before emitting the first value of 0L
-     * @param period
-     *            the period of time between emissions of the subsequent numbers
-     * @param unit
-     *            the time unit for both {@code initialDelay} and {@code period}
-     * @param scheduler
-     *            the {@code Scheduler} on which the waiting happens and items are emitted
+     * @param initialDelay the initial delay time to wait before emitting the first value of 0L
+     * @param period       the period of time between emissions of the subsequent numbers
+     * @param unit         the time unit for both {@code initialDelay} and {@code period}
+     * @param scheduler    the {@code Scheduler} on which the waiting happens and items are emitted
      * @return the new {@code Observable} instance
+     * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/interval.html">ReactiveX operators documentation: Interval</a>
      * @since 1.0.12
-     * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      */
     @CheckReturnValue
     @NonNull
@@ -2477,10 +2370,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code interval} operates by default on the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param period
-     *            the period size in time units (see below)
-     * @param unit
-     *            time units to use for the interval size
+     * @param period the period size in time units (see below)
+     * @param unit   time units to use for the interval size
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/interval.html">ReactiveX operators documentation: Interval</a>
@@ -2502,12 +2393,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@code Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param period
-     *            the period size in time units (see below)
-     * @param unit
-     *            time units to use for the interval size
-     * @param scheduler
-     *            the {@code Scheduler} to use for scheduling the items
+     * @param period    the period size in time units (see below)
+     * @param unit      time units to use for the interval size
+     * @param scheduler the {@code Scheduler} to use for scheduling the items
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/interval.html">ReactiveX operators documentation: Interval</a>
@@ -2529,16 +2417,16 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code intervalRange} by default operates on the {@link Schedulers#computation() computation} {@link Scheduler}.</dd>
      * </dl>
-     * @param start that start value of the range
-     * @param count the number of values to emit in total, if zero, the operator emits an {@code onComplete} after the initial delay.
+     *
+     * @param start        that start value of the range
+     * @param count        the number of values to emit in total, if zero, the operator emits an {@code onComplete} after the initial delay.
      * @param initialDelay the initial delay before signaling the first value (the start)
-     * @param period the period between subsequent values
-     * @param unit the unit of measure of the {@code initialDelay} and {@code period} amounts
+     * @param period       the period between subsequent values
+     * @param unit         the unit of measure of the {@code initialDelay} and {@code period} amounts
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code unit} is {@code null}
-     * @throws IllegalArgumentException
-     *             if {@code count} is negative, or if {@code start} + {@code count} &minus; 1 exceeds
-     *             {@link Long#MAX_VALUE}
+     * @throws NullPointerException     if {@code unit} is {@code null}
+     * @throws IllegalArgumentException if {@code count} is negative, or if {@code start} + {@code count} &minus; 1 exceeds
+     *                                  {@link Long#MAX_VALUE}
      * @see #range(int, int)
      */
     @CheckReturnValue
@@ -2554,20 +2442,20 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      * The sequence completes immediately after the last value (start + count - 1) has been reached.
      * <p>
      * <img width="640" height="195" src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/intervalRange.s.v3.png" alt="">     * <dl>
-     *  <dt><b>Scheduler:</b></dt>
-     *  <dd>you provide the {@link Scheduler}.</dd>
+     * <dt><b>Scheduler:</b></dt>
+     * <dd>you provide the {@link Scheduler}.</dd>
      * </dl>
-     * @param start that start value of the range
-     * @param count the number of values to emit in total, if zero, the operator emits an {@code onComplete} after the initial delay.
+     *
+     * @param start        that start value of the range
+     * @param count        the number of values to emit in total, if zero, the operator emits an {@code onComplete} after the initial delay.
      * @param initialDelay the initial delay before signaling the first value (the start)
-     * @param period the period between subsequent values
-     * @param unit the unit of measure of the {@code initialDelay} and {@code period} amounts
-     * @param scheduler the target scheduler where the values and terminal signals will be emitted
+     * @param period       the period between subsequent values
+     * @param unit         the unit of measure of the {@code initialDelay} and {@code period} amounts
+     * @param scheduler    the target scheduler where the values and terminal signals will be emitted
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
-     * @throws IllegalArgumentException
-     *             if {@code count} is negative, or if {@code start} + {@code count} &minus; 1 exceeds
-     *             {@link Long#MAX_VALUE}
+     * @throws NullPointerException     if {@code unit} or {@code scheduler} is {@code null}
+     * @throws IllegalArgumentException if {@code count} is negative, or if {@code start} + {@code count} &minus; 1 exceeds
+     *                                  {@link Long#MAX_VALUE}
      */
     @CheckReturnValue
     @NonNull
@@ -2608,10 +2496,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code just} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param item
-     *            the item to emit
-     * @param <T>
-     *            the type of that item
+     * @param item the item to emit
+     * @param <T>  the type of that item
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code item} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/just.html">ReactiveX operators documentation: Just</a>
@@ -2640,12 +2526,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code just} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param item1
-     *            first item
-     * @param item2
-     *            second item
-     * @param <T>
-     *            the type of these items
+     * @param item1 first item
+     * @param item2 second item
+     * @param <T>   the type of these items
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code item1} or {@code item2} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/just.html">ReactiveX operators documentation: Just</a>
@@ -2669,14 +2552,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code just} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param item1
-     *            first item
-     * @param item2
-     *            second item
-     * @param item3
-     *            third item
-     * @param <T>
-     *            the type of these items
+     * @param item1 first item
+     * @param item2 second item
+     * @param item3 third item
+     * @param <T>   the type of these items
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code item1}, {@code item2} or {@code item3} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/just.html">ReactiveX operators documentation: Just</a>
@@ -2701,16 +2580,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code just} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param item1
-     *            first item
-     * @param item2
-     *            second item
-     * @param item3
-     *            third item
-     * @param item4
-     *            fourth item
-     * @param <T>
-     *            the type of these items
+     * @param item1 first item
+     * @param item2 second item
+     * @param item3 third item
+     * @param item4 fourth item
+     * @param <T>   the type of these items
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code item1}, {@code item2}, {@code item3} or {@code item4} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/just.html">ReactiveX operators documentation: Just</a>
@@ -2736,18 +2610,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code just} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param item1
-     *            first item
-     * @param item2
-     *            second item
-     * @param item3
-     *            third item
-     * @param item4
-     *            fourth item
-     * @param item5
-     *            fifth item
-     * @param <T>
-     *            the type of these items
+     * @param item1 first item
+     * @param item2 second item
+     * @param item3 third item
+     * @param item4 fourth item
+     * @param item5 fifth item
+     * @param <T>   the type of these items
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code item1}, {@code item2}, {@code item3},
      *                              {@code item4} or {@code item5} is {@code null}
@@ -2775,20 +2643,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code just} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param item1
-     *            first item
-     * @param item2
-     *            second item
-     * @param item3
-     *            third item
-     * @param item4
-     *            fourth item
-     * @param item5
-     *            fifth item
-     * @param item6
-     *            sixth item
-     * @param <T>
-     *            the type of these items
+     * @param item1 first item
+     * @param item2 second item
+     * @param item3 third item
+     * @param item4 fourth item
+     * @param item5 fifth item
+     * @param item6 sixth item
+     * @param <T>   the type of these items
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code item1}, {@code item2}, {@code item3},
      *                              {@code item4}, {@code item5} or {@code item6} is {@code null}
@@ -2817,22 +2678,14 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code just} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param item1
-     *            first item
-     * @param item2
-     *            second item
-     * @param item3
-     *            third item
-     * @param item4
-     *            fourth item
-     * @param item5
-     *            fifth item
-     * @param item6
-     *            sixth item
-     * @param item7
-     *            seventh item
-     * @param <T>
-     *            the type of these items
+     * @param item1 first item
+     * @param item2 second item
+     * @param item3 third item
+     * @param item4 fourth item
+     * @param item5 fifth item
+     * @param item6 sixth item
+     * @param item7 seventh item
+     * @param <T>   the type of these items
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code item1}, {@code item2}, {@code item3},
      *                              {@code item4}, {@code item5}, {@code item6}
@@ -2863,24 +2716,15 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code just} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param item1
-     *            first item
-     * @param item2
-     *            second item
-     * @param item3
-     *            third item
-     * @param item4
-     *            fourth item
-     * @param item5
-     *            fifth item
-     * @param item6
-     *            sixth item
-     * @param item7
-     *            seventh item
-     * @param item8
-     *            eighth item
-     * @param <T>
-     *            the type of these items
+     * @param item1 first item
+     * @param item2 second item
+     * @param item3 third item
+     * @param item4 fourth item
+     * @param item5 fifth item
+     * @param item6 sixth item
+     * @param item7 seventh item
+     * @param item8 eighth item
+     * @param <T>   the type of these items
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code item1}, {@code item2}, {@code item3},
      *                              {@code item4}, {@code item5}, {@code item6}
@@ -2912,26 +2756,16 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code just} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param item1
-     *            first item
-     * @param item2
-     *            second item
-     * @param item3
-     *            third item
-     * @param item4
-     *            fourth item
-     * @param item5
-     *            fifth item
-     * @param item6
-     *            sixth item
-     * @param item7
-     *            seventh item
-     * @param item8
-     *            eighth item
-     * @param item9
-     *            ninth item
-     * @param <T>
-     *            the type of these items
+     * @param item1 first item
+     * @param item2 second item
+     * @param item3 third item
+     * @param item4 fourth item
+     * @param item5 fifth item
+     * @param item6 sixth item
+     * @param item7 seventh item
+     * @param item8 eighth item
+     * @param item9 ninth item
+     * @param <T>   the type of these items
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code item1}, {@code item2}, {@code item3},
      *                              {@code item4}, {@code item5}, {@code item6}
@@ -2964,28 +2798,17 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code just} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param item1
-     *            first item
-     * @param item2
-     *            second item
-     * @param item3
-     *            third item
-     * @param item4
-     *            fourth item
-     * @param item5
-     *            fifth item
-     * @param item6
-     *            sixth item
-     * @param item7
-     *            seventh item
-     * @param item8
-     *            eighth item
-     * @param item9
-     *            ninth item
-     * @param item10
-     *            tenth item
-     * @param <T>
-     *            the type of these items
+     * @param item1  first item
+     * @param item2  second item
+     * @param item3  third item
+     * @param item4  fourth item
+     * @param item5  fifth item
+     * @param item6  sixth item
+     * @param item7  seventh item
+     * @param item8  eighth item
+     * @param item9  ninth item
+     * @param item10 tenth item
+     * @param <T>    the type of these items
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code item1}, {@code item2}, {@code item3},
      *                              {@code item4}, {@code item5}, {@code item6}
@@ -3037,17 +2860,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  </dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param sources
-     *            the {@code Iterable} of {@code ObservableSource}s
-     * @param maxConcurrency
-     *            the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
-     * @param bufferSize
-     *            the number of items expected from each inner {@code ObservableSource} to be buffered
+     * @param <T>            the common element base type
+     * @param sources        the {@code Iterable} of {@code ObservableSource}s
+     * @param maxConcurrency the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
+     * @param bufferSize     the number of items expected from each inner {@code ObservableSource} to be buffered
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code sources} is {@code null}
-     * @throws IllegalArgumentException
-     *             if {@code maxConcurrency} or {@code bufferSize} is non-positive
+     * @throws NullPointerException     if {@code sources} is {@code null}
+     * @throws IllegalArgumentException if {@code maxConcurrency} or {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/merge.html">ReactiveX operators documentation: Merge</a>
      * @see #mergeDelayError(Iterable, int, int)
      */
@@ -3085,17 +2904,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  </dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param sources
-     *            the array of {@code ObservableSource}s
-     * @param maxConcurrency
-     *            the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
-     * @param bufferSize
-     *            the number of items expected from each inner {@code ObservableSource} to be buffered
+     * @param <T>            the common element base type
+     * @param sources        the array of {@code ObservableSource}s
+     * @param maxConcurrency the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
+     * @param bufferSize     the number of items expected from each inner {@code ObservableSource} to be buffered
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code sources} is {@code null}
-     * @throws IllegalArgumentException
-     *             if {@code maxConcurrency} or {@code bufferSize} is non-positive
+     * @throws NullPointerException     if {@code sources} is {@code null}
+     * @throws IllegalArgumentException if {@code maxConcurrency} or {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/merge.html">ReactiveX operators documentation: Merge</a>
      * @see #mergeArrayDelayError(int, int, ObservableSource...)
      */
@@ -3133,9 +2948,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  </dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param sources
-     *            the {@code Iterable} of {@code ObservableSource}s
+     * @param <T>     the common element base type
+     * @param sources the {@code Iterable} of {@code ObservableSource}s
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code sources} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/merge.html">ReactiveX operators documentation: Merge</a>
@@ -3175,15 +2989,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  </dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param sources
-     *            the {@code Iterable} of {@code ObservableSource}s
-     * @param maxConcurrency
-     *            the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
+     * @param <T>            the common element base type
+     * @param sources        the {@code Iterable} of {@code ObservableSource}s
+     * @param maxConcurrency the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code sources} is {@code null}
-     * @throws IllegalArgumentException
-     *             if {@code maxConcurrency} is less than or equal to 0
+     * @throws NullPointerException     if {@code sources} is {@code null}
+     * @throws IllegalArgumentException if {@code maxConcurrency} is less than or equal to 0
      * @see <a href="http://reactivex.io/documentation/operators/merge.html">ReactiveX operators documentation: Merge</a>
      * @see #mergeDelayError(Iterable, int)
      */
@@ -3221,12 +3032,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  </dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param sources
-     *            an {@code ObservableSource} that emits {@code ObservableSource}s
+     * @param <T>     the common element base type
+     * @param sources an {@code ObservableSource} that emits {@code ObservableSource}s
      * @return the new {@code Observable} instance
-     * @see <a href="http://reactivex.io/documentation/operators/merge.html">ReactiveX operators documentation: Merge</a>
      * @throws NullPointerException if {@code sources} is {@code null}
+     * @see <a href="http://reactivex.io/documentation/operators/merge.html">ReactiveX operators documentation: Merge</a>
      * @see #mergeDelayError(ObservableSource)
      */
     @CheckReturnValue
@@ -3265,18 +3075,15 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  </dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param sources
-     *            an {@code ObservableSource} that emits {@code ObservableSource}s
-     * @param maxConcurrency
-     *            the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
+     * @param <T>            the common element base type
+     * @param sources        an {@code ObservableSource} that emits {@code ObservableSource}s
+     * @param maxConcurrency the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code sources} is {@code null}
-     * @throws IllegalArgumentException
-     *             if {@code maxConcurrency} is non-positive
+     * @throws NullPointerException     if {@code sources} is {@code null}
+     * @throws IllegalArgumentException if {@code maxConcurrency} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/merge.html">ReactiveX operators documentation: Merge</a>
-     * @since 1.1.0
      * @see #mergeDelayError(ObservableSource, int)
+     * @since 1.1.0
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
     @CheckReturnValue
@@ -3313,11 +3120,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  </dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param source1
-     *            an {@code ObservableSource} to be merged
-     * @param source2
-     *            an {@code ObservableSource} to be merged
+     * @param <T>     the common element base type
+     * @param source1 an {@code ObservableSource} to be merged
+     * @param source2 an {@code ObservableSource} to be merged
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1} or {@code source2} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/merge.html">ReactiveX operators documentation: Merge</a>
@@ -3358,13 +3163,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  </dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param source1
-     *            an {@code ObservableSource} to be merged
-     * @param source2
-     *            an {@code ObservableSource} to be merged
-     * @param source3
-     *            an {@code ObservableSource} to be merged
+     * @param <T>     the common element base type
+     * @param source1 an {@code ObservableSource} to be merged
+     * @param source2 an {@code ObservableSource} to be merged
+     * @param source3 an {@code ObservableSource} to be merged
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2} or {@code source3} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/merge.html">ReactiveX operators documentation: Merge</a>
@@ -3408,15 +3210,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  </dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param source1
-     *            an {@code ObservableSource} to be merged
-     * @param source2
-     *            an {@code ObservableSource} to be merged
-     * @param source3
-     *            an {@code ObservableSource} to be merged
-     * @param source4
-     *            an {@code ObservableSource} to be merged
+     * @param <T>     the common element base type
+     * @param source1 an {@code ObservableSource} to be merged
+     * @param source2 an {@code ObservableSource} to be merged
+     * @param source3 an {@code ObservableSource} to be merged
+     * @param source4 an {@code ObservableSource} to be merged
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2}, {@code source3} or {@code source4} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/merge.html">ReactiveX operators documentation: Merge</a>
@@ -3461,9 +3259,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  </dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param sources
-     *            the array of {@code ObservableSource}s
+     * @param <T>     the common element base type
+     * @param sources the array of {@code ObservableSource}s
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code sources} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/merge.html">ReactiveX operators documentation: Merge</a>
@@ -3496,9 +3293,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code mergeDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param sources
-     *            the {@code Iterable} of {@code ObservableSource}s
+     * @param <T>     the common element base type
+     * @param sources the {@code Iterable} of {@code ObservableSource}s
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code sources} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/merge.html">ReactiveX operators documentation: Merge</a>
@@ -3529,15 +3325,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code mergeDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param sources
-     *            the {@code Iterable} of {@code ObservableSource}s
-     * @param maxConcurrency
-     *            the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
-     * @param bufferSize
-     *            the number of items expected from each inner {@code ObservableSource} to be buffered
+     * @param <T>            the common element base type
+     * @param sources        the {@code Iterable} of {@code ObservableSource}s
+     * @param maxConcurrency the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
+     * @param bufferSize     the number of items expected from each inner {@code ObservableSource} to be buffered
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code sources} is {@code null}
+     * @throws NullPointerException     if {@code sources} is {@code null}
      * @throws IllegalArgumentException if {@code maxConcurrency} or {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/merge.html">ReactiveX operators documentation: Merge</a>
      */
@@ -3567,15 +3360,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code mergeArrayDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param sources
-     *            the array of {@code ObservableSource}s
-     * @param maxConcurrency
-     *            the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
-     * @param bufferSize
-     *            the number of items expected from each inner {@code ObservableSource} to be buffered
+     * @param <T>            the common element base type
+     * @param sources        the array of {@code ObservableSource}s
+     * @param maxConcurrency the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
+     * @param bufferSize     the number of items expected from each inner {@code ObservableSource} to be buffered
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code sources} is {@code null}
+     * @throws NullPointerException     if {@code sources} is {@code null}
      * @throws IllegalArgumentException if {@code maxConcurrency} or {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/merge.html">ReactiveX operators documentation: Merge</a>
      */
@@ -3606,13 +3396,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code mergeDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param sources
-     *            the {@code Iterable} of {@code ObservableSource}s
-     * @param maxConcurrency
-     *            the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
+     * @param <T>            the common element base type
+     * @param sources        the {@code Iterable} of {@code ObservableSource}s
+     * @param maxConcurrency the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code sources} is {@code null}
+     * @throws NullPointerException     if {@code sources} is {@code null}
      * @throws IllegalArgumentException if {@code maxConcurrency} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/merge.html">ReactiveX operators documentation: Merge</a>
      */
@@ -3642,9 +3430,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code mergeDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param sources
-     *            an {@code ObservableSource} that emits {@code ObservableSource}s
+     * @param <T>     the common element base type
+     * @param sources an {@code ObservableSource} that emits {@code ObservableSource}s
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code sources} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/merge.html">ReactiveX operators documentation: Merge</a>
@@ -3677,13 +3464,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code mergeDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param sources
-     *            an {@code ObservableSource} that emits {@code ObservableSource}s
-     * @param maxConcurrency
-     *            the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
+     * @param <T>            the common element base type
+     * @param sources        an {@code ObservableSource} that emits {@code ObservableSource}s
+     * @param maxConcurrency the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code sources} is {@code null}
+     * @throws NullPointerException     if {@code sources} is {@code null}
      * @throws IllegalArgumentException if {@code maxConcurrency} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/merge.html">ReactiveX operators documentation: Merge</a>
      * @since 2.0
@@ -3716,11 +3501,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code mergeDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param source1
-     *            an {@code ObservableSource} to be merged
-     * @param source2
-     *            an {@code ObservableSource} to be merged
+     * @param <T>     the common element base type
+     * @param source1 an {@code ObservableSource} to be merged
+     * @param source2 an {@code ObservableSource} to be merged
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1} or {@code source2} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/merge.html">ReactiveX operators documentation: Merge</a>
@@ -3755,13 +3538,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code mergeDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param source1
-     *            an {@code ObservableSource} to be merged
-     * @param source2
-     *            an {@code ObservableSource} to be merged
-     * @param source3
-     *            an {@code ObservableSource} to be merged
+     * @param <T>     the common element base type
+     * @param source1 an {@code ObservableSource} to be merged
+     * @param source2 an {@code ObservableSource} to be merged
+     * @param source3 an {@code ObservableSource} to be merged
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2} or {@code source3} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/merge.html">ReactiveX operators documentation: Merge</a>
@@ -3798,15 +3578,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code mergeDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param source1
-     *            an {@code ObservableSource} to be merged
-     * @param source2
-     *            an {@code ObservableSource} to be merged
-     * @param source3
-     *            an {@code ObservableSource} to be merged
-     * @param source4
-     *            an {@code ObservableSource} to be merged
+     * @param <T>     the common element base type
+     * @param source1 an {@code ObservableSource} to be merged
+     * @param source2 an {@code ObservableSource} to be merged
+     * @param source3 an {@code ObservableSource} to be merged
+     * @param source4 an {@code ObservableSource} to be merged
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2}, {@code source3} or {@code source4} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/merge.html">ReactiveX operators documentation: Merge</a>
@@ -3843,9 +3619,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code mergeArrayDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the common element base type
-     * @param sources
-     *            the array of {@code ObservableSource}s
+     * @param <T>     the common element base type
+     * @param sources the array of {@code ObservableSource}s
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code sources} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/merge.html">ReactiveX operators documentation: Merge</a>
@@ -3870,8 +3645,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code never} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T>
-     *            the type of items (not) emitted by the {@code Observable}
+     * @param <T> the type of items (not) emitted by the {@code Observable}
      * @return the shared {@code Observable} instance
      * @see <a href="http://reactivex.io/documentation/operators/empty-never-throw.html">ReactiveX operators documentation: Never</a>
      */
@@ -3892,14 +3666,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code range} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param start
-     *            the value of the first {@code Integer} in the sequence
-     * @param count
-     *            the number of sequential {@code Integer}s to generate
+     * @param start the value of the first {@code Integer} in the sequence
+     * @param count the number of sequential {@code Integer}s to generate
      * @return the new {@code Observable} instance
-     * @throws IllegalArgumentException
-     *             if {@code count} is negative, or if {@code start} + {@code count} &minus; 1 exceeds
-     *             {@link Integer#MAX_VALUE}
+     * @throws IllegalArgumentException if {@code count} is negative, or if {@code start} + {@code count} &minus; 1 exceeds
+     *                                  {@link Integer#MAX_VALUE}
      * @see <a href="http://reactivex.io/documentation/operators/range.html">ReactiveX operators documentation: Range</a>
      * @see #rangeLong(long, long)
      * @see #intervalRange(long, long, long, long, TimeUnit)
@@ -3932,14 +3703,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code rangeLong} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param start
-     *            the value of the first {@code Long} in the sequence
-     * @param count
-     *            the number of sequential {@code Long}s to generate
+     * @param start the value of the first {@code Long} in the sequence
+     * @param count the number of sequential {@code Long}s to generate
      * @return the new {@code Observable} instance
-     * @throws IllegalArgumentException
-     *             if {@code count} is negative, or if {@code start} + {@code count} &minus; 1 exceeds
-     *             {@link Long#MAX_VALUE}
+     * @throws IllegalArgumentException if {@code count} is negative, or if {@code start} + {@code count} &minus; 1 exceeds
+     *                                  {@link Long#MAX_VALUE}
      * @see <a href="http://reactivex.io/documentation/operators/range.html">ReactiveX operators documentation: Range</a>
      * @see #intervalRange(long, long, long, long, TimeUnit)
      */
@@ -3977,12 +3745,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code sequenceEqual} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param source1
-     *            the first {@code ObservableSource} to compare
-     * @param source2
-     *            the second {@code ObservableSource} to compare
-     * @param <T>
-     *            the type of items emitted by each {@code ObservableSource}
+     * @param source1 the first {@code ObservableSource} to compare
+     * @param source2 the second {@code ObservableSource} to compare
+     * @param <T>     the type of items emitted by each {@code ObservableSource}
      * @return the new {@code Single} instance
      * @throws NullPointerException if {@code source1} or {@code source2} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/sequenceequal.html">ReactiveX operators documentation: SequenceEqual</a>
@@ -4005,14 +3770,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code sequenceEqual} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param source1
-     *            the first {@code ObservableSource} to compare
-     * @param source2
-     *            the second {@code ObservableSource} to compare
-     * @param isEqual
-     *            a function used to compare items emitted by each {@code ObservableSource}
-     * @param <T>
-     *            the type of items emitted by each {@code ObservableSource}
+     * @param source1 the first {@code ObservableSource} to compare
+     * @param source2 the second {@code ObservableSource} to compare
+     * @param isEqual a function used to compare items emitted by each {@code ObservableSource}
+     * @param <T>     the type of items emitted by each {@code ObservableSource}
      * @return the new {@code Single} instance
      * @throws NullPointerException if {@code source1}, {@code source2} or {@code isEqual} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/sequenceequal.html">ReactiveX operators documentation: SequenceEqual</a>
@@ -4037,18 +3798,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code sequenceEqual} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param source1
-     *            the first {@code ObservableSource} to compare
-     * @param source2
-     *            the second {@code ObservableSource} to compare
-     * @param isEqual
-     *            a function used to compare items emitted by each {@code ObservableSource}
-     * @param bufferSize
-     *            the number of items expected from the first and second source {@code ObservableSource} to be buffered
-     * @param <T>
-     *            the type of items emitted by each {@code ObservableSource}
+     * @param source1    the first {@code ObservableSource} to compare
+     * @param source2    the second {@code ObservableSource} to compare
+     * @param isEqual    a function used to compare items emitted by each {@code ObservableSource}
+     * @param bufferSize the number of items expected from the first and second source {@code ObservableSource} to be buffered
+     * @param <T>        the type of items emitted by each {@code ObservableSource}
      * @return the new {@code Single} instance
-     * @throws NullPointerException if {@code source1}, {@code source2} or {@code isEqual} is {@code null}
+     * @throws NullPointerException     if {@code source1}, {@code source2} or {@code isEqual} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/sequenceequal.html">ReactiveX operators documentation: SequenceEqual</a>
      */
@@ -4075,16 +3831,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code sequenceEqual} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param source1
-     *            the first {@code ObservableSource} to compare
-     * @param source2
-     *            the second {@code ObservableSource} to compare
-     * @param bufferSize
-     *            the number of items expected from the first and second source {@code ObservableSource} to be buffered
-     * @param <T>
-     *            the type of items emitted by each {@code ObservableSource}
+     * @param source1    the first {@code ObservableSource} to compare
+     * @param source2    the second {@code ObservableSource} to compare
+     * @param bufferSize the number of items expected from the first and second source {@code ObservableSource} to be buffered
+     * @param <T>        the type of items emitted by each {@code ObservableSource}
      * @return the new {@code Single} instance
-     * @throws NullPointerException if {@code source1} or {@code source2} is {@code null}
+     * @throws NullPointerException     if {@code source1} or {@code source2} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/sequenceequal.html">ReactiveX operators documentation: SequenceEqual</a>
      */
@@ -4114,13 +3866,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code switchOnNext} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the item type
-     * @param sources
-     *            the {@code ObservableSource} that emits {@code ObservableSource}s
-     * @param bufferSize
-     *            the expected number of items to cache from the inner {@code ObservableSource}s
+     * @param <T>        the item type
+     * @param sources    the {@code ObservableSource} that emits {@code ObservableSource}s
+     * @param bufferSize the expected number of items to cache from the inner {@code ObservableSource}s
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code sources} is {@code null}
+     * @throws NullPointerException     if {@code sources} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/switch.html">ReactiveX operators documentation: Switch</a>
      */
@@ -4152,9 +3902,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code switchOnNext} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the item type
-     * @param sources
-     *            the {@code ObservableSource} that emits {@code ObservableSource}s
+     * @param <T>     the item type
+     * @param sources the {@code ObservableSource} that emits {@code ObservableSource}s
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code sources} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/switch.html">ReactiveX operators documentation: Switch</a>
@@ -4185,9 +3934,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code switchOnNextDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the item type
-     * @param sources
-     *            the {@code ObservableSource} that emits {@code ObservableSource}s
+     * @param <T>     the item type
+     * @param sources the {@code ObservableSource} that emits {@code ObservableSource}s
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code sources} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/switch.html">ReactiveX operators documentation: Switch</a>
@@ -4219,13 +3967,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code switchOnNextDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the item type
-     * @param sources
-     *            the {@code ObservableSource} that emits {@code ObservableSource}s
-     * @param bufferSize
-     *            the expected number of items to cache from the inner {@code ObservableSource}s
+     * @param <T>        the item type
+     * @param sources    the {@code ObservableSource} that emits {@code ObservableSource}s
+     * @param bufferSize the expected number of items to cache from the inner {@code ObservableSource}s
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code sources} is {@code null}
+     * @throws NullPointerException     if {@code sources} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/switch.html">ReactiveX operators documentation: Switch</a>
      * @since 2.0
@@ -4249,10 +3995,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code timer} operates by default on the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param delay
-     *            the initial delay before emitting a single {@code 0L}
-     * @param unit
-     *            time units to use for {@code delay}
+     * @param delay the initial delay before emitting a single {@code 0L}
+     * @param unit  time units to use for {@code delay}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/timer.html">ReactiveX operators documentation: Timer</a>
@@ -4274,15 +4018,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@code Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param delay
-     *            the initial delay before emitting a single 0L
-     * @param unit
-     *            time units to use for {@code delay}
-     * @param scheduler
-     *            the {@code Scheduler} to use for scheduling the item
-     * @throws NullPointerException
-     *             if {@code unit} or {@code scheduler} is {@code null}
+     * @param delay     the initial delay before emitting a single 0L
+     * @param unit      time units to use for {@code delay}
+     * @param scheduler the {@code Scheduler} to use for scheduling the item
      * @return the new {@code Observable} instance
+     * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/timer.html">ReactiveX operators documentation: Timer</a>
      */
     @CheckReturnValue
@@ -4303,10 +4043,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code unsafeCreate} by default doesn't operate on any particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <T> the value type emitted
+     *
+     * @param <T>         the value type emitted
      * @param onSubscribe the {@code ObservableSource} instance to wrap
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code onSubscribe} is {@code null}
+     * @throws NullPointerException     if {@code onSubscribe} is {@code null}
      * @throws IllegalArgumentException if the {@code onSubscribe} is already an {@code Observable}, use
      *                                  {@link #wrap(ObservableSource)} in this case
      * @see #wrap(ObservableSource)
@@ -4333,14 +4074,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code using} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the element type of the generated {@code Observable}
-     * @param <D> the type of the resource associated with the output sequence
-     * @param resourceSupplier
-     *            the factory function to create a resource object that depends on the {@code ObservableSource}
-     * @param sourceSupplier
-     *            the factory function to create an {@code ObservableSource}
-     * @param resourceCleanup
-     *            the function that will dispose of the resource
+     * @param <T>              the element type of the generated {@code Observable}
+     * @param <D>              the type of the resource associated with the output sequence
+     * @param resourceSupplier the factory function to create a resource object that depends on the {@code ObservableSource}
+     * @param sourceSupplier   the factory function to create an {@code ObservableSource}
+     * @param resourceCleanup  the function that will dispose of the resource
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code resourceSupplier}, {@code sourceSupplier} or {@code resourceCleanup} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/using.html">ReactiveX operators documentation: Using</a>
@@ -4366,19 +4104,15 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code using} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the element type of the generated {@code ObservableSource}
-     * @param <D> the type of the resource associated with the output sequence
-     * @param resourceSupplier
-     *            the factory function to create a resource object that depends on the {@code ObservableSource}
-     * @param sourceSupplier
-     *            the factory function to create an {@code ObservableSource}
-     * @param resourceCleanup
-     *            the function that will dispose of the resource
-     * @param eager
-     *            If {@code true}, the resource disposal will happen either on a {@code dispose()} call before the upstream is disposed
-     *            or just before the emission of a terminal event ({@code onComplete} or {@code onError}).
-     *            If {@code false}, the resource disposal will happen either on a {@code dispose()} call after the upstream is disposed
-     *            or just after the emission of a terminal event ({@code onComplete} or {@code onError}).
+     * @param <T>              the element type of the generated {@code ObservableSource}
+     * @param <D>              the type of the resource associated with the output sequence
+     * @param resourceSupplier the factory function to create a resource object that depends on the {@code ObservableSource}
+     * @param sourceSupplier   the factory function to create an {@code ObservableSource}
+     * @param resourceCleanup  the function that will dispose of the resource
+     * @param eager            If {@code true}, the resource disposal will happen either on a {@code dispose()} call before the upstream is disposed
+     *                         or just before the emission of a terminal event ({@code onComplete} or {@code onError}).
+     *                         If {@code false}, the resource disposal will happen either on a {@code dispose()} call after the upstream is disposed
+     *                         or just after the emission of a terminal event ({@code onComplete} or {@code onError}).
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code resourceSupplier}, {@code sourceSupplier} and {@code resourceCleanup} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/using.html">ReactiveX operators documentation: Using</a>
@@ -4405,7 +4139,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code wrap} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the value type
+     * @param <T>    the value type
      * @param source the {@code ObservableSource} instance to wrap or cast to {@code Observable}
      * @return the new {@code Observable} instance or the same as the source
      * @throws NullPointerException if {@code source} is {@code null}
@@ -4456,13 +4190,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code zip} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the common value type
-     * @param <R> the zipped result type
-     * @param sources
-     *            an {@code Iterable} of source {@code ObservableSource}s
-     * @param zipper
-     *            a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results in
-     *            an item that will be emitted by the resulting {@code Observable}
+     * @param <T>     the common value type
+     * @param <R>     the zipped result type
+     * @param sources an {@code Iterable} of source {@code ObservableSource}s
+     * @param zipper  a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results in
+     *                an item that will be emitted by the resulting {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code sources} or {@code zipper} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/zip.html">ReactiveX operators documentation: Zip</a>
@@ -4511,20 +4243,15 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code zip} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     *
-     * @param sources
-     *            an {@code Iterable} of source {@code ObservableSource}s
-     * @param zipper
-     *            a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results in
-     *            an item that will be emitted by the resulting {@code Observable}
-     * @param delayError
-     *            delay errors signaled by any of the {@code ObservableSource} until all {@code ObservableSource}s terminate
-     * @param bufferSize
-     *            the number of elements expected from each source {@code ObservableSource} to be buffered
-     * @param <T> the common source value type
-     * @param <R> the zipped result type
+     * @param sources    an {@code Iterable} of source {@code ObservableSource}s
+     * @param zipper     a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results in
+     *                   an item that will be emitted by the resulting {@code Observable}
+     * @param delayError delay errors signaled by any of the {@code ObservableSource} until all {@code ObservableSource}s terminate
+     * @param bufferSize the number of elements expected from each source {@code ObservableSource} to be buffered
+     * @param <T>        the common source value type
+     * @param <R>        the zipped result type
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code sources} or {@code zipper} is {@code null}
+     * @throws NullPointerException     if {@code sources} or {@code zipper} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/zip.html">ReactiveX operators documentation: Zip</a>
      */
@@ -4571,16 +4298,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code zip} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T1> the value type of the first source
-     * @param <T2> the value type of the second source
-     * @param <R> the zipped result type
-     * @param source1
-     *            the first source {@code ObservableSource}
-     * @param source2
-     *            a second source {@code ObservableSource}
-     * @param zipper
-     *            a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results
-     *            in an item that will be emitted by the resulting {@code Observable}
+     * @param <T1>    the value type of the first source
+     * @param <T2>    the value type of the second source
+     * @param <R>     the zipped result type
+     * @param source1 the first source {@code ObservableSource}
+     * @param source2 a second source {@code ObservableSource}
+     * @param zipper  a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results
+     *                in an item that will be emitted by the resulting {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2} or {@code zipper} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/zip.html">ReactiveX operators documentation: Zip</a>
@@ -4628,16 +4352,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code zip} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T1> the value type of the first source
-     * @param <T2> the value type of the second source
-     * @param <R> the zipped result type
-     * @param source1
-     *            the first source {@code ObservableSource}
-     * @param source2
-     *            a second source {@code ObservableSource}
-     * @param zipper
-     *            a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results
-     *            in an item that will be emitted by the resulting {@code Observable}
+     * @param <T1>       the value type of the first source
+     * @param <T2>       the value type of the second source
+     * @param <R>        the zipped result type
+     * @param source1    the first source {@code ObservableSource}
+     * @param source2    a second source {@code ObservableSource}
+     * @param zipper     a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results
+     *                   in an item that will be emitted by the resulting {@code Observable}
      * @param delayError delay errors from any of the {@code ObservableSource}s till the other terminates
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2} or {@code zipper} is {@code null}
@@ -4686,20 +4407,17 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code zip} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T1> the value type of the first source
-     * @param <T2> the value type of the second source
-     * @param <R> the zipped result type
-     * @param source1
-     *            the first source {@code ObservableSource}
-     * @param source2
-     *            a second source {@code ObservableSource}
-     * @param zipper
-     *            a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results
-     *            in an item that will be emitted by the resulting {@code Observable}
+     * @param <T1>       the value type of the first source
+     * @param <T2>       the value type of the second source
+     * @param <R>        the zipped result type
+     * @param source1    the first source {@code ObservableSource}
+     * @param source2    a second source {@code ObservableSource}
+     * @param zipper     a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results
+     *                   in an item that will be emitted by the resulting {@code Observable}
      * @param delayError delay errors from any of the {@code ObservableSource}s till the other terminates
      * @param bufferSize the number of elements expected from each source {@code ObservableSource} to be buffered
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code source1}, {@code source2} or {@code zipper} is {@code null}
+     * @throws NullPointerException     if {@code source1}, {@code source2} or {@code zipper} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/zip.html">ReactiveX operators documentation: Zip</a>
      */
@@ -4747,19 +4465,15 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code zip} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T1> the value type of the first source
-     * @param <T2> the value type of the second source
-     * @param <T3> the value type of the third source
-     * @param <R> the zipped result type
-     * @param source1
-     *            the first source {@code ObservableSource}
-     * @param source2
-     *            a second source {@code ObservableSource}
-     * @param source3
-     *            a third source {@code ObservableSource}
-     * @param zipper
-     *            a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results in
-     *            an item that will be emitted by the resulting {@code Observable}
+     * @param <T1>    the value type of the first source
+     * @param <T2>    the value type of the second source
+     * @param <T3>    the value type of the third source
+     * @param <R>     the zipped result type
+     * @param source1 the first source {@code ObservableSource}
+     * @param source2 a second source {@code ObservableSource}
+     * @param source3 a third source {@code ObservableSource}
+     * @param zipper  a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results in
+     *                an item that will be emitted by the resulting {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2}, {@code source3} or {@code zipper} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/zip.html">ReactiveX operators documentation: Zip</a>
@@ -4810,22 +4524,17 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code zip} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T1> the value type of the first source
-     * @param <T2> the value type of the second source
-     * @param <T3> the value type of the third source
-     * @param <T4> the value type of the fourth source
-     * @param <R> the zipped result type
-     * @param source1
-     *            the first source {@code ObservableSource}
-     * @param source2
-     *            a second source {@code ObservableSource}
-     * @param source3
-     *            a third source {@code ObservableSource}
-     * @param source4
-     *            a fourth source {@code ObservableSource}
-     * @param zipper
-     *            a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results in
-     *            an item that will be emitted by the resulting {@code Observable}
+     * @param <T1>    the value type of the first source
+     * @param <T2>    the value type of the second source
+     * @param <T3>    the value type of the third source
+     * @param <T4>    the value type of the fourth source
+     * @param <R>     the zipped result type
+     * @param source1 the first source {@code ObservableSource}
+     * @param source2 a second source {@code ObservableSource}
+     * @param source3 a third source {@code ObservableSource}
+     * @param source4 a fourth source {@code ObservableSource}
+     * @param zipper  a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results in
+     *                an item that will be emitted by the resulting {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2}, {@code source3},
      *                              {@code source4} or {@code zipper} is {@code null}
@@ -4878,25 +4587,19 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code zip} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T1> the value type of the first source
-     * @param <T2> the value type of the second source
-     * @param <T3> the value type of the third source
-     * @param <T4> the value type of the fourth source
-     * @param <T5> the value type of the fifth source
-     * @param <R> the zipped result type
-     * @param source1
-     *            the first source {@code ObservableSource}
-     * @param source2
-     *            a second source {@code ObservableSource}
-     * @param source3
-     *            a third source {@code ObservableSource}
-     * @param source4
-     *            a fourth source {@code ObservableSource}
-     * @param source5
-     *            a fifth source {@code ObservableSource}
-     * @param zipper
-     *            a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results in
-     *            an item that will be emitted by the resulting {@code Observable}
+     * @param <T1>    the value type of the first source
+     * @param <T2>    the value type of the second source
+     * @param <T3>    the value type of the third source
+     * @param <T4>    the value type of the fourth source
+     * @param <T5>    the value type of the fifth source
+     * @param <R>     the zipped result type
+     * @param source1 the first source {@code ObservableSource}
+     * @param source2 a second source {@code ObservableSource}
+     * @param source3 a third source {@code ObservableSource}
+     * @param source4 a fourth source {@code ObservableSource}
+     * @param source5 a fifth source {@code ObservableSource}
+     * @param zipper  a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results in
+     *                an item that will be emitted by the resulting {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2}, {@code source3},
      *                              {@code source4}, {@code source5} or {@code zipper} is {@code null}
@@ -4949,28 +4652,21 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code zip} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T1> the value type of the first source
-     * @param <T2> the value type of the second source
-     * @param <T3> the value type of the third source
-     * @param <T4> the value type of the fourth source
-     * @param <T5> the value type of the fifth source
-     * @param <T6> the value type of the sixth source
-     * @param <R> the zipped result type
-     * @param source1
-     *            the first source {@code ObservableSource}
-     * @param source2
-     *            a second source {@code ObservableSource}
-     * @param source3
-     *            a third source {@code ObservableSource}
-     * @param source4
-     *            a fourth source {@code ObservableSource}
-     * @param source5
-     *            a fifth source {@code ObservableSource}
-     * @param source6
-     *            a sixth source {@code ObservableSource}
-     * @param zipper
-     *            a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results in
-     *            an item that will be emitted by the resulting {@code Observable}
+     * @param <T1>    the value type of the first source
+     * @param <T2>    the value type of the second source
+     * @param <T3>    the value type of the third source
+     * @param <T4>    the value type of the fourth source
+     * @param <T5>    the value type of the fifth source
+     * @param <T6>    the value type of the sixth source
+     * @param <R>     the zipped result type
+     * @param source1 the first source {@code ObservableSource}
+     * @param source2 a second source {@code ObservableSource}
+     * @param source3 a third source {@code ObservableSource}
+     * @param source4 a fourth source {@code ObservableSource}
+     * @param source5 a fifth source {@code ObservableSource}
+     * @param source6 a sixth source {@code ObservableSource}
+     * @param zipper  a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results in
+     *                an item that will be emitted by the resulting {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2}, {@code source3},
      *                              {@code source4}, {@code source5}, {@code source6} or {@code zipper} is {@code null}
@@ -5024,31 +4720,23 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code zip} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T1> the value type of the first source
-     * @param <T2> the value type of the second source
-     * @param <T3> the value type of the third source
-     * @param <T4> the value type of the fourth source
-     * @param <T5> the value type of the fifth source
-     * @param <T6> the value type of the sixth source
-     * @param <T7> the value type of the seventh source
-     * @param <R> the zipped result type
-     * @param source1
-     *            the first source {@code ObservableSource}
-     * @param source2
-     *            a second source {@code ObservableSource}
-     * @param source3
-     *            a third source {@code ObservableSource}
-     * @param source4
-     *            a fourth source {@code ObservableSource}
-     * @param source5
-     *            a fifth source {@code ObservableSource}
-     * @param source6
-     *            a sixth source {@code ObservableSource}
-     * @param source7
-     *            a seventh source {@code ObservableSource}
-     * @param zipper
-     *            a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results in
-     *            an item that will be emitted by the resulting {@code Observable}
+     * @param <T1>    the value type of the first source
+     * @param <T2>    the value type of the second source
+     * @param <T3>    the value type of the third source
+     * @param <T4>    the value type of the fourth source
+     * @param <T5>    the value type of the fifth source
+     * @param <T6>    the value type of the sixth source
+     * @param <T7>    the value type of the seventh source
+     * @param <R>     the zipped result type
+     * @param source1 the first source {@code ObservableSource}
+     * @param source2 a second source {@code ObservableSource}
+     * @param source3 a third source {@code ObservableSource}
+     * @param source4 a fourth source {@code ObservableSource}
+     * @param source5 a fifth source {@code ObservableSource}
+     * @param source6 a sixth source {@code ObservableSource}
+     * @param source7 a seventh source {@code ObservableSource}
+     * @param zipper  a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results in
+     *                an item that will be emitted by the resulting {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2}, {@code source3},
      *                              {@code source4}, {@code source5}, {@code source6},
@@ -5105,34 +4793,25 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code zip} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T1> the value type of the first source
-     * @param <T2> the value type of the second source
-     * @param <T3> the value type of the third source
-     * @param <T4> the value type of the fourth source
-     * @param <T5> the value type of the fifth source
-     * @param <T6> the value type of the sixth source
-     * @param <T7> the value type of the seventh source
-     * @param <T8> the value type of the eighth source
-     * @param <R> the zipped result type
-     * @param source1
-     *            the first source {@code ObservableSource}
-     * @param source2
-     *            a second source {@code ObservableSource}
-     * @param source3
-     *            a third source {@code ObservableSource}
-     * @param source4
-     *            a fourth source {@code ObservableSource}
-     * @param source5
-     *            a fifth source {@code ObservableSource}
-     * @param source6
-     *            a sixth source {@code ObservableSource}
-     * @param source7
-     *            a seventh source {@code ObservableSource}
-     * @param source8
-     *            an eighth source {@code ObservableSource}
-     * @param zipper
-     *            a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results in
-     *            an item that will be emitted by the resulting {@code Observable}
+     * @param <T1>    the value type of the first source
+     * @param <T2>    the value type of the second source
+     * @param <T3>    the value type of the third source
+     * @param <T4>    the value type of the fourth source
+     * @param <T5>    the value type of the fifth source
+     * @param <T6>    the value type of the sixth source
+     * @param <T7>    the value type of the seventh source
+     * @param <T8>    the value type of the eighth source
+     * @param <R>     the zipped result type
+     * @param source1 the first source {@code ObservableSource}
+     * @param source2 a second source {@code ObservableSource}
+     * @param source3 a third source {@code ObservableSource}
+     * @param source4 a fourth source {@code ObservableSource}
+     * @param source5 a fifth source {@code ObservableSource}
+     * @param source6 a sixth source {@code ObservableSource}
+     * @param source7 a seventh source {@code ObservableSource}
+     * @param source8 an eighth source {@code ObservableSource}
+     * @param zipper  a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results in
+     *                an item that will be emitted by the resulting {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2}, {@code source3},
      *                              {@code source4}, {@code source5}, {@code source6},
@@ -5190,37 +4869,27 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code zip} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T1> the value type of the first source
-     * @param <T2> the value type of the second source
-     * @param <T3> the value type of the third source
-     * @param <T4> the value type of the fourth source
-     * @param <T5> the value type of the fifth source
-     * @param <T6> the value type of the sixth source
-     * @param <T7> the value type of the seventh source
-     * @param <T8> the value type of the eighth source
-     * @param <T9> the value type of the ninth source
-     * @param <R> the zipped result type
-     * @param source1
-     *            the first source {@code ObservableSource}
-     * @param source2
-     *            a second source {@code ObservableSource}
-     * @param source3
-     *            a third source {@code ObservableSource}
-     * @param source4
-     *            a fourth source {@code ObservableSource}
-     * @param source5
-     *            a fifth source {@code ObservableSource}
-     * @param source6
-     *            a sixth source {@code ObservableSource}
-     * @param source7
-     *            a seventh source {@code ObservableSource}
-     * @param source8
-     *            an eighth source {@code ObservableSource}
-     * @param source9
-     *            a ninth source {@code ObservableSource}
-     * @param zipper
-     *            a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results in
-     *            an item that will be emitted by the resulting {@code Observable}
+     * @param <T1>    the value type of the first source
+     * @param <T2>    the value type of the second source
+     * @param <T3>    the value type of the third source
+     * @param <T4>    the value type of the fourth source
+     * @param <T5>    the value type of the fifth source
+     * @param <T6>    the value type of the sixth source
+     * @param <T7>    the value type of the seventh source
+     * @param <T8>    the value type of the eighth source
+     * @param <T9>    the value type of the ninth source
+     * @param <R>     the zipped result type
+     * @param source1 the first source {@code ObservableSource}
+     * @param source2 a second source {@code ObservableSource}
+     * @param source3 a third source {@code ObservableSource}
+     * @param source4 a fourth source {@code ObservableSource}
+     * @param source5 a fifth source {@code ObservableSource}
+     * @param source6 a sixth source {@code ObservableSource}
+     * @param source7 a seventh source {@code ObservableSource}
+     * @param source8 an eighth source {@code ObservableSource}
+     * @param source9 a ninth source {@code ObservableSource}
+     * @param zipper  a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results in
+     *                an item that will be emitted by the resulting {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2}, {@code source3},
      *                              {@code source4}, {@code source5}, {@code source6},
@@ -5284,19 +4953,15 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code zipArray} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T> the common element type
-     * @param <R> the result type
-     * @param sources
-     *            an array of source {@code ObservableSource}s
-     * @param zipper
-     *            a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results in
-     *            an item that will be emitted by the resulting {@code Observable}
-     * @param delayError
-     *            delay errors signaled by any of the {@code ObservableSource} until all {@code ObservableSource}s terminate
-     * @param bufferSize
-     *            the number of elements expected from each source {@code ObservableSource} to be buffered
+     * @param <T>        the common element type
+     * @param <R>        the result type
+     * @param sources    an array of source {@code ObservableSource}s
+     * @param zipper     a function that, when applied to an item emitted by each of the {@code ObservableSource}s, results in
+     *                   an item that will be emitted by the resulting {@code Observable}
+     * @param delayError delay errors signaled by any of the {@code ObservableSource} until all {@code ObservableSource}s terminate
+     * @param bufferSize the number of elements expected from each source {@code ObservableSource} to be buffered
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code sources} or {@code zipper} is {@code null}
+     * @throws NullPointerException     if {@code sources} or {@code zipper} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/zip.html">ReactiveX operators documentation: Zip</a>
      */
@@ -5331,8 +4996,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code all} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param predicate
-     *            a function that evaluates an item and returns a {@code Boolean}
+     * @param predicate a function that evaluates an item and returns a {@code Boolean}
      * @return the new {@code Single} instance
      * @throws NullPointerException if {@code predicate} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/all.html">ReactiveX operators documentation: All</a>
@@ -5355,9 +5019,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code ambWith} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param other
-     *            an {@code ObservableSource} competing to react first. A subscription to this provided source will occur after
-     *            subscribing to the current source.
+     * @param other an {@code ObservableSource} competing to react first. A subscription to this provided source will occur after
+     *              subscribing to the current source.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code other} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/amb.html">ReactiveX operators documentation: Amb</a>
@@ -5384,8 +5047,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code any} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param predicate
-     *            the condition to test items emitted by the current {@code Observable}
+     * @param predicate the condition to test items emitted by the current {@code Observable}
      * @return the new {@code Single} instance
      * @throws NullPointerException if {@code predicate} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/contains.html">ReactiveX operators documentation: Contains</a>
@@ -5413,8 +5075,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      * </dl>
      *
      * @return the first item emitted by the current {@code Observable}
-     * @throws NoSuchElementException
-     *             if the current {@code Observable} emits no items
+     * @throws NoSuchElementException if the current {@code Observable} emits no items
      * @see <a href="http://reactivex.io/documentation/operators/first.html">ReactiveX documentation: First</a>
      */
     @CheckReturnValue
@@ -5444,10 +5105,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  {@link Error}s are rethrown as they are.</dd>
      * </dl>
      *
-     * @param defaultItem
-     *            a default value to return if the current {@code Observable} emits no items
+     * @param defaultItem a default value to return if the current {@code Observable} emits no items
      * @return the first item emitted by the current {@code Observable}, or the default value if it emits no
-     *         items
+     * items
      * @throws NullPointerException if {@code defaultItem} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/first.html">ReactiveX documentation: First</a>
      */
@@ -5484,11 +5144,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  {@link Error}s are rethrown as they are.</dd>
      * </dl>
      *
-     * @param onNext
-     *            the {@code Consumer} to invoke for each item emitted by the {@code Observable}
+     * @param onNext the {@code Consumer} to invoke for each item emitted by the {@code Observable}
      * @throws NullPointerException if {@code onNext} is {@code null}
-     * @throws RuntimeException
-     *             if an error occurs
+     * @throws RuntimeException     if an error occurs
      * @see <a href="http://reactivex.io/documentation/operators/subscribe.html">ReactiveX documentation: Subscribe</a>
      * @see #subscribe(Consumer)
      * @see #blockingForEach(Consumer, int)
@@ -5521,15 +5179,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  {@link Error}s are rethrown as they are.</dd>
      * </dl>
      *
-     * @param onNext
-     *            the {@code Consumer} to invoke for each item emitted by the {@code Observable}
-     * @param capacityHint
-     *            the number of items expected to be buffered (allows reducing buffer reallocations)
-     * @throws NullPointerException if {@code onNext} is {@code null}
+     * @param onNext       the {@code Consumer} to invoke for each item emitted by the {@code Observable}
+     * @param capacityHint the number of items expected to be buffered (allows reducing buffer reallocations)
+     * @throws NullPointerException     if {@code onNext} is {@code null}
      * @throws IllegalArgumentException if {@code capacityHint} is non-positive
-     * @throws RuntimeException
-     *             if an error occurs; {@code Error}s and {@code RuntimeException}s are rethrown
-     *             as they are, checked {@code Exception}s are wrapped into {@code RuntimeException}s
+     * @throws RuntimeException         if an error occurs; {@code Error}s and {@code RuntimeException}s are rethrown
+     *                                  as they are, checked {@code Exception}s are wrapped into {@code RuntimeException}s
      * @see <a href="http://reactivex.io/documentation/operators/subscribe.html">ReactiveX documentation: Subscribe</a>
      * @see #subscribe(Consumer)
      */
@@ -5609,8 +5264,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      * </dl>
      *
      * @return the last item emitted by the current {@code Observable}
-     * @throws NoSuchElementException
-     *             if the current {@code Observable} emits no items
+     * @throws NoSuchElementException if the current {@code Observable} emits no items
      * @see <a href="http://reactivex.io/documentation/operators/last.html">ReactiveX documentation: Last</a>
      */
     @CheckReturnValue
@@ -5640,10 +5294,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  {@link Error}s are rethrown as they are.</dd>
      * </dl>
      *
-     * @param defaultItem
-     *            a default value to return if the current {@code Observable} emits no items
+     * @param defaultItem a default value to return if the current {@code Observable} emits no items
      * @return the last item emitted by the {@code Observable}, or the default value if it emits no
-     *         items
+     * items
      * @throws NullPointerException if {@code defaultItem} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/last.html">ReactiveX documentation: Last</a>
      */
@@ -5694,9 +5347,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code blockingMostRecent} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param initialItem
-     *            the initial value that the {@code Iterable} sequence will yield if the current
-     *            {@code Observable} has not yet emitted an item
+     * @param initialItem the initial value that the {@code Iterable} sequence will yield if the current
+     *                    {@code Observable} has not yet emitted an item
      * @return the new {@code Iterable} instance
      * @throws NullPointerException if {@code initialItem} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/first.html">ReactiveX documentation: First</a>
@@ -5772,10 +5424,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  {@link Error}s are rethrown as they are.</dd>
      * </dl>
      *
-     * @param defaultItem
-     *            a default value to return if the current {@code Observable} emits no items
+     * @param defaultItem a default value to return if the current {@code Observable} emits no items
      * @return the single item emitted by the current {@code Observable}, or the default value if it emits no
-     *         items
+     * items
      * @throws NullPointerException if {@code defaultItem} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/first.html">ReactiveX documentation: First</a>
      */
@@ -5825,10 +5476,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code blockingSubscribe} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @since 2.0
+     *
      * @see #blockingSubscribe(Consumer)
      * @see #blockingSubscribe(Consumer, Consumer)
      * @see #blockingSubscribe(Consumer, Consumer, Action)
+     * @since 2.0
      */
     @SchedulerSupport(SchedulerSupport.NONE)
     public final void blockingSubscribe() {
@@ -5853,11 +5505,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code blockingSubscribe} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
+     *
      * @param onNext the callback action for each source value
      * @throws NullPointerException if {@code onNext} is {@code null}
-     * @since 2.0
      * @see #blockingSubscribe(Consumer, Consumer)
      * @see #blockingSubscribe(Consumer, Consumer, Action)
+     * @since 2.0
      */
     @SchedulerSupport(SchedulerSupport.NONE)
     public final void blockingSubscribe(@NonNull Consumer<? super T> onNext) {
@@ -5876,11 +5529,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code blockingSubscribe} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param onNext the callback action for each source value
+     *
+     * @param onNext  the callback action for each source value
      * @param onError the callback action for an error event
      * @throws NullPointerException if {@code onNext} or {@code onError} is {@code null}
-     * @since 2.0
      * @see #blockingSubscribe(Consumer, Consumer, Action)
+     * @since 2.0
      */
     @SchedulerSupport(SchedulerSupport.NONE)
     public final void blockingSubscribe(@NonNull Consumer<? super T> onNext, @NonNull Consumer<? super Throwable> onError) {
@@ -5899,8 +5553,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code blockingSubscribe} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param onNext the callback action for each source value
-     * @param onError the callback action for an error event
+     *
+     * @param onNext     the callback action for each source value
+     * @param onError    the callback action for an error event
      * @param onComplete the callback action for the completion event.
      * @throws NullPointerException if {@code onNext}, {@code onError} or {@code onComplete} is {@code null}
      * @since 2.0
@@ -5923,6 +5578,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code blockingSubscribe} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * The a dispose() call is composed through.
+     *
      * @param observer the {@code Observer} instance to forward events and calls to in the current thread
      * @throws NullPointerException if {@code observer} is {@code null}
      * @since 2.0
@@ -5946,8 +5602,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code buffer} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param count
-     *            the maximum number of items in each buffer before it should be emitted
+     * @param count the maximum number of items in each buffer before it should be emitted
      * @return the new {@code Observable} instance
      * @throws IllegalArgumentException if {@code count} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/buffer.html">ReactiveX operators documentation: Buffer</a>
@@ -5972,12 +5627,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code buffer} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param count
-     *            the maximum size of each buffer before it should be emitted
-     * @param skip
-     *            how many items emitted by the current {@code Observable} should be skipped before starting a new
-     *            buffer. Note that when {@code skip} and {@code count} are equal, this is the same operation as
-     *            {@link #buffer(int)}.
+     * @param count the maximum size of each buffer before it should be emitted
+     * @param skip  how many items emitted by the current {@code Observable} should be skipped before starting a new
+     *              buffer. Note that when {@code skip} and {@code count} are equal, this is the same operation as
+     *              {@link #buffer(int)}.
      * @return the new {@code Observable} instance
      * @throws IllegalArgumentException if {@code count} or {@code skip} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/buffer.html">ReactiveX operators documentation: Buffer</a>
@@ -6002,18 +5655,15 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code buffer} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U> the collection subclass type to buffer into
-     * @param count
-     *            the maximum size of each buffer before it should be emitted
-     * @param skip
-     *            how many items emitted by the current {@code Observable} should be skipped before starting a new
-     *            buffer. Note that when {@code skip} and {@code count} are equal, this is the same operation as
-     *            {@link #buffer(int)}.
-     * @param bufferSupplier
-     *            a factory function that returns an instance of the collection subclass to be used and returned
-     *            as the buffer
+     * @param <U>            the collection subclass type to buffer into
+     * @param count          the maximum size of each buffer before it should be emitted
+     * @param skip           how many items emitted by the current {@code Observable} should be skipped before starting a new
+     *                       buffer. Note that when {@code skip} and {@code count} are equal, this is the same operation as
+     *                       {@link #buffer(int)}.
+     * @param bufferSupplier a factory function that returns an instance of the collection subclass to be used and returned
+     *                       as the buffer
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code bufferSupplier} is {@code null}
+     * @throws NullPointerException     if {@code bufferSupplier} is {@code null}
      * @throws IllegalArgumentException if {@code count} or {@code skip} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/buffer.html">ReactiveX operators documentation: Buffer</a>
      */
@@ -6040,14 +5690,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code buffer} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U> the collection subclass type to buffer into
-     * @param count
-     *            the maximum number of items in each buffer before it should be emitted
-     * @param bufferSupplier
-     *            a factory function that returns an instance of the collection subclass to be used and returned
-     *            as the buffer
+     * @param <U>            the collection subclass type to buffer into
+     * @param count          the maximum number of items in each buffer before it should be emitted
+     * @param bufferSupplier a factory function that returns an instance of the collection subclass to be used and returned
+     *                       as the buffer
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code bufferSupplier} is {@code null}
+     * @throws NullPointerException     if {@code bufferSupplier} is {@code null}
      * @throws IllegalArgumentException if {@code count} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/buffer.html">ReactiveX operators documentation: Buffer</a>
      */
@@ -6072,12 +5720,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code buffer} operates by default on the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param timespan
-     *            the period of time each buffer collects items before it is emitted
-     * @param timeskip
-     *            the period of time after which a new buffer will be created
-     * @param unit
-     *            the unit of time that applies to the {@code timespan} and {@code timeskip} arguments
+     * @param timespan the period of time each buffer collects items before it is emitted
+     * @param timeskip the period of time after which a new buffer will be created
+     * @param unit     the unit of time that applies to the {@code timespan} and {@code timeskip} arguments
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/buffer.html">ReactiveX operators documentation: Buffer</a>
@@ -6104,14 +5749,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param timespan
-     *            the period of time each buffer collects items before it is emitted
-     * @param timeskip
-     *            the period of time after which a new buffer will be created
-     * @param unit
-     *            the unit of time that applies to the {@code timespan} and {@code timeskip} arguments
-     * @param scheduler
-     *            the {@code Scheduler} to use when determining the end and start of a buffer
+     * @param timespan  the period of time each buffer collects items before it is emitted
+     * @param timeskip  the period of time after which a new buffer will be created
+     * @param unit      the unit of time that applies to the {@code timespan} and {@code timeskip} arguments
+     * @param scheduler the {@code Scheduler} to use when determining the end and start of a buffer
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/buffer.html">ReactiveX operators documentation: Buffer</a>
@@ -6138,18 +5779,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param <U> the collection subclass type to buffer into
-     * @param timespan
-     *            the period of time each buffer collects items before it is emitted
-     * @param timeskip
-     *            the period of time after which a new buffer will be created
-     * @param unit
-     *            the unit of time that applies to the {@code timespan} and {@code timeskip} arguments
-     * @param scheduler
-     *            the {@code Scheduler} to use when determining the end and start of a buffer
-     * @param bufferSupplier
-     *            a factory function that returns an instance of the collection subclass to be used and returned
-     *            as the buffer
+     * @param <U>            the collection subclass type to buffer into
+     * @param timespan       the period of time each buffer collects items before it is emitted
+     * @param timeskip       the period of time after which a new buffer will be created
+     * @param unit           the unit of time that applies to the {@code timespan} and {@code timeskip} arguments
+     * @param scheduler      the {@code Scheduler} to use when determining the end and start of a buffer
+     * @param bufferSupplier a factory function that returns an instance of the collection subclass to be used and returned
+     *                       as the buffer
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit}, {@code scheduler} or {@code bufferSupplier} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/buffer.html">ReactiveX operators documentation: Buffer</a>
@@ -6178,11 +5814,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code buffer} operates by default on the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param timespan
-     *            the period of time each buffer collects items before it is emitted and replaced with a new
-     *            buffer
-     * @param unit
-     *            the unit of time that applies to the {@code timespan} argument
+     * @param timespan the period of time each buffer collects items before it is emitted and replaced with a new
+     *                 buffer
+     * @param unit     the unit of time that applies to the {@code timespan} argument
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/buffer.html">ReactiveX operators documentation: Buffer</a>
@@ -6209,15 +5843,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code buffer} operates by default on the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param timespan
-     *            the period of time each buffer collects items before it is emitted and replaced with a new
-     *            buffer
-     * @param unit
-     *            the unit of time which applies to the {@code timespan} argument
-     * @param count
-     *            the maximum size of each buffer before it is emitted
+     * @param timespan the period of time each buffer collects items before it is emitted and replaced with a new
+     *                 buffer
+     * @param unit     the unit of time which applies to the {@code timespan} argument
+     * @param count    the maximum size of each buffer before it is emitted
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code unit} is {@code null}
+     * @throws NullPointerException     if {@code unit} is {@code null}
      * @throws IllegalArgumentException if {@code count} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/buffer.html">ReactiveX operators documentation: Buffer</a>
      */
@@ -6243,17 +5874,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param timespan
-     *            the period of time each buffer collects items before it is emitted and replaced with a new
-     *            buffer
-     * @param unit
-     *            the unit of time which applies to the {@code timespan} argument
-     * @param scheduler
-     *            the {@code Scheduler} to use when determining the end and start of a buffer
-     * @param count
-     *            the maximum size of each buffer before it is emitted
+     * @param timespan  the period of time each buffer collects items before it is emitted and replaced with a new
+     *                  buffer
+     * @param unit      the unit of time which applies to the {@code timespan} argument
+     * @param scheduler the {@code Scheduler} to use when determining the end and start of a buffer
+     * @param count     the maximum size of each buffer before it is emitted
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
+     * @throws NullPointerException     if {@code unit} or {@code scheduler} is {@code null}
      * @throws IllegalArgumentException if {@code count} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/buffer.html">ReactiveX operators documentation: Buffer</a>
      */
@@ -6279,23 +5906,18 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param <U> the collection subclass type to buffer into
-     * @param timespan
-     *            the period of time each buffer collects items before it is emitted and replaced with a new
-     *            buffer
-     * @param unit
-     *            the unit of time which applies to the {@code timespan} argument
-     * @param scheduler
-     *            the {@code Scheduler} to use when determining the end and start of a buffer
-     * @param count
-     *            the maximum size of each buffer before it is emitted
-     * @param bufferSupplier
-     *            a factory function that returns an instance of the collection subclass to be used and returned
-     *            as the buffer
+     * @param <U>                   the collection subclass type to buffer into
+     * @param timespan              the period of time each buffer collects items before it is emitted and replaced with a new
+     *                              buffer
+     * @param unit                  the unit of time which applies to the {@code timespan} argument
+     * @param scheduler             the {@code Scheduler} to use when determining the end and start of a buffer
+     * @param count                 the maximum size of each buffer before it is emitted
+     * @param bufferSupplier        a factory function that returns an instance of the collection subclass to be used and returned
+     *                              as the buffer
      * @param restartTimerOnMaxSize if {@code true}, the time window is restarted when the max capacity of the current buffer
-     *            is reached
+     *                              is reached
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code unit}, {@code scheduler} or {@code bufferSupplier} is {@code null}
+     * @throws NullPointerException     if {@code unit}, {@code scheduler} or {@code bufferSupplier} is {@code null}
      * @throws IllegalArgumentException if {@code count} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/buffer.html">ReactiveX operators documentation: Buffer</a>
      */
@@ -6328,13 +5950,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param timespan
-     *            the period of time each buffer collects items before it is emitted and replaced with a new
-     *            buffer
-     * @param unit
-     *            the unit of time which applies to the {@code timespan} argument
-     * @param scheduler
-     *            the {@code Scheduler} to use when determining the end and start of a buffer
+     * @param timespan  the period of time each buffer collects items before it is emitted and replaced with a new
+     *                  buffer
+     * @param unit      the unit of time which applies to the {@code timespan} argument
+     * @param scheduler the {@code Scheduler} to use when determining the end and start of a buffer
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/buffer.html">ReactiveX operators documentation: Buffer</a>
@@ -6359,13 +5978,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code buffer} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <TOpening> the element type of the buffer-opening {@code ObservableSource}
-     * @param <TClosing> the element type of the individual buffer-closing {@code ObservableSource}s
-     * @param openingIndicator
-     *            the {@code ObservableSource} that, when it emits an item, causes a new buffer to be created
-     * @param closingIndicator
-     *            the {@link Function} that is used to produce an {@code ObservableSource} for every buffer created. When this indicator
-     *            {@code ObservableSource} emits an item, the associated buffer is emitted.
+     * @param <TOpening>       the element type of the buffer-opening {@code ObservableSource}
+     * @param <TClosing>       the element type of the individual buffer-closing {@code ObservableSource}s
+     * @param openingIndicator the {@code ObservableSource} that, when it emits an item, causes a new buffer to be created
+     * @param closingIndicator the {@link Function} that is used to produce an {@code ObservableSource} for every buffer created. When this indicator
+     *                         {@code ObservableSource} emits an item, the associated buffer is emitted.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code openingIndicator} or {@code closingIndicator} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/buffer.html">ReactiveX operators documentation: Buffer</a>
@@ -6392,17 +6009,14 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code buffer} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U> the collection subclass type to buffer into
-     * @param <TOpening> the element type of the buffer-opening {@code ObservableSource}
-     * @param <TClosing> the element type of the individual buffer-closing {@code ObservableSource}s
-     * @param openingIndicator
-     *            the {@code ObservableSource} that, when it emits an item, causes a new buffer to be created
-     * @param closingIndicator
-     *            the {@link Function} that is used to produce an {@code ObservableSource} for every buffer created. When this indicator
-     *            {@code ObservableSource} emits an item, the associated buffer is emitted.
-     * @param bufferSupplier
-     *            a factory function that returns an instance of the collection subclass to be used and returned
-     *            as the buffer
+     * @param <U>              the collection subclass type to buffer into
+     * @param <TOpening>       the element type of the buffer-opening {@code ObservableSource}
+     * @param <TClosing>       the element type of the individual buffer-closing {@code ObservableSource}s
+     * @param openingIndicator the {@code ObservableSource} that, when it emits an item, causes a new buffer to be created
+     * @param closingIndicator the {@link Function} that is used to produce an {@code ObservableSource} for every buffer created. When this indicator
+     *                         {@code ObservableSource} emits an item, the associated buffer is emitted.
+     * @param bufferSupplier   a factory function that returns an instance of the collection subclass to be used and returned
+     *                         as the buffer
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code openingIndicator}, {@code closingIndicator} or {@code bufferSupplier} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/buffer.html">ReactiveX operators documentation: Buffer</a>
@@ -6435,10 +6049,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code buffer} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <B>
-     *            the boundary value type (ignored)
-     * @param boundaryIndicator
-     *            the boundary {@code ObservableSource}
+     * @param <B>               the boundary value type (ignored)
+     * @param boundaryIndicator the boundary {@code ObservableSource}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code boundaryIndicator} is {@code null}
      * @see #buffer(ObservableSource, int)
@@ -6466,16 +6078,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code buffer} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <B>
-     *            the boundary value type (ignored)
-     * @param boundaryIndicator
-     *            the boundary {@code ObservableSource}
-     * @param initialCapacity
-     *            the initial capacity of each buffer chunk
+     * @param <B>               the boundary value type (ignored)
+     * @param boundaryIndicator the boundary {@code ObservableSource}
+     * @param initialCapacity   the initial capacity of each buffer chunk
      * @return the new {@code Observable} instance
-     * @see <a href="http://reactivex.io/documentation/operators/buffer.html">ReactiveX operators documentation: Buffer</a>
-     * @throws NullPointerException if {@code boundaryIndicator} is {@code null}
+     * @throws NullPointerException     if {@code boundaryIndicator} is {@code null}
      * @throws IllegalArgumentException if {@code initialCapacity} is non-positive
+     * @see <a href="http://reactivex.io/documentation/operators/buffer.html">ReactiveX operators documentation: Buffer</a>
      * @see #buffer(ObservableSource)
      */
     @CheckReturnValue
@@ -6501,14 +6110,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code buffer} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U> the collection subclass type to buffer into
-     * @param <B>
-     *            the boundary value type (ignored)
-     * @param boundaryIndicator
-     *            the boundary {@code ObservableSource}
-     * @param bufferSupplier
-     *            a factory function that returns an instance of the collection subclass to be used and returned
-     *            as the buffer
+     * @param <U>               the collection subclass type to buffer into
+     * @param <B>               the boundary value type (ignored)
+     * @param boundaryIndicator the boundary {@code ObservableSource}
+     * @param bufferSupplier    a factory function that returns an instance of the collection subclass to be used and returned
+     *                          as the buffer
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code boundaryIndicator} or {@code bufferSupplier} is {@code null}
      * @see #buffer(ObservableSource, int)
@@ -6651,10 +6257,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code cast} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U> the output value type cast to
-     * @param clazz
-     *            the target class type that {@code cast} will cast the items emitted by the current {@code Observable}
-     *            into before emitting them from the resulting {@code Observable}
+     * @param <U>   the output value type cast to
+     * @param clazz the target class type that {@code cast} will cast the items emitted by the current {@code Observable}
+     *              into before emitting them from the resulting {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code clazz} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/map.html">ReactiveX operators documentation: Map</a>
@@ -6683,12 +6288,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code collect} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U> the accumulator and output type
-     * @param initialItemSupplier
-     *           the mutable data structure that will collect the items
-     * @param collector
-     *           a function that accepts the {@code state} and an emitted item, and modifies the accumulator accordingly
-     *           accordingly
+     * @param <U>                 the accumulator and output type
+     * @param initialItemSupplier the mutable data structure that will collect the items
+     * @param collector           a function that accepts the {@code state} and an emitted item, and modifies the accumulator accordingly
+     *                            accordingly
      * @return the new {@code Single} instance
      * @throws NullPointerException if {@code initialItemSupplier} or {@code collector} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/reduce.html">ReactiveX operators documentation: Reduce</a>
@@ -6718,12 +6321,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code collectInto} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U> the accumulator and output type
-     * @param initialItem
-     *           the mutable data structure that will collect the items
-     * @param collector
-     *           a function that accepts the {@code state} and an emitted item, and modifies the accumulator accordingly
-     *           accordingly
+     * @param <U>         the accumulator and output type
+     * @param initialItem the mutable data structure that will collect the items
+     * @param collector   a function that accepts the {@code state} and an emitted item, and modifies the accumulator accordingly
+     *                    accordingly
      * @return the new {@code Single} instance
      * @throws NullPointerException if {@code initialItem} or {@code collector} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/reduce.html">ReactiveX operators documentation: Reduce</a>
@@ -6750,7 +6351,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code compose} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R> the value type of the output {@code ObservableSource}
+     * @param <R>      the value type of the output {@code ObservableSource}
      * @param composer implements the function that transforms the current {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code composer} is {@code null}
@@ -6779,10 +6380,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatMap} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R> the type of the inner {@code ObservableSource} sources and thus the output type
-     * @param mapper
-     *            a function that, when applied to an item emitted by the current {@code Observable}, returns an
-     *            {@code ObservableSource}
+     * @param <R>    the type of the inner {@code ObservableSource} sources and thus the output type
+     * @param mapper a function that, when applied to an item emitted by the current {@code Observable}, returns an
+     *               {@code ObservableSource}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code mapper} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/flatmap.html">ReactiveX operators documentation: FlatMap</a>
@@ -6810,14 +6410,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatMap} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R> the type of the inner {@code ObservableSource} sources and thus the output type
-     * @param mapper
-     *            a function that, when applied to an item emitted by the current {@code Observable}, returns an
-     *            {@code ObservableSource}
-     * @param bufferSize
-     *            the number of elements expected from the current {@code Observable} to be buffered
+     * @param <R>        the type of the inner {@code ObservableSource} sources and thus the output type
+     * @param mapper     a function that, when applied to an item emitted by the current {@code Observable}, returns an
+     *                   {@code ObservableSource}
+     * @param bufferSize the number of elements expected from the current {@code Observable} to be buffered
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code mapper} is {@code null}
+     * @throws NullPointerException     if {@code mapper} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/flatmap.html">ReactiveX operators documentation: FlatMap</a>
      * @see #concatMap(Function, int, Scheduler)
@@ -6853,19 +6451,16 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatMap} executes the given {@code mapper} function on the provided {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R> the type of the inner {@code ObservableSource} sources and thus the output type
-     * @param mapper
-     *            a function that, when applied to an item emitted by the current {@code Observable}, returns an
-     *            {@code ObservableSource}
-     * @param bufferSize
-     *            the number of elements expected from the current {@code Observable} to be buffered
-     * @param scheduler
-     *            the scheduler where the {@code mapper} function will be executed
+     * @param <R>        the type of the inner {@code ObservableSource} sources and thus the output type
+     * @param mapper     a function that, when applied to an item emitted by the current {@code Observable}, returns an
+     *                   {@code ObservableSource}
+     * @param bufferSize the number of elements expected from the current {@code Observable} to be buffered
+     * @param scheduler  the scheduler where the {@code mapper} function will be executed
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code mapper} or {@code scheduler} is {@code null}
+     * @throws NullPointerException     if {@code mapper} or {@code scheduler} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
-     * @since 3.0.0
      * @see <a href="http://reactivex.io/documentation/operators/flatmap.html">ReactiveX operators documentation: FlatMap</a>
+     * @since 3.0.0
      */
     @CheckReturnValue
     @SchedulerSupport(SchedulerSupport.CUSTOM)
@@ -6893,7 +6488,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatMapDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R> the result value type
+     * @param <R>    the result value type
      * @param mapper the function that maps the items of the current {@code Observable} into the inner {@code ObservableSource}s.
      * @return the new {@code Observable} instance with the concatenation behavior
      * @throws NullPointerException if {@code mapper} is {@code null}
@@ -6922,15 +6517,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatMapDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R> the result value type
-     * @param mapper the function that maps the items of the current {@code Observable} into the inner {@code ObservableSource}s.
-     * @param tillTheEnd
-     *            if {@code true}, all errors from the outer and inner {@code ObservableSource} sources are delayed until the end,
-     *            if {@code false}, an error from the main source is signaled when the current {@code Observable} source terminates
-     * @param bufferSize
-     *            the number of elements expected from the current {@code Observable} to be buffered
+     * @param <R>        the result value type
+     * @param mapper     the function that maps the items of the current {@code Observable} into the inner {@code ObservableSource}s.
+     * @param tillTheEnd if {@code true}, all errors from the outer and inner {@code ObservableSource} sources are delayed until the end,
+     *                   if {@code false}, an error from the main source is signaled when the current {@code Observable} source terminates
+     * @param bufferSize the number of elements expected from the current {@code Observable} to be buffered
      * @return the new {@code Observable} instance with the concatenation behavior
-     * @throws NullPointerException if {@code mapper} is {@code null}
+     * @throws NullPointerException     if {@code mapper} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see #concatMapDelayError(Function, boolean, int, Scheduler)
      */
@@ -6964,17 +6557,14 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatMapDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R> the result value type
-     * @param mapper the function that maps the items of the current {@code Observable} into the inner {@code ObservableSource}s.
-     * @param tillTheEnd
-     *            if {@code true}, all errors from the outer and inner {@code ObservableSource} sources are delayed until the end,
-     *            if {@code false}, an error from the main source is signaled when the current {@code Observable} source terminates
-     * @param bufferSize
-     *            the number of elements expected from the current {@code Observable} to be buffered
-     * @param scheduler
-     *            the scheduler where the {@code mapper} function will be executed
+     * @param <R>        the result value type
+     * @param mapper     the function that maps the items of the current {@code Observable} into the inner {@code ObservableSource}s.
+     * @param tillTheEnd if {@code true}, all errors from the outer and inner {@code ObservableSource} sources are delayed until the end,
+     *                   if {@code false}, an error from the main source is signaled when the current {@code Observable} source terminates
+     * @param bufferSize the number of elements expected from the current {@code Observable} to be buffered
+     * @param scheduler  the scheduler where the {@code mapper} function will be executed
      * @return the new {@code Observable} instance with the concatenation behavior
-     * @throws NullPointerException if {@code mapper} or {@code scheduler} is {@code null}
+     * @throws NullPointerException     if {@code mapper} or {@code scheduler} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see #concatMapDelayError(Function, boolean, int)
      * @since 3.0.0
@@ -7003,7 +6593,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>This method does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <R> the value type
+     *
+     * @param <R>    the value type
      * @param mapper the function that maps a sequence of values into a sequence of {@code ObservableSource}s that will be
      *               eagerly concatenated
      * @return the new {@code Observable} instance with the specified concatenation behavior
@@ -7030,13 +6621,14 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>This method does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <R> the value type
-     * @param mapper the function that maps a sequence of values into a sequence of {@code ObservableSource}s that will be
-     *               eagerly concatenated
+     *
+     * @param <R>            the value type
+     * @param mapper         the function that maps a sequence of values into a sequence of {@code ObservableSource}s that will be
+     *                       eagerly concatenated
      * @param maxConcurrency the maximum number of concurrent subscribed {@code ObservableSource}s
-     * @param bufferSize hints about the number of expected items from each inner {@code ObservableSource}, must be positive
+     * @param bufferSize     hints about the number of expected items from each inner {@code ObservableSource}, must be positive
      * @return the new {@code Observable} instance with the specified concatenation behavior
-     * @throws NullPointerException if {@code mapper} is {@code null}
+     * @throws NullPointerException     if {@code mapper} is {@code null}
      * @throws IllegalArgumentException if {@code maxConcurrency} or {@code bufferSize} is non-positive
      * @since 2.0
      */
@@ -7064,12 +6656,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>This method does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <R> the value type
-     * @param mapper the function that maps a sequence of values into a sequence of {@code ObservableSource}s that will be
-     *               eagerly concatenated
-     * @param tillTheEnd
-     *            if {@code true}, all errors from the outer and inner {@code ObservableSource} sources are delayed until the end,
-     *            if {@code false}, an error from the main source is signaled when the current {@code Observable} source terminates
+     *
+     * @param <R>        the value type
+     * @param mapper     the function that maps a sequence of values into a sequence of {@code ObservableSource}s that will be
+     *                   eagerly concatenated
+     * @param tillTheEnd if {@code true}, all errors from the outer and inner {@code ObservableSource} sources are delayed until the end,
+     *                   if {@code false}, an error from the main source is signaled when the current {@code Observable} source terminates
      * @return the new {@code Observable} instance with the specified concatenation behavior
      * @throws NullPointerException if {@code mapper} is {@code null}
      * @since 2.0
@@ -7095,18 +6687,17 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>This method does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <R> the value type
-     * @param mapper the function that maps a sequence of values into a sequence of {@code ObservableSource}s that will be
-     *               eagerly concatenated
-     * @param tillTheEnd
-     *               if {@code true}, exceptions from the current {@code Observable} and all the inner {@code ObservableSource}s are delayed until
-     *               all of them terminate, if {@code false}, exception from the current {@code Observable} is delayed until the
-     *               currently running {@code ObservableSource} terminates
+     *
+     * @param <R>            the value type
+     * @param mapper         the function that maps a sequence of values into a sequence of {@code ObservableSource}s that will be
+     *                       eagerly concatenated
+     * @param tillTheEnd     if {@code true}, exceptions from the current {@code Observable} and all the inner {@code ObservableSource}s are delayed until
+     *                       all of them terminate, if {@code false}, exception from the current {@code Observable} is delayed until the
+     *                       currently running {@code ObservableSource} terminates
      * @param maxConcurrency the maximum number of concurrent subscribed {@code ObservableSource}s
-     * @param bufferSize
-     *               the number of elements expected from the current {@code Observable} and each inner {@code ObservableSource} to be buffered
+     * @param bufferSize     the number of elements expected from the current {@code Observable} and each inner {@code ObservableSource} to be buffered
      * @return the new {@code Observable} instance with the specified concatenation behavior
-     * @throws NullPointerException if {@code mapper} is {@code null}
+     * @throws NullPointerException     if {@code mapper} is {@code null}
      * @throws IllegalArgumentException if {@code maxConcurrency} or {@code bufferSize} is non-positive
      * @since 2.0
      */
@@ -7131,8 +6722,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatMapCompletable} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.1.6 - experimental
-     * @param mapper
-     *            a function that, when applied to an item emitted by the current {@code Observable}, returns a {@code CompletableSource}
+     *
+     * @param mapper a function that, when applied to an item emitted by the current {@code Observable}, returns a {@code CompletableSource}
      * @return the new {@link Completable} instance
      * @throws NullPointerException if {@code mapper} is {@code null}
      * @since 2.2
@@ -7154,14 +6745,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatMapCompletable} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.1.6 - experimental
-     * @param mapper
-     *            a function that, when applied to an item emitted by the current {@code Observable}, returns a {@code CompletableSource}
      *
-     * @param capacityHint
-     *            the number of upstream items expected to be buffered until the current {@code CompletableSource}, mapped from
-     *            the current item, completes.
+     * @param mapper       a function that, when applied to an item emitted by the current {@code Observable}, returns a {@code CompletableSource}
+     * @param capacityHint the number of upstream items expected to be buffered until the current {@code CompletableSource}, mapped from
+     *                     the current item, completes.
      * @return the new {@link Completable} instance
-     * @throws NullPointerException if {@code mapper} is {@code null}
+     * @throws NullPointerException     if {@code mapper} is {@code null}
      * @throws IllegalArgumentException if {@code capacityHint} is non-positive
      * @since 2.2
      */
@@ -7185,6 +6774,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatMapCompletableDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.1.11 - experimental
+     *
      * @param mapper the function called with the upstream item and should return
      *               a {@code CompletableSource} to become the next source to
      *               be subscribed to
@@ -7211,9 +6801,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatMapCompletableDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.1.11 - experimental
-     * @param mapper the function called with the upstream item and should return
-     *               a {@code CompletableSource} to become the next source to
-     *               be subscribed to
+     *
+     * @param mapper     the function called with the upstream item and should return
+     *                   a {@code CompletableSource} to become the next source to
+     *                   be subscribed to
      * @param tillTheEnd If {@code true}, errors from the current {@code Observable} or any of the
      *                   inner {@code CompletableSource}s are delayed until all
      *                   of them terminate. If {@code false}, an error from the current
@@ -7243,9 +6834,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatMapCompletableDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.1.11 - experimental
-     * @param mapper the function called with the upstream item and should return
-     *               a {@code CompletableSource} to become the next source to
-     *               be subscribed to
+     *
+     * @param mapper     the function called with the upstream item and should return
+     *                   a {@code CompletableSource} to become the next source to
+     *                   be subscribed to
      * @param tillTheEnd If {@code true}, errors from the current {@code Observable} or any of the
      *                   inner {@code CompletableSource}s are delayed until all
      *                   of them terminate. If {@code false}, an error from the current
@@ -7253,9 +6845,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *                   {@code CompletableSource} terminates and only then is
      *                   it emitted to the downstream.
      * @param bufferSize The number of upstream items expected to be buffered so that fresh items are
-     *                 ready to be mapped when a previous {@code CompletableSource} terminates.
+     *                   ready to be mapped when a previous {@code CompletableSource} terminates.
      * @return the new {@link Completable} instance
-     * @throws NullPointerException if {@code mapper} is {@code null}
+     * @throws NullPointerException     if {@code mapper} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see #concatMapCompletable(Function, int)
      * @since 2.2
@@ -7280,11 +6872,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatMapIterable} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U>
-     *            the type of item emitted by the resulting {@code Observable}
-     * @param mapper
-     *            a function that returns an {@code Iterable} sequence of values for when given an item emitted by the
-     *            current {@code Observable}
+     * @param <U>    the type of item emitted by the resulting {@code Observable}
+     * @param mapper a function that returns an {@code Iterable} sequence of values for when given an item emitted by the
+     *               current {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code mapper} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/flatmap.html">ReactiveX operators documentation: FlatMap</a>
@@ -7308,7 +6898,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatMapMaybe} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.1.11 - experimental
-     * @param <R> the result type of the inner {@code MaybeSource}s
+     *
+     * @param <R>    the result type of the inner {@code MaybeSource}s
      * @param mapper the function called with the upstream item and should return
      *               a {@code MaybeSource} to become the next source to
      *               be subscribed to
@@ -7336,14 +6927,15 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatMapMaybe} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.1.11 - experimental
-     * @param <R> the result type of the inner {@code MaybeSource}s
-     * @param mapper the function called with the upstream item and should return
-     *               a {@code MaybeSource} to become the next source to
-     *               be subscribed to
+     *
+     * @param <R>        the result type of the inner {@code MaybeSource}s
+     * @param mapper     the function called with the upstream item and should return
+     *                   a {@code MaybeSource} to become the next source to
+     *                   be subscribed to
      * @param bufferSize The number of upstream items expected to be buffered so that fresh items are
-     *                 ready to be mapped when a previous {@code MaybeSource} terminates.
+     *                   ready to be mapped when a previous {@code MaybeSource} terminates.
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code mapper} is {@code null}
+     * @throws NullPointerException     if {@code mapper} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see #concatMapMaybe(Function)
      * @see #concatMapMaybeDelayError(Function, boolean, int)
@@ -7369,7 +6961,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatMapMaybeDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.1.11 - experimental
-     * @param <R> the result type of the inner {@code MaybeSource}s
+     *
+     * @param <R>    the result type of the inner {@code MaybeSource}s
      * @param mapper the function called with the upstream item and should return
      *               a {@code MaybeSource} to become the next source to
      *               be subscribed to
@@ -7397,10 +6990,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatMapMaybeDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.1.11 - experimental
-     * @param <R> the result type of the inner {@code MaybeSource}s
-     * @param mapper the function called with the upstream item and should return
-     *               a {@code MaybeSource} to become the next source to
-     *               be subscribed to
+     *
+     * @param <R>        the result type of the inner {@code MaybeSource}s
+     * @param mapper     the function called with the upstream item and should return
+     *                   a {@code MaybeSource} to become the next source to
+     *                   be subscribed to
      * @param tillTheEnd If {@code true}, errors from the current {@code Observable} or any of the
      *                   inner {@code MaybeSource}s are delayed until all
      *                   of them terminate. If {@code false}, an error from the current
@@ -7431,10 +7025,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatMapMaybeDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.1.11 - experimental
-     * @param <R> the result type of the inner {@code MaybeSource}s
-     * @param mapper the function called with the upstream item and should return
-     *               a {@code MaybeSource} to become the next source to
-     *               be subscribed to
+     *
+     * @param <R>        the result type of the inner {@code MaybeSource}s
+     * @param mapper     the function called with the upstream item and should return
+     *                   a {@code MaybeSource} to become the next source to
+     *                   be subscribed to
      * @param tillTheEnd If {@code true}, errors from the current {@code Observable} or any of the
      *                   inner {@code MaybeSource}s are delayed until all
      *                   of them terminate. If {@code false}, an error from the current
@@ -7442,9 +7037,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *                   {@code MaybeSource} terminates and only then is
      *                   it emitted to the downstream.
      * @param bufferSize The number of upstream items expected to be buffered so that fresh items are
-     *                 ready to be mapped when a previous {@code MaybeSource} terminates.
+     *                   ready to be mapped when a previous {@code MaybeSource} terminates.
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code mapper} is {@code null}
+     * @throws NullPointerException     if {@code mapper} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see #concatMapMaybe(Function, int)
      * @since 2.2
@@ -7469,7 +7064,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatMapSingle} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.1.11 - experimental
-     * @param <R> the result type of the inner {@code SingleSource}s
+     *
+     * @param <R>    the result type of the inner {@code SingleSource}s
      * @param mapper the function called with the upstream item and should return
      *               a {@code SingleSource} to become the next source to
      *               be subscribed to
@@ -7497,14 +7093,15 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatMapSingle} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.1.11 - experimental
-     * @param <R> the result type of the inner {@code SingleSource}s
-     * @param mapper the function called with the upstream item and should return
-     *               a {@code SingleSource} to become the next source to
-     *               be subscribed to
+     *
+     * @param <R>        the result type of the inner {@code SingleSource}s
+     * @param mapper     the function called with the upstream item and should return
+     *                   a {@code SingleSource} to become the next source to
+     *                   be subscribed to
      * @param bufferSize The number of upstream items expected to be buffered so that fresh items are
-     *                 ready to be mapped when a previous {@code SingleSource} terminates.
+     *                   ready to be mapped when a previous {@code SingleSource} terminates.
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code mapper} is {@code null}
+     * @throws NullPointerException     if {@code mapper} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see #concatMapSingle(Function)
      * @see #concatMapSingleDelayError(Function, boolean, int)
@@ -7530,7 +7127,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatMapSingleDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.1.11 - experimental
-     * @param <R> the result type of the inner {@code SingleSource}s
+     *
+     * @param <R>    the result type of the inner {@code SingleSource}s
      * @param mapper the function called with the upstream item and should return
      *               a {@code SingleSource} to become the next source to
      *               be subscribed to
@@ -7558,10 +7156,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatMapSingleDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.1.11 - experimental
-     * @param <R> the result type of the inner {@code SingleSource}s
-     * @param mapper the function called with the upstream item and should return
-     *               a {@code SingleSource} to become the next source to
-     *               be subscribed to
+     *
+     * @param <R>        the result type of the inner {@code SingleSource}s
+     * @param mapper     the function called with the upstream item and should return
+     *                   a {@code SingleSource} to become the next source to
+     *                   be subscribed to
      * @param tillTheEnd If {@code true}, errors from the current {@code Observable} or any of the
      *                   inner {@code SingleSource}s are delayed until all
      *                   of them terminate. If {@code false}, an error from the current
@@ -7592,10 +7191,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatMapSingleDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.1.11 - experimental
-     * @param <R> the result type of the inner {@code SingleSource}s
-     * @param mapper the function called with the upstream item and should return
-     *               a {@code SingleSource} to become the next source to
-     *               be subscribed to
+     *
+     * @param <R>        the result type of the inner {@code SingleSource}s
+     * @param mapper     the function called with the upstream item and should return
+     *                   a {@code SingleSource} to become the next source to
+     *                   be subscribed to
      * @param tillTheEnd If {@code true}, errors from the current {@code Observable} or any of the
      *                   inner {@code SingleSource}s are delayed until all
      *                   of them terminate. If {@code false}, an error from the current
@@ -7603,9 +7203,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *                   {@code SingleSource} terminates and only then is
      *                   it emitted to the downstream.
      * @param bufferSize The number of upstream items expected to be buffered so that fresh items are
-     *                 ready to be mapped when a previous {@code SingleSource} terminates.
+     *                   ready to be mapped when a previous {@code SingleSource} terminates.
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code mapper} is {@code null}
+     * @throws NullPointerException     if {@code mapper} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see #concatMapSingle(Function, int)
      * @since 2.2
@@ -7629,8 +7229,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatWith} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param other
-     *            an {@code ObservableSource} to be concatenated after the current
+     * @param other an {@code ObservableSource} to be concatenated after the current
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code other} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/concat.html">ReactiveX operators documentation: Concat</a>
@@ -7653,6 +7252,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatWith} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.1.10 - experimental
+     *
      * @param other the {@code SingleSource} whose signal should be emitted after the current {@code Observable} completes normally.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code other} is {@code null}
@@ -7676,6 +7276,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatWith} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.1.10 - experimental
+     *
      * @param other the {@code MaybeSource} whose signal should be emitted after the current {@code Observable} completes normally.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code other} is {@code null}
@@ -7699,6 +7300,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatWith} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.1.10 - experimental
+     *
      * @param other the {@code CompletableSource} to subscribe to once the current {@code Observable} completes normally
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code other} is {@code null}
@@ -7722,8 +7324,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code contains} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param item
-     *            the item to search for in the emissions from the current {@code Observable}
+     * @param item the item to search for in the emissions from the current {@code Observable}
      * @return the new {@code Single} instance
      * @throws NullPointerException if {@code item} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/contains.html">ReactiveX operators documentation: Contains</a>
@@ -7775,10 +7376,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code debounce} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U>
-     *            the debounce value type (ignored)
-     * @param debounceIndicator
-     *            function to return a sequence that indicates the throttle duration for each item via its own emission or completion
+     * @param <U>               the debounce value type (ignored)
+     * @param debounceIndicator function to return a sequence that indicates the throttle duration for each item via its own emission or completion
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code debounceIndicator} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/debounce.html">ReactiveX operators documentation: Debounce</a>
@@ -7812,12 +7411,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code debounce} operates by default on the {@code computation} {@code Scheduler}.</dd>
      * </dl>
      *
-     * @param timeout
-     *            the length of the window of time that must pass after the emission of an item from the current
-     *            {@code Observable} in which the {@code Observable} emits no items in order for the item to be emitted by the
-     *            resulting {@code Observable}
-     * @param unit
-     *            the unit of time for the specified {@code timeout}
+     * @param timeout the length of the window of time that must pass after the emission of an item from the current
+     *                {@code Observable} in which the {@code Observable} emits no items in order for the item to be emitted by the
+     *                resulting {@code Observable}
+     * @param unit    the unit of time for the specified {@code timeout}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/debounce.html">ReactiveX operators documentation: Debounce</a>
@@ -7851,14 +7448,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@code Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param timeout
-     *            the time each item has to be "the most recent" of those emitted by the current {@code Observable} to
-     *            ensure that it's not dropped
-     * @param unit
-     *            the unit of time for the specified {@code timeout}
-     * @param scheduler
-     *            the {@code Scheduler} to use internally to manage the timers that handle the timeout for each
-     *            item
+     * @param timeout   the time each item has to be "the most recent" of those emitted by the current {@code Observable} to
+     *                  ensure that it's not dropped
+     * @param unit      the unit of time for the specified {@code timeout}
+     * @param scheduler the {@code Scheduler} to use internally to manage the timers that handle the timeout for each
+     *                  item
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/debounce.html">ReactiveX operators documentation: Debounce</a>
@@ -7883,8 +7477,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code defaultIfEmpty} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param defaultItem
-     *            the item to emit if the current {@code Observable} emits no items
+     * @param defaultItem the item to emit if the current {@code Observable} emits no items
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code defaultItem} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/defaultifempty.html">ReactiveX operators documentation: DefaultIfEmpty</a>
@@ -7910,12 +7503,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code delay} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U>
-     *            the item delay value type (ignored)
-     * @param itemDelayIndicator
-     *            a function that returns an {@code ObservableSource} for each item emitted by the current {@code Observable}, which is
-     *            then used to delay the emission of that item by the resulting {@code Observable} until the {@code ObservableSource}
-     *            returned from {@code itemDelay} emits an item
+     * @param <U>                the item delay value type (ignored)
+     * @param itemDelayIndicator a function that returns an {@code ObservableSource} for each item emitted by the current {@code Observable}, which is
+     *                           then used to delay the emission of that item by the resulting {@code Observable} until the {@code ObservableSource}
+     *                           returned from {@code itemDelay} emits an item
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code itemDelayIndicator} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/delay.html">ReactiveX operators documentation: Delay</a>
@@ -7938,10 +7529,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code delay} operates by default on the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param time
-     *            the delay to shift the source by
-     * @param unit
-     *            the {@link TimeUnit} in which {@code period} is defined
+     * @param time the delay to shift the source by
+     * @param unit the {@link TimeUnit} in which {@code period} is defined
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/delay.html">ReactiveX operators documentation: Delay</a>
@@ -7965,13 +7554,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code delay} operates by default on the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param time
-     *            the delay to shift the source by
-     * @param unit
-     *            the {@link TimeUnit} in which {@code period} is defined
-     * @param delayError
-     *            if {@code true}, the upstream exception is signaled with the given delay, after all preceding normal elements,
-     *            if {@code false}, the upstream exception is signaled immediately
+     * @param time       the delay to shift the source by
+     * @param unit       the {@link TimeUnit} in which {@code period} is defined
+     * @param delayError if {@code true}, the upstream exception is signaled with the given delay, after all preceding normal elements,
+     *                   if {@code false}, the upstream exception is signaled immediately
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/delay.html">ReactiveX operators documentation: Delay</a>
@@ -7994,12 +7580,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param time
-     *            the delay to shift the source by
-     * @param unit
-     *            the time unit of {@code delay}
-     * @param scheduler
-     *            the {@code Scheduler} to use for delaying
+     * @param time      the delay to shift the source by
+     * @param unit      the time unit of {@code delay}
+     * @param scheduler the {@code Scheduler} to use for delaying
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/delay.html">ReactiveX operators documentation: Delay</a>
@@ -8021,15 +7604,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param time
-     *            the delay to shift the source by
-     * @param unit
-     *            the time unit of {@code delay}
-     * @param scheduler
-     *            the {@code Scheduler} to use for delaying
-     * @param delayError
-     *            if {@code true}, the upstream exception is signaled with the given delay, after all preceding normal elements,
-     *            if {@code false}, the upstream exception is signaled immediately
+     * @param time       the delay to shift the source by
+     * @param unit       the time unit of {@code delay}
+     * @param scheduler  the {@code Scheduler} to use for delaying
+     * @param delayError if {@code true}, the upstream exception is signaled with the given delay, after all preceding normal elements,
+     *                   if {@code false}, the upstream exception is signaled immediately
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/delay.html">ReactiveX operators documentation: Delay</a>
@@ -8057,17 +7636,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code delay} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U>
-     *            the subscription delay value type (ignored)
-     * @param <V>
-     *            the item delay value type (ignored)
-     * @param subscriptionIndicator
-     *            a function that returns an {@code ObservableSource} that triggers the subscription to the current {@code Observable}
-     *            once it emits any item
-     * @param itemDelayIndicator
-     *            a function that returns an {@code ObservableSource} for each item emitted by the current {@code Observable}, which is
-     *            then used to delay the emission of that item by the resulting {@code Observable} until the {@code ObservableSource}
-     *            returned from {@code itemDelay} emits an item
+     * @param <U>                   the subscription delay value type (ignored)
+     * @param <V>                   the item delay value type (ignored)
+     * @param subscriptionIndicator a function that returns an {@code ObservableSource} that triggers the subscription to the current {@code Observable}
+     *                              once it emits any item
+     * @param itemDelayIndicator    a function that returns an {@code ObservableSource} for each item emitted by the current {@code Observable}, which is
+     *                              then used to delay the emission of that item by the resulting {@code Observable} until the {@code ObservableSource}
+     *                              returned from {@code itemDelay} emits an item
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code subscriptionIndicator} or {@code itemDelayIndicator} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/delay.html">ReactiveX operators documentation: Delay</a>
@@ -8090,9 +7665,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This method does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U> the value type of the other {@code Observable}, irrelevant
+     * @param <U>                   the value type of the other {@code Observable}, irrelevant
      * @param subscriptionIndicator the other {@code ObservableSource} that should trigger the subscription
-     *        to the current {@code Observable}.
+     *                              to the current {@code Observable}.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code subscriptionIndicator} is {@code null}
      * @since 2.0
@@ -8114,10 +7689,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code delaySubscription} operates by default on the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param time
-     *            the time to delay the subscription
-     * @param unit
-     *            the time unit of {@code delay}
+     * @param time the time to delay the subscription
+     * @param unit the time unit of {@code delay}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/delay.html">ReactiveX operators documentation: Delay</a>
@@ -8139,12 +7712,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@code Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param time
-     *            the time to delay the subscription
-     * @param unit
-     *            the time unit of {@code delay}
-     * @param scheduler
-     *            the {@code Scheduler} on which the waiting and subscription will happen
+     * @param time      the time to delay the subscription
+     * @param unit      the time unit of {@code delay}
+     * @param scheduler the {@code Scheduler} on which the waiting and subscription will happen
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/delay.html">ReactiveX operators documentation: Delay</a>
@@ -8195,9 +7765,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      * </dl>
      * <p>History: 2.2.4 - experimental
      *
-     * @param <R> the output value type
+     * @param <R>      the output value type
      * @param selector function that returns the upstream item and should return a {@code Notification} to signal
-     * the corresponding {@code Observer} event to the downstream.
+     *                 the corresponding {@code Observer} event to the downstream.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code selector} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/materialize-dematerialize.html">ReactiveX operators documentation: Dematerialize</a>
@@ -8274,10 +7844,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code distinct} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <K> the key type
-     * @param keySelector
-     *            a function that projects an emitted item to a key value that is used to decide whether an item
-     *            is distinct from another one or not
+     * @param <K>         the key type
+     * @param keySelector a function that projects an emitted item to a key value that is used to decide whether an item
+     *                    is distinct from another one or not
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code keySelector} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/distinct.html">ReactiveX operators documentation: Distinct</a>
@@ -8305,13 +7874,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code distinct} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <K> the key type
-     * @param keySelector
-     *            a function that projects an emitted item to a key value that is used to decide whether an item
-     *            is distinct from another one or not
-     * @param collectionSupplier
-     *            function called for each individual {@link Observer} to return a {@link Collection} subtype for holding the extracted
-     *            keys and whose {@code add()} method's return indicates uniqueness.
+     * @param <K>                the key type
+     * @param keySelector        a function that projects an emitted item to a key value that is used to decide whether an item
+     *                           is distinct from another one or not
+     * @param collectionSupplier function called for each individual {@link Observer} to return a {@link Collection} subtype for holding the extracted
+     *                           keys and whose {@code add()} method's return indicates uniqueness.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code keySelector} or {@code collectionSupplier} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/distinct.html">ReactiveX operators documentation: Distinct</a>
@@ -8390,10 +7957,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code distinctUntilChanged} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <K> the key type
-     * @param keySelector
-     *            a function that projects an emitted item to a key value that is used to decide whether an item
-     *            is distinct from another one or not
+     * @param <K>         the key type
+     * @param keySelector a function that projects an emitted item to a key value that is used to decide whether an item
+     *                    is distinct from another one or not
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code keySelector} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/distinct.html">ReactiveX operators documentation: Distinct</a>
@@ -8427,7 +7993,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      * </dl>
      *
      * @param comparer the function that receives the previous item and the current item and is
-     *                   expected to return {@code true} if the two are equal, thus skipping the current value.
+     *                 expected to return {@code true} if the two are equal, thus skipping the current value.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code comparer} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/distinct.html">ReactiveX operators documentation: Distinct</a>
@@ -8455,6 +8021,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This operator supports boundary-limited synchronous or asynchronous queue-fusion.</dd>
      * </dl>
      * <p>History: 2.0.1 - experimental
+     *
      * @param onAfterNext the {@code Consumer} that will be called after emitting an item from upstream to the downstream
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code onAfterNext} is {@code null}
@@ -8478,8 +8045,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code doAfterTerminate} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param onAfterTerminate
-     *            an {@code Action} to be invoked after the current {@code Observable} finishes
+     * @param onAfterTerminate an {@code Action} to be invoked after the current {@code Observable} finishes
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code onAfterTerminate} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/do.html">ReactiveX operators documentation: Do</a>
@@ -8509,6 +8075,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This operator supports boundary-limited synchronous or asynchronous queue-fusion.</dd>
      * </dl>
      * <p>History: 2.0.1 - experimental
+     *
      * @param onFinally the action called when the current {@code Observable} terminates or gets disposed
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code onFinally} is {@code null}
@@ -8537,8 +8104,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code doOnDispose} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param onDispose
-     *            the action that gets called when the current {@code Observable}'s {@link Disposable} is disposed
+     * @param onDispose the action that gets called when the current {@code Observable}'s {@link Disposable} is disposed
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code onDispose} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/do.html">ReactiveX operators documentation: Do</a>
@@ -8559,8 +8125,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code doOnComplete} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param onComplete
-     *            the action to invoke when the current {@code Observable} calls {@code onComplete}
+     * @param onComplete the action to invoke when the current {@code Observable} calls {@code onComplete}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code onComplete} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/do.html">ReactiveX operators documentation: Do</a>
@@ -8607,8 +8172,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code doOnEach} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param onNotification
-     *            the action to invoke for each item emitted by the current {@code Observable}
+     * @param onNotification the action to invoke for each item emitted by the current {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code onNotification} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/do.html">ReactiveX operators documentation: Do</a>
@@ -8641,9 +8205,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code doOnEach} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param observer
-     *            the observer to be notified about {@code onNext}, {@code onError} and {@code onComplete} events on its
-     *            respective methods before the actual downstream {@code Observer} gets notified.
+     * @param observer the observer to be notified about {@code onNext}, {@code onError} and {@code onComplete} events on its
+     *                 respective methods before the actual downstream {@code Observer} gets notified.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code observer} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/do.html">ReactiveX operators documentation: Do</a>
@@ -8673,8 +8236,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code doOnError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param onError
-     *            the action to invoke if the current {@code Observable} calls {@code onError}
+     * @param onError the action to invoke if the current {@code Observable} calls {@code onError}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code onError} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/do.html">ReactiveX operators documentation: Do</a>
@@ -8696,10 +8258,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code doOnLifecycle} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param onSubscribe
-     *              a {@link Consumer} called with the {@link Disposable} sent via {@link Observer#onSubscribe(Disposable)}
-     * @param onDispose
-     *              called when the downstream disposes the {@code Disposable} via {@code dispose()}
+     * @param onSubscribe a {@link Consumer} called with the {@link Disposable} sent via {@link Observer#onSubscribe(Disposable)}
+     * @param onDispose   called when the downstream disposes the {@code Disposable} via {@code dispose()}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code onSubscribe} or {@code onDispose} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/do.html">ReactiveX operators documentation: Do</a>
@@ -8722,8 +8282,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code doOnNext} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param onNext
-     *            the action to invoke when the current {@code Observable} calls {@code onNext}
+     * @param onNext the action to invoke when the current {@code Observable} calls {@code onNext}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code onNext} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/do.html">ReactiveX operators documentation: Do</a>
@@ -8747,8 +8306,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code doOnSubscribe} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param onSubscribe
-     *            the {@code Consumer} that gets called when an {@code Observer} subscribes to the current {@code Observable}
+     * @param onSubscribe the {@code Consumer} that gets called when an {@code Observer} subscribes to the current {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code onSubscribe} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/do.html">ReactiveX operators documentation: Do</a>
@@ -8773,8 +8331,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code doOnTerminate} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param onTerminate
-     *            the action to invoke when the current {@code Observable} calls {@code onComplete} or {@code onError}
+     * @param onTerminate the action to invoke when the current {@code Observable} calls {@code onComplete} or {@code onError}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code onTerminate} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/do.html">ReactiveX operators documentation: Do</a>
@@ -8800,11 +8357,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code elementAt} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param index
-     *            the zero-based index of the item to retrieve
+     * @param index the zero-based index of the item to retrieve
      * @return the new {@code Maybe} instance
-     * @throws IndexOutOfBoundsException
-     *             if {@code index} is negative
+     * @throws IndexOutOfBoundsException if {@code index} is negative
      * @see <a href="http://reactivex.io/documentation/operators/elementat.html">ReactiveX operators documentation: ElementAt</a>
      */
     @CheckReturnValue
@@ -8827,14 +8382,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code elementAt} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param index
-     *            the zero-based index of the item to retrieve
-     * @param defaultItem
-     *            the default item
+     * @param index       the zero-based index of the item to retrieve
+     * @param defaultItem the default item
      * @return the new {@code Single} instance
-     * @throws NullPointerException if {@code defaultItem} is {@code null}
-     * @throws IndexOutOfBoundsException
-     *             if {@code index} is negative
+     * @throws NullPointerException      if {@code defaultItem} is {@code null}
+     * @throws IndexOutOfBoundsException if {@code index} is negative
      * @see <a href="http://reactivex.io/documentation/operators/elementat.html">ReactiveX operators documentation: ElementAt</a>
      */
     @CheckReturnValue
@@ -8858,11 +8410,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code elementAtOrError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param index
-     *            the zero-based index of the item to retrieve
+     * @param index the zero-based index of the item to retrieve
      * @return the new {@code Single} instance
-     * @throws IndexOutOfBoundsException
-     *             if {@code index} is negative
+     * @throws IndexOutOfBoundsException if {@code index} is negative
      * @see <a href="http://reactivex.io/documentation/operators/elementat.html">ReactiveX operators documentation: ElementAt</a>
      */
     @CheckReturnValue
@@ -8884,9 +8434,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code filter} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param predicate
-     *            a function that evaluates each item emitted by the current {@code Observable}, returning {@code true}
-     *            if it passes the filter
+     * @param predicate a function that evaluates each item emitted by the current {@code Observable}, returning {@code true}
+     *                  if it passes the filter
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code predicate} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/filter.html">ReactiveX operators documentation: Filter</a>
@@ -8929,8 +8478,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code first} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param defaultItem
-     *            the default item to emit if the current {@code Observable} doesn't emit anything
+     * @param defaultItem the default item to emit if the current {@code Observable} doesn't emit anything
      * @return the new {@code Single} instance
      * @throws NullPointerException if {@code defaultItem} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/first.html">ReactiveX operators documentation: First</a>
@@ -8973,10 +8521,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code flatMap} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R> the value type of the inner {@code ObservableSource}s and the output type
-     * @param mapper
-     *            a function that, when applied to an item emitted by the current {@code Observable}, returns an
-     *            {@code ObservableSource}
+     * @param <R>    the value type of the inner {@code ObservableSource}s and the output type
+     * @param mapper a function that, when applied to an item emitted by the current {@code Observable}, returns an
+     *               {@code ObservableSource}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code mapper} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/flatmap.html">ReactiveX operators documentation: FlatMap</a>
@@ -8999,13 +8546,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code flatMap} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R> the value type of the inner {@code ObservableSource}s and the output type
-     * @param mapper
-     *            a function that, when applied to an item emitted by the current {@code Observable}, returns an
-     *            {@code ObservableSource}
+     * @param <R>         the value type of the inner {@code ObservableSource}s and the output type
+     * @param mapper      a function that, when applied to an item emitted by the current {@code Observable}, returns an
+     *                    {@code ObservableSource}
      * @param delayErrors 是否延迟 报错
-     *            if {@code true}, exceptions from the current {@code Observable} and all inner {@code ObservableSource}s are delayed until all of them terminate
-     *            if {@code false}, the first one signaling an exception will terminate the whole sequence immediately
+     *                    if {@code true}, exceptions from the current {@code Observable} and all inner {@code ObservableSource}s are delayed until all of them terminate
+     *                    if {@code false}, the first one signaling an exception will terminate the whole sequence immediately
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code mapper} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/flatmap.html">ReactiveX operators documentation: FlatMap</a>
@@ -9029,17 +8575,16 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code flatMap} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R> the value type of the inner {@code ObservableSource}s and the output type
-     * @param mapper
-     *            a function that, when applied to an item emitted by the current {@code Observable}, returns an
-     *            {@code ObservableSource}
+     * @param <R>            the value type of the inner {@code ObservableSource}s and the output type
+     * @param mapper         a function that, when applied to an item emitted by the current {@code Observable}, returns an
+     *                       {@code ObservableSource}
      * @param maxConcurrency 最大同时订阅量
-     *         the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
-     * @param delayErrors 是否延迟 报错
-     *            if {@code true}, exceptions from the current {@code Observable} and all inner {@code ObservableSource}s are delayed until all of them terminate
-     *            if {@code false}, the first one signaling an exception will terminate the whole sequence immediately
+     *                       the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
+     * @param delayErrors    是否延迟 报错
+     *                       if {@code true}, exceptions from the current {@code Observable} and all inner {@code ObservableSource}s are delayed until all of them terminate
+     *                       if {@code false}, the first one signaling an exception will terminate the whole sequence immediately
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code mapper} is {@code null}
+     * @throws NullPointerException     if {@code mapper} is {@code null}
      * @throws IllegalArgumentException if {@code maxConcurrency} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/flatmap.html">ReactiveX operators documentation: FlatMap</a>
      * @since 2.0
@@ -9063,19 +8608,18 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code flatMap} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R> the value type of the inner {@code ObservableSource}s and the output type
-     * @param mapper
-     *            a function that, when applied to an item emitted by the current {@code Observable}, returns an
-     *            {@code ObservableSource}
+     * @param <R>            the value type of the inner {@code ObservableSource}s and the output type
+     * @param mapper         a function that, when applied to an item emitted by the current {@code Observable}, returns an
+     *                       {@code ObservableSource}
      * @param maxConcurrency 最大同时订阅量
-     *         the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
-     * @param delayErrors 是否延迟 报错
-     *            if {@code true}, exceptions from the current {@code Observable} and all inner {@code ObservableSource}s are delayed until all of them terminate
-     *            if {@code false}, the first one signaling an exception will terminate the whole sequence immediately
-     * @param bufferSize 缓存大小
-     *            the number of elements expected from each inner {@code ObservableSource} to be buffered
+     *                       the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
+     * @param delayErrors    是否延迟 报错
+     *                       if {@code true}, exceptions from the current {@code Observable} and all inner {@code ObservableSource}s are delayed until all of them terminate
+     *                       if {@code false}, the first one signaling an exception will terminate the whole sequence immediately
+     * @param bufferSize     缓存大小
+     *                       the number of elements expected from each inner {@code ObservableSource} to be buffered
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code mapper} is {@code null}
+     * @throws NullPointerException     if {@code mapper} is {@code null}
      * @throws IllegalArgumentException if {@code maxConcurrency} or {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/flatmap.html">ReactiveX operators documentation: FlatMap</a>
      * @since 2.0
@@ -9084,11 +8628,17 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
     @SchedulerSupport(SchedulerSupport.NONE)
     @NonNull
     public final <R> Observable<R> flatMap(@NonNull Function<? super T, ? extends ObservableSource<? extends R>> mapper,
+
                                            boolean delayErrors, int maxConcurrency, int bufferSize) {
+        //参数校验
         Objects.requireNonNull(mapper, "mapper is null");
         ObjectHelper.verifyPositive(maxConcurrency, "maxConcurrency");
         ObjectHelper.verifyPositive(bufferSize, "bufferSize");
+
+
+        //如果是 ScalarSupplier 类型 rxjava 会走 特定的路线，这条路速度更快
         if (this instanceof ScalarSupplier) {
+            //直接获取 ScalarSupplier 类型的 Observable 中的值
             @SuppressWarnings("unchecked")
             T v = ((ScalarSupplier<T>) this).get();
             if (v == null) {
@@ -9096,6 +8646,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
             }
             return ObservableScalarXMap.scalarXMap(v, mapper);
         }
+        //1. 创建一个 ObservableFlatMap 用于封装 上一个 Observable ，变换方法 ，还有一些 配置
+        //2. 返回 ObservableFlatMap
         return RxJavaPlugins.onAssembly(new ObservableFlatMap<>(this, mapper, delayErrors, maxConcurrency, bufferSize));
     }
 
@@ -9109,16 +8661,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code flatMap} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R>
-     *            the result type
-     * @param onNextMapper
-     *            a function that returns an {@code ObservableSource} to merge for each item emitted by the current {@code Observable}
-     * @param onErrorMapper
-     *            a function that returns an {@code ObservableSource} to merge for an {@code onError} notification from the current
-     *            {@code Observable}
-     * @param onCompleteSupplier
-     *            a function that returns an {@code ObservableSource} to merge for an {@code onComplete} notification from the current
-     *            {@code Observable}
+     * @param <R>                the result type
+     * @param onNextMapper       a function that returns an {@code ObservableSource} to merge for each item emitted by the current {@code Observable}
+     * @param onErrorMapper      a function that returns an {@code ObservableSource} to merge for an {@code onError} notification from the current
+     *                           {@code Observable}
+     * @param onCompleteSupplier a function that returns an {@code ObservableSource} to merge for an {@code onComplete} notification from the current
+     *                           {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code onNextMapper} or {@code onErrorMapper} or {@code onCompleteSupplier} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/flatmap.html">ReactiveX operators documentation: FlatMap</a>
@@ -9147,20 +8695,15 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code flatMap} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R>
-     *            the result type
-     * @param onNextMapper
-     *            a function that returns an {@code ObservableSource} to merge for each item emitted by the current {@code Observable}
-     * @param onErrorMapper
-     *            a function that returns an {@code ObservableSource} to merge for an {@code onError} notification from the current
-     *            {@code Observable}
-     * @param onCompleteSupplier
-     *            a function that returns an {@code ObservableSource} to merge for an {@code onComplete} notification from the current
-     *            {@code Observable}
-     * @param maxConcurrency
-     *         the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
+     * @param <R>                the result type
+     * @param onNextMapper       a function that returns an {@code ObservableSource} to merge for each item emitted by the current {@code Observable}
+     * @param onErrorMapper      a function that returns an {@code ObservableSource} to merge for an {@code onError} notification from the current
+     *                           {@code Observable}
+     * @param onCompleteSupplier a function that returns an {@code ObservableSource} to merge for an {@code onComplete} notification from the current
+     *                           {@code Observable}
+     * @param maxConcurrency     the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code onNextMapper} or {@code onErrorMapper} or {@code onCompleteSupplier} is {@code null}
+     * @throws NullPointerException     if {@code onNextMapper} or {@code onErrorMapper} or {@code onCompleteSupplier} is {@code null}
      * @throws IllegalArgumentException if {@code maxConcurrency} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/flatmap.html">ReactiveX operators documentation: FlatMap</a>
      * @since 2.0
@@ -9191,14 +8734,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code flatMap} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R> the value type of the inner {@code ObservableSource}s and the output type
-     * @param mapper
-     *            a function that, when applied to an item emitted by the current {@code Observable}, returns an
-     *            {@code ObservableSource}
-     * @param maxConcurrency
-     *         the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
+     * @param <R>            the value type of the inner {@code ObservableSource}s and the output type
+     * @param mapper         a function that, when applied to an item emitted by the current {@code Observable}, returns an
+     *                       {@code ObservableSource}
+     * @param maxConcurrency the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code mapper} is {@code null}
+     * @throws NullPointerException     if {@code mapper} is {@code null}
      * @throws IllegalArgumentException if {@code maxConcurrency} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/flatmap.html">ReactiveX operators documentation: FlatMap</a>
      * @since 2.0
@@ -9220,15 +8761,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code flatMap} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U>
-     *            the type of items emitted by the collection {@code ObservableSource}
-     * @param <R>
-     *            the type of items emitted by the resulting {@code Observable}
-     * @param mapper
-     *            a function that returns an {@code ObservableSource} for each item emitted by the current {@code Observable}
-     * @param combiner
-     *            a function that combines one item emitted by each of the source and collection {@code ObservableSource}s and
-     *            returns an item to be emitted by the resulting {@code Observable}
+     * @param <U>      the type of items emitted by the collection {@code ObservableSource}
+     * @param <R>      the type of items emitted by the resulting {@code Observable}
+     * @param mapper   a function that returns an {@code ObservableSource} for each item emitted by the current {@code Observable}
+     * @param combiner a function that combines one item emitted by each of the source and collection {@code ObservableSource}s and
+     *                 returns an item to be emitted by the resulting {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code mapper} or {@code combiner} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/flatmap.html">ReactiveX operators documentation: FlatMap</a>
@@ -9251,18 +8788,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code flatMap} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U>
-     *            the type of items emitted by the collection {@code ObservableSource}
-     * @param <R>
-     *            the type of items emitted by the resulting {@code Observable}
-     * @param mapper
-     *            a function that returns an {@code ObservableSource} for each item emitted by the current {@code Observable}
-     * @param combiner
-     *            a function that combines one item emitted by each of the source and collection {@code ObservableSource}s and
-     *            returns an item to be emitted by the resulting {@code Observable}
-     * @param delayErrors
-     *            if {@code true}, exceptions from the current {@code Observable} and all inner {@code ObservableSource}s are delayed until all of them terminate
-     *            if {@code false}, the first one signaling an exception will terminate the whole sequence immediately
+     * @param <U>         the type of items emitted by the collection {@code ObservableSource}
+     * @param <R>         the type of items emitted by the resulting {@code Observable}
+     * @param mapper      a function that returns an {@code ObservableSource} for each item emitted by the current {@code Observable}
+     * @param combiner    a function that combines one item emitted by each of the source and collection {@code ObservableSource}s and
+     *                    returns an item to be emitted by the resulting {@code Observable}
+     * @param delayErrors if {@code true}, exceptions from the current {@code Observable} and all inner {@code ObservableSource}s are delayed until all of them terminate
+     *                    if {@code false}, the first one signaling an exception will terminate the whole sequence immediately
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code mapper} or {@code combiner} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/flatmap.html">ReactiveX operators documentation: FlatMap</a>
@@ -9286,22 +8818,16 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code flatMap} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U>
-     *            the type of items emitted by the collection {@code ObservableSource}
-     * @param <R>
-     *            the type of items emitted by the resulting {@code Observable}
-     * @param mapper
-     *            a function that returns an {@code ObservableSource} for each item emitted by the current {@code Observable}
-     * @param combiner
-     *            a function that combines one item emitted by each of the source and collection {@code ObservableSource}s and
-     *            returns an item to be emitted by the resulting {@code Observable}
-     * @param maxConcurrency
-     *         the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
-     * @param delayErrors
-     *            if {@code true}, exceptions from the current {@code Observable} and all inner {@code ObservableSource}s are delayed until all of them terminate
-     *            if {@code false}, the first one signaling an exception will terminate the whole sequence immediately
+     * @param <U>            the type of items emitted by the collection {@code ObservableSource}
+     * @param <R>            the type of items emitted by the resulting {@code Observable}
+     * @param mapper         a function that returns an {@code ObservableSource} for each item emitted by the current {@code Observable}
+     * @param combiner       a function that combines one item emitted by each of the source and collection {@code ObservableSource}s and
+     *                       returns an item to be emitted by the resulting {@code Observable}
+     * @param maxConcurrency the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
+     * @param delayErrors    if {@code true}, exceptions from the current {@code Observable} and all inner {@code ObservableSource}s are delayed until all of them terminate
+     *                       if {@code false}, the first one signaling an exception will terminate the whole sequence immediately
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code mapper} or {@code combiner} is {@code null}
+     * @throws NullPointerException     if {@code mapper} or {@code combiner} is {@code null}
      * @throws IllegalArgumentException if {@code maxConcurrency} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/flatmap.html">ReactiveX operators documentation: FlatMap</a>
      * @since 2.0
@@ -9325,24 +8851,17 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code flatMap} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U>
-     *            the type of items emitted by the collection {@code ObservableSource}
-     * @param <R>
-     *            the type of items emitted by the resulting {@code Observable}
-     * @param mapper
-     *            a function that returns an {@code ObservableSource} for each item emitted by the current {@code Observable}
-     * @param combiner
-     *            a function that combines one item emitted by each of the source and collection {@code ObservableSource}s and
-     *            returns an item to be emitted by the resulting {@code Observable}
-     * @param maxConcurrency
-     *         the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
-     * @param delayErrors
-     *            if {@code true}, exceptions from the current {@code Observable} and all inner {@code ObservableSource}s are delayed until all of them terminate
-     *            if {@code false}, the first one signaling an exception will terminate the whole sequence immediately
-     * @param bufferSize
-     *            the number of elements expected from the inner {@code ObservableSource} to be buffered
+     * @param <U>            the type of items emitted by the collection {@code ObservableSource}
+     * @param <R>            the type of items emitted by the resulting {@code Observable}
+     * @param mapper         a function that returns an {@code ObservableSource} for each item emitted by the current {@code Observable}
+     * @param combiner       a function that combines one item emitted by each of the source and collection {@code ObservableSource}s and
+     *                       returns an item to be emitted by the resulting {@code Observable}
+     * @param maxConcurrency the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
+     * @param delayErrors    if {@code true}, exceptions from the current {@code Observable} and all inner {@code ObservableSource}s are delayed until all of them terminate
+     *                       if {@code false}, the first one signaling an exception will terminate the whole sequence immediately
+     * @param bufferSize     the number of elements expected from the inner {@code ObservableSource} to be buffered
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code mapper} or {@code combiner} is {@code null}
+     * @throws NullPointerException     if {@code mapper} or {@code combiner} is {@code null}
      * @throws IllegalArgumentException if {@code maxConcurrency} or {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/flatmap.html">ReactiveX operators documentation: FlatMap</a>
      * @since 2.0
@@ -9368,19 +8887,14 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code flatMap} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U>
-     *            the type of items emitted by the collection {@code ObservableSource}
-     * @param <R>
-     *            the type of items emitted by the resulting {@code Observable}
-     * @param mapper
-     *            a function that returns an {@code ObservableSource} for each item emitted by the current {@code Observable}
-     * @param combiner
-     *            a function that combines one item emitted by each of the source and collection {@code ObservableSource}s and
-     *            returns an item to be emitted by the resulting {@code Observable}
-     * @param maxConcurrency
-     *         the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
+     * @param <U>            the type of items emitted by the collection {@code ObservableSource}
+     * @param <R>            the type of items emitted by the resulting {@code Observable}
+     * @param mapper         a function that returns an {@code ObservableSource} for each item emitted by the current {@code Observable}
+     * @param combiner       a function that combines one item emitted by each of the source and collection {@code ObservableSource}s and
+     *                       returns an item to be emitted by the resulting {@code Observable}
+     * @param maxConcurrency the maximum number of {@code ObservableSource}s that may be subscribed to concurrently
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code mapper} or {@code combiner} is {@code null}
+     * @throws NullPointerException     if {@code mapper} or {@code combiner} is {@code null}
      * @throws IllegalArgumentException if {@code maxConcurrency} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/flatmap.html">ReactiveX operators documentation: FlatMap</a>
      * @since 2.0
@@ -9402,9 +8916,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code flatMapCompletable} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
+     *
      * @param mapper the function that received each source value and transforms them into {@code CompletableSource}s.
-     * @throws NullPointerException if {@code mapper} is {@code null}
      * @return the new {@link Completable} instance
+     * @throws NullPointerException if {@code mapper} is {@code null}
      */
     @CheckReturnValue
     @SchedulerSupport(SchedulerSupport.NONE)
@@ -9422,9 +8937,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code flatMapCompletable} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param mapper the function that received each source value and transforms them into {@code CompletableSource}s.
+     *
+     * @param mapper      the function that received each source value and transforms them into {@code CompletableSource}s.
      * @param delayErrors if {@code true}, errors from the upstream and inner {@code CompletableSource}s are delayed until all of them
-     * terminate.
+     *                    terminate.
      * @return the new {@link Completable} instance
      * @throws NullPointerException if {@code mapper} is {@code null}
      */
@@ -9446,11 +8962,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code flatMapIterable} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U>
-     *            the output type and the element type of the {@code Iterable}s
-     * @param mapper
-     *            a function that returns an {@code Iterable} sequence of values for when given an item emitted by the
-     *            current {@code Observable}
+     * @param <U>    the output type and the element type of the {@code Iterable}s
+     * @param mapper a function that returns an {@code Iterable} sequence of values for when given an item emitted by the
+     *               current {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code mapper} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/flatmap.html">ReactiveX operators documentation: FlatMap</a>
@@ -9475,16 +8989,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code flatMapIterable} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U>
-     *            the element type of the {@code Iterable}s
-     * @param <V>
-     *            the output type as determined by the {@code resultSelector} function
-     * @param mapper
-     *            a function that returns an {@code Iterable} sequence of values for each item emitted by the current
-     *            {@code Observable}
-     * @param combiner
-     *            a function that returns an item based on the item emitted by the current {@code Observable} and the
-     *            next item of the {@code Iterable} returned for that original item by the {@code mapper}
+     * @param <U>      the element type of the {@code Iterable}s
+     * @param <V>      the output type as determined by the {@code resultSelector} function
+     * @param mapper   a function that returns an {@code Iterable} sequence of values for each item emitted by the current
+     *                 {@code Observable}
+     * @param combiner a function that returns an item based on the item emitted by the current {@code Observable} and the
+     *                 next item of the {@code Iterable} returned for that original item by the {@code mapper}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code mapper} or {@code combiner} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/flatmap.html">ReactiveX operators documentation: FlatMap</a>
@@ -9508,7 +9018,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code flatMapMaybe} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <R> the result value type
+     *
+     * @param <R>    the result value type
      * @param mapper the function that received each source value and transforms them into {@code MaybeSource}s.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code mapper} is {@code null}
@@ -9530,10 +9041,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code flatMapMaybe} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <R> the result value type
-     * @param mapper the function that received each source value and transforms them into {@code MaybeSource}s.
+     *
+     * @param <R>         the result value type
+     * @param mapper      the function that received each source value and transforms them into {@code MaybeSource}s.
      * @param delayErrors if {@code true}, errors from the upstream and inner {@code MaybeSource}s are delayed until all of them
-     * terminate.
+     *                    terminate.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code mapper} is {@code null}
      */
@@ -9554,7 +9066,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code flatMapSingle} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <R> the result value type
+     *
+     * @param <R>    the result value type
      * @param mapper the function that received each source value and transforms them into {@code SingleSource}s.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code mapper} is {@code null}
@@ -9576,10 +9089,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code flatMapSingle} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <R> the result value type
-     * @param mapper the function that received each source value and transforms them into {@code SingleSource}s.
+     *
+     * @param <R>         the result value type
+     * @param mapper      the function that received each source value and transforms them into {@code SingleSource}s.
      * @param delayErrors if {@code true}, errors from the upstream and inner {@code SingleSource}s are delayed until each of them
-     * terminates.
+     *                    terminates.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code mapper} is {@code null}
      */
@@ -9603,12 +9117,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code forEach} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param onNext
-     *            the {@code Consumer} to execute for each item.
-     * @return
-     *            a {@link Disposable} that allows disposing the sequence if the current {@code Observable} runs asynchronously
-     * @throws NullPointerException
-     *             if {@code onNext} is {@code null}
+     * @param onNext the {@code Consumer} to execute for each item.
+     * @return a {@link Disposable} that allows disposing the sequence if the current {@code Observable} runs asynchronously
+     * @throws NullPointerException if {@code onNext} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/subscribe.html">ReactiveX operators documentation: Subscribe</a>
      */
     @CheckReturnValue
@@ -9632,12 +9143,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code forEachWhile} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param onNext
-     *            the {@code Predicate} to execute for each item.
-     * @return
-     *            a {@link Disposable} that allows disposing the sequence if the current {@code Observable} runs asynchronously
-     * @throws NullPointerException
-     *             if {@code onNext} is {@code null}
+     * @param onNext the {@code Predicate} to execute for each item.
+     * @return a {@link Disposable} that allows disposing the sequence if the current {@code Observable} runs asynchronously
+     * @throws NullPointerException if {@code onNext} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/subscribe.html">ReactiveX operators documentation: Subscribe</a>
      */
     @CheckReturnValue
@@ -9655,14 +9163,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code forEachWhile} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param onNext
-     *            the {@code Predicate} to execute for each item.
-     * @param onError
-     *            the {@code Consumer} to execute when an error is emitted.
-     * @return
-     *            a {@link Disposable} that allows disposing the sequence if the current {@code Observable} runs asynchronously
-     * @throws NullPointerException
-     *             if {@code onNext} or {@code onError} is {@code null}
+     * @param onNext  the {@code Predicate} to execute for each item.
+     * @param onError the {@code Consumer} to execute when an error is emitted.
+     * @return a {@link Disposable} that allows disposing the sequence if the current {@code Observable} runs asynchronously
+     * @throws NullPointerException if {@code onNext} or {@code onError} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/subscribe.html">ReactiveX operators documentation: Subscribe</a>
      */
     @CheckReturnValue
@@ -9681,16 +9185,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code forEachWhile} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param onNext
-     *            the {@code Predicate} to execute for each item.
-     * @param onError
-     *            the {@code Consumer} to execute when an error is emitted.
-     * @param onComplete
-     *            the {@code Action} to execute when completion is signaled.
-     * @return
-     *            a {@link Disposable} that allows disposing the sequence if the current {@code Observable} runs asynchronously
-     * @throws NullPointerException
-     *             if {@code onNext} or {@code onError} or {@code onComplete} is {@code null}
+     * @param onNext     the {@code Predicate} to execute for each item.
+     * @param onError    the {@code Consumer} to execute when an error is emitted.
+     * @param onComplete the {@code Action} to execute when completion is signaled.
+     * @return a {@link Disposable} that allows disposing the sequence if the current {@code Observable} runs asynchronously
+     * @throws NullPointerException if {@code onNext} or {@code onError} or {@code onComplete} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/subscribe.html">ReactiveX operators documentation: Subscribe</a>
      */
     @CheckReturnValue
@@ -9733,10 +9232,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code groupBy} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param keySelector
-     *            a function that extracts the key for each item
-     * @param <K>
-     *            the key type
+     * @param keySelector a function that extracts the key for each item
+     * @param <K>         the key type
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code keySelector} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/groupby.html">ReactiveX operators documentation: GroupBy</a>
@@ -9775,13 +9272,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code groupBy} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param keySelector
-     *            a function that extracts the key for each item
-     * @param <K>
-     *            the key type
-     * @param delayError
-     *            if {@code true}, the exception from the current {@code Observable} is delayed in each group until that specific group emitted
-     *            the normal values; if {@code false}, the exception bypasses values in the groups and is reported immediately.
+     * @param keySelector a function that extracts the key for each item
+     * @param <K>         the key type
+     * @param delayError  if {@code true}, the exception from the current {@code Observable} is delayed in each group until that specific group emitted
+     *                    the normal values; if {@code false}, the exception bypasses values in the groups and is reported immediately.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code keySelector} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/groupby.html">ReactiveX operators documentation: GroupBy</a>
@@ -9820,14 +9314,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code groupBy} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param keySelector
-     *            a function that extracts the key for each item
-     * @param valueSelector
-     *            a function that extracts the return element for each item
-     * @param <K>
-     *            the key type
-     * @param <V>
-     *            the element type
+     * @param keySelector   a function that extracts the key for each item
+     * @param valueSelector a function that extracts the return element for each item
+     * @param <K>           the key type
+     * @param <V>           the element type
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code keySelector} or {@code valueSelector} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/groupby.html">ReactiveX operators documentation: GroupBy</a>
@@ -9866,17 +9356,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code groupBy} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param keySelector
-     *            a function that extracts the key for each item
-     * @param valueSelector
-     *            a function that extracts the return element for each item
-     * @param <K>
-     *            the key type
-     * @param <V>
-     *            the element type
-     * @param delayError
-     *            if {@code true}, the exception from the current {@code Observable} is delayed in each group until that specific group emitted
-     *            the normal values; if {@code false}, the exception bypasses values in the groups and is reported immediately.
+     * @param keySelector   a function that extracts the key for each item
+     * @param valueSelector a function that extracts the return element for each item
+     * @param <K>           the key type
+     * @param <V>           the element type
+     * @param delayError    if {@code true}, the exception from the current {@code Observable} is delayed in each group until that specific group emitted
+     *                      the normal values; if {@code false}, the exception bypasses values in the groups and is reported immediately.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code keySelector} or {@code valueSelector} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/groupby.html">ReactiveX operators documentation: GroupBy</a>
@@ -9915,21 +9400,15 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code groupBy} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param keySelector
-     *            a function that extracts the key for each item
-     * @param valueSelector
-     *            a function that extracts the return element for each item
-     * @param delayError
-     *            if {@code true}, the exception from the current {@code Observable} is delayed in each group until that specific group emitted
-     *            the normal values; if {@code false}, the exception bypasses values in the groups and is reported immediately.
-     * @param bufferSize
-     *            the hint for how many {@code GroupedObservable}s and element in each {@code GroupedObservable} should be buffered
-     * @param <K>
-     *            the key type
-     * @param <V>
-     *            the element type
+     * @param keySelector   a function that extracts the key for each item
+     * @param valueSelector a function that extracts the return element for each item
+     * @param delayError    if {@code true}, the exception from the current {@code Observable} is delayed in each group until that specific group emitted
+     *                      the normal values; if {@code false}, the exception bypasses values in the groups and is reported immediately.
+     * @param bufferSize    the hint for how many {@code GroupedObservable}s and element in each {@code GroupedObservable} should be buffered
+     * @param <K>           the key type
+     * @param <V>           the element type
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code keySelector} or {@code valueSelector} is {@code null}
+     * @throws NullPointerException     if {@code keySelector} or {@code valueSelector} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/groupby.html">ReactiveX operators documentation: GroupBy</a>
      */
@@ -9958,21 +9437,17 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code groupJoin} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <TRight> the value type of the right {@code ObservableSource} source
-     * @param <TLeftEnd> the element type of the left duration {@code ObservableSource}s
-     * @param <TRightEnd> the element type of the right duration {@code ObservableSource}s
-     * @param <R> the result type
-     * @param other
-     *            the other {@code ObservableSource} to correlate items from the current {@code Observable} with
-     * @param leftEnd
-     *            a function that returns an {@code ObservableSource} whose emissions indicate the duration of the values of
-     *            the current {@code Observable}
-     * @param rightEnd
-     *            a function that returns an {@code ObservableSource} whose emissions indicate the duration of the values of
-     *            the {@code right} {@code ObservableSource}
-     * @param resultSelector
-     *            a function that takes an item emitted by each {@code ObservableSource} and returns the value to be emitted
-     *            by the resulting {@code Observable}
+     * @param <TRight>       the value type of the right {@code ObservableSource} source
+     * @param <TLeftEnd>     the element type of the left duration {@code ObservableSource}s
+     * @param <TRightEnd>    the element type of the right duration {@code ObservableSource}s
+     * @param <R>            the result type
+     * @param other          the other {@code ObservableSource} to correlate items from the current {@code Observable} with
+     * @param leftEnd        a function that returns an {@code ObservableSource} whose emissions indicate the duration of the values of
+     *                       the current {@code Observable}
+     * @param rightEnd       a function that returns an {@code ObservableSource} whose emissions indicate the duration of the values of
+     *                       the {@code right} {@code ObservableSource}
+     * @param resultSelector a function that takes an item emitted by each {@code ObservableSource} and returns the value to be emitted
+     *                       by the resulting {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code other}, {@code leftEnd}, {@code rightEnd} or {@code resultSelector} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/join.html">ReactiveX operators documentation: Join</a>
@@ -10006,8 +9481,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code hide} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @return the new {@code Observable} instance
      *
+     * @return the new {@code Observable} instance
      * @since 2.0
      */
     @CheckReturnValue
@@ -10070,21 +9545,17 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code join} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <TRight> the value type of the right {@code ObservableSource} source
-     * @param <TLeftEnd> the element type of the left duration {@code ObservableSource}s
-     * @param <TRightEnd> the element type of the right duration {@code ObservableSource}s
-     * @param <R> the result type
-     * @param other
-     *            the second {@code ObservableSource} to join items from
-     * @param leftEnd
-     *            a function to select a duration for each item emitted by the current {@code Observable}, used to
-     *            determine overlap
-     * @param rightEnd
-     *            a function to select a duration for each item emitted by the {@code right} {@code ObservableSource}, used to
-     *            determine overlap
-     * @param resultSelector
-     *            a function that computes an item to be emitted by the resulting {@code Observable} for any two
-     *            overlapping items emitted by the two {@code ObservableSource}s
+     * @param <TRight>       the value type of the right {@code ObservableSource} source
+     * @param <TLeftEnd>     the element type of the left duration {@code ObservableSource}s
+     * @param <TRightEnd>    the element type of the right duration {@code ObservableSource}s
+     * @param <R>            the result type
+     * @param other          the second {@code ObservableSource} to join items from
+     * @param leftEnd        a function to select a duration for each item emitted by the current {@code Observable}, used to
+     *                       determine overlap
+     * @param rightEnd       a function to select a duration for each item emitted by the {@code right} {@code ObservableSource}, used to
+     *                       determine overlap
+     * @param resultSelector a function that computes an item to be emitted by the resulting {@code Observable} for any two
+     *                       overlapping items emitted by the two {@code ObservableSource}s
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code other}, {@code leftEnd}, {@code rightEnd} or {@code resultSelector} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/join.html">ReactiveX operators documentation: Join</a>
@@ -10136,8 +9607,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code last} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param defaultItem
-     *            the default item to emit if the current {@code Observable} is empty
+     * @param defaultItem the default item to emit if the current {@code Observable} is empty
      * @return the new {@code Single} instance
      * @throws NullPointerException if {@code defaultItem} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/last.html">ReactiveX operators documentation: Last</a>
@@ -10304,7 +9774,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  {@code ObservableOperator} may use a {@code Scheduler} to support its own asynchronous behavior.</dd>
      * </dl>
      *
-     * @param <R> the output value type
+     * @param <R>    the output value type
      * @param lifter the {@code ObservableOperator} that receives the downstream's {@code Observer} and should return
      *               an {@code Observer} with custom behavior to be used as the consumer for the current
      *               {@code Observable}.
@@ -10331,9 +9801,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code map} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R> the output type
-     * @param mapper
-     *            a function to apply to each item emitted by the current {@code Observable}
+     * @param <R>    the output type
+     * @param mapper a function to apply to each item emitted by the current {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code mapper} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/map.html">ReactiveX operators documentation: Map</a>
@@ -10380,8 +9849,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code mergeWith} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param other
-     *            an {@code ObservableSource} to be merged
+     * @param other an {@code ObservableSource} to be merged
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code other} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/merge.html">ReactiveX operators documentation: Merge</a>
@@ -10406,6 +9874,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code mergeWith} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.1.10 - experimental
+     *
      * @param other the {@code SingleSource} whose success value to merge with
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code other} is {@code null}
@@ -10432,6 +9901,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code mergeWith} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.1.10 - experimental
+     *
      * @param other the {@code MaybeSource} which provides a success value to merge with or completes
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code other} is {@code null}
@@ -10455,6 +9925,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code mergeWith} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.1.10 - experimental
+     *
      * @param other the {@code CompletableSource} to await for completion
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code other} is {@code null}
@@ -10488,8 +9959,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      * <p>"Island size" indicates how large chunks the unbounded buffer allocates to store the excess elements waiting to be consumed
      * on the other side of the asynchronous boundary.
      *
-     * @param scheduler
-     *            the {@code Scheduler} to notify {@link Observer}s on
+     * @param scheduler the {@code Scheduler} to notify {@link Observer}s on
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/observeon.html">ReactiveX operators documentation: ObserveOn</a>
@@ -10523,12 +9993,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      * <p>"Island size" indicates how large chunks the unbounded buffer allocates to store the excess elements waiting to be consumed
      * on the other side of the asynchronous boundary.
      *
-     * @param scheduler
-     *            the {@code Scheduler} to notify {@link Observer}s on
-     * @param delayError
-     *            indicates if the {@code onError} notification may not cut ahead of {@code onNext} notification on the other side of the
-     *            scheduling boundary. If {@code true}, a sequence ending in {@code onError} will be replayed in the same order as was received
-     *            from the current {@code Observable}
+     * @param scheduler  the {@code Scheduler} to notify {@link Observer}s on
+     * @param delayError indicates if the {@code onError} notification may not cut ahead of {@code onNext} notification on the other side of the
+     *                   scheduling boundary. If {@code true}, a sequence ending in {@code onError} will be replayed in the same order as was received
+     *                   from the current {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/observeon.html">ReactiveX operators documentation: ObserveOn</a>
@@ -10562,15 +10030,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      * <p>"Island size" indicates how large chunks the unbounded buffer allocates to store the excess elements waiting to be consumed
      * on the other side of the asynchronous boundary. Values below 16 are not recommended in performance sensitive scenarios.
      *
-     * @param scheduler
-     *            the {@code Scheduler} to notify {@link Observer}s on
-     * @param delayError
-     *            indicates if the {@code onError} notification may not cut ahead of {@code onNext} notification on the other side of the
-     *            scheduling boundary. If {@code true} a sequence ending in {@code onError} will be replayed in the same order as was received
-     *            from upstream
+     * @param scheduler  the {@code Scheduler} to notify {@link Observer}s on
+     * @param delayError indicates if the {@code onError} notification may not cut ahead of {@code onNext} notification on the other side of the
+     *                   scheduling boundary. If {@code true} a sequence ending in {@code onError} will be replayed in the same order as was received
+     *                   from upstream
      * @param bufferSize the size of the buffer.
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code scheduler} is {@code null}
+     * @throws NullPointerException     if {@code scheduler} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/observeon.html">ReactiveX operators documentation: ObserveOn</a>
      * @see <a href="http://www.grahamlea.com/2014/07/rxjava-threading-examples/">RxJava Threading Examples</a>
@@ -10597,9 +10063,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code ofType} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U> the output type
-     * @param clazz
-     *            the class type to filter the items emitted by the current {@code Observable}
+     * @param <U>   the output type
+     * @param clazz the class type to filter the items emitted by the current {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code clazz} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/filter.html">ReactiveX operators documentation: Filter</a>
@@ -10621,6 +10086,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code onErrorComplete} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
+     *
      * @return the new {@code Observable} instance
      * @since 3.0.0
      */
@@ -10640,8 +10106,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code onErrorComplete} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
+     *
      * @param predicate the predicate to call when an {@link Throwable} is emitted which should return {@code true}
-     * if the {@code Throwable} should be swallowed and replaced with an {@code onComplete}.
+     *                  if the {@code Throwable} should be swallowed and replaced with an {@code onComplete}.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code predicate} is {@code null}
      * @since 3.0.0
@@ -10678,9 +10145,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code onErrorResumeNext} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param fallbackSupplier
-     *            a function that returns an {@code ObservableSource} that will take over if the current {@code Observable} encounters
-     *            an error
+     * @param fallbackSupplier a function that returns an {@code ObservableSource} that will take over if the current {@code Observable} encounters
+     *                         an error
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code fallbackSupplier} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/catch.html">ReactiveX operators documentation: Catch</a>
@@ -10716,9 +10182,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code onErrorResumeWith} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param fallback
-     *            the next {@code ObservableSource} source that will take over if the current {@code Observable} encounters
-     *            an error
+     * @param fallback the next {@code ObservableSource} source that will take over if the current {@code Observable} encounters
+     *                 an error
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code fallback} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/catch.html">ReactiveX operators documentation: Catch</a>
@@ -10751,9 +10216,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code onErrorReturn} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param itemSupplier
-     *            a function that returns a single value that will be emitted along with a regular {@code onComplete} in case
-     *            the current {@code Observable} signals an {@code onError} event
+     * @param itemSupplier a function that returns a single value that will be emitted along with a regular {@code onComplete} in case
+     *                     the current {@code Observable} signals an {@code onError} event
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code itemSupplier} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/catch.html">ReactiveX operators documentation: Catch</a>
@@ -10785,9 +10249,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code onErrorReturnItem} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param item
-     *            the value that is emitted along with a regular {@code onComplete} in case the current
-     *            {@code Observable} signals an exception
+     * @param item the value that is emitted along with a regular {@code onComplete} in case the current
+     *             {@code Observable} signals an exception
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code item} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/catch.html">ReactiveX operators documentation: Catch</a>
@@ -10809,6 +10272,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code onTerminateDetach} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
+     *
      * @return the new {@code Observable} instance
      * the sequence is terminated or downstream calls {@code dispose()}
      * @since 2.0
@@ -10851,12 +10315,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code publish} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R>
-     *            the type of items emitted by the resulting {@code Observable}
-     * @param selector
-     *            a function that can use the multicasted source sequence as many times as needed, without
-     *            causing multiple subscriptions to the source sequence. {@link Observer}s to the given source will
-     *            receive all notifications of the source from the time of the subscription forward.
+     * @param <R>      the type of items emitted by the resulting {@code Observable}
+     * @param selector a function that can use the multicasted source sequence as many times as needed, without
+     *                 causing multiple subscriptions to the source sequence. {@link Observer}s to the given source will
+     *                 receive all notifications of the source from the time of the subscription forward.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code selector} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/publish.html">ReactiveX operators documentation: Publish</a>
@@ -10889,9 +10351,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code reduce} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param reducer
-     *            an accumulator function to be invoked on each item emitted by the current {@code Observable}, whose
-     *            result will be used in the next accumulator call
+     * @param reducer an accumulator function to be invoked on each item emitted by the current {@code Observable}, whose
+     *                result will be used in the next accumulator call
      * @return the new {@code Maybe} instance
      * @throws NullPointerException if {@code reducer} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/reduce.html">ReactiveX operators documentation: Reduce</a>
@@ -10943,12 +10404,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code reduce} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R> the accumulator and output value type
-     * @param seed
-     *            the initial (seed) accumulator value
-     * @param reducer
-     *            an accumulator function to be invoked on each item emitted by the current {@code Observable}, the
-     *            result of which will be used in the next accumulator call
+     * @param <R>     the accumulator and output value type
+     * @param seed    the initial (seed) accumulator value
+     * @param reducer an accumulator function to be invoked on each item emitted by the current {@code Observable}, the
+     *                result of which will be used in the next accumulator call
      * @return the new {@code Single} instance
      * @throws NullPointerException if {@code seed} or {@code reducer} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/reduce.html">ReactiveX operators documentation: Reduce</a>
@@ -10985,12 +10444,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code reduceWith} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R> the accumulator and output value type
-     * @param seedSupplier
-     *            the {@link Supplier} that provides the initial (seed) accumulator value for each individual {@link Observer}
-     * @param reducer
-     *            an accumulator function to be invoked on each item emitted by the current {@code Observable}, the
-     *            result of which will be used in the next accumulator call
+     * @param <R>          the accumulator and output value type
+     * @param seedSupplier the {@link Supplier} that provides the initial (seed) accumulator value for each individual {@link Observer}
+     * @param reducer      an accumulator function to be invoked on each item emitted by the current {@code Observable}, the
+     *                     result of which will be used in the next accumulator call
      * @return the new {@code Single} instance
      * @throws NullPointerException if {@code seedSupplier} or {@code reducer} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/reduce.html">ReactiveX operators documentation: Reduce</a>
@@ -11034,12 +10491,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code repeat} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param times
-     *            the number of times the current {@code Observable} items are repeated, a count of 0 will yield an empty
-     *            sequence
+     * @param times the number of times the current {@code Observable} items are repeated, a count of 0 will yield an empty
+     *              sequence
      * @return the new {@code Observable} instance
-     * @throws IllegalArgumentException
-     *             if {@code times} is negative
+     * @throws IllegalArgumentException if {@code times} is negative
      * @see <a href="http://reactivex.io/documentation/operators/repeat.html">ReactiveX operators documentation: Repeat</a>
      */
     @CheckReturnValue
@@ -11065,13 +10520,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code repeatUntil} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param stop
-     *                a boolean supplier that is called when the current {@code Observable} completes;
-     *                if it returns {@code true}, the returned {@code Observable} completes; if it returns {@code false},
-     *                the current {@code Observable} is resubscribed.
+     * @param stop a boolean supplier that is called when the current {@code Observable} completes;
+     *             if it returns {@code true}, the returned {@code Observable} completes; if it returns {@code false},
+     *             the current {@code Observable} is resubscribed.
      * @return the new {@code Observable} instance
-     * @throws NullPointerException
-     *             if {@code stop} is {@code null}
+     * @throws NullPointerException if {@code stop} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/repeat.html">ReactiveX operators documentation: Repeat</a>
      */
     @CheckReturnValue
@@ -11096,8 +10549,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code repeatWhen} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param handler
-     *            receives an {@code ObservableSource} of notifications with which a user can complete or error, aborting the repeat.
+     * @param handler receives an {@code ObservableSource} of notifications with which a user can complete or error, aborting the repeat.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code handler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/repeat.html">ReactiveX operators documentation: Repeat</a>
@@ -11142,11 +10594,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code replay} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R>
-     *            the type of items emitted by the resulting {@code Observable}
-     * @param selector
-     *            the selector function, which can use the multicasted sequence as many times as needed, without
-     *            causing multiple subscriptions to the current {@code Observable}
+     * @param <R>      the type of items emitted by the resulting {@code Observable}
+     * @param selector the selector function, which can use the multicasted sequence as many times as needed, without
+     *                 causing multiple subscriptions to the current {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code selector} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/replay.html">ReactiveX operators documentation: Replay</a>
@@ -11173,15 +10623,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code replay} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R>
-     *            the type of items emitted by the resulting {@code Observable}
-     * @param selector
-     *            the selector function, which can use the multicasted sequence as many times as needed, without
-     *            causing multiple subscriptions to the current {@code Observable}
-     * @param bufferSize
-     *            the buffer size that limits the number of items the connectable {@code Observable} can replay
+     * @param <R>        the type of items emitted by the resulting {@code Observable}
+     * @param selector   the selector function, which can use the multicasted sequence as many times as needed, without
+     *                   causing multiple subscriptions to the current {@code Observable}
+     * @param bufferSize the buffer size that limits the number of items the connectable {@code Observable} can replay
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code selector} is {@code null}
+     * @throws NullPointerException     if {@code selector} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/replay.html">ReactiveX operators documentation: Replay</a>
      * @see #replay(Function, int, boolean)
@@ -11209,18 +10656,14 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code replay} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R>
-     *            the type of items emitted by the resulting {@code Observable}
-     * @param selector
-     *            the selector function, which can use the multicasted sequence as many times as needed, without
-     *            causing multiple subscriptions to the current {@code Observable}
-     * @param bufferSize
-     *            the buffer size that limits the number of items the connectable {@code Observable} can replay
-     * @param eagerTruncate
-     *            if {@code true}, whenever the internal buffer is truncated to the given bufferSize, the
-     *            oldest item will be guaranteed dereferenced, thus avoiding unexpected retention
+     * @param <R>           the type of items emitted by the resulting {@code Observable}
+     * @param selector      the selector function, which can use the multicasted sequence as many times as needed, without
+     *                      causing multiple subscriptions to the current {@code Observable}
+     * @param bufferSize    the buffer size that limits the number of items the connectable {@code Observable} can replay
+     * @param eagerTruncate if {@code true}, whenever the internal buffer is truncated to the given bufferSize, the
+     *                      oldest item will be guaranteed dereferenced, thus avoiding unexpected retention
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code selector} is {@code null}
+     * @throws NullPointerException     if {@code selector} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/replay.html">ReactiveX operators documentation: Replay</a>
      */
@@ -11247,19 +10690,14 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code replay} operates by default on the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R>
-     *            the type of items emitted by the resulting {@code Observable}
-     * @param selector
-     *            a selector function, which can use the multicasted sequence as many times as needed, without
-     *            causing multiple subscriptions to the current {@code Observable}
-     * @param bufferSize
-     *            the buffer size that limits the number of items the connectable {@code Observable} can replay
-     * @param time
-     *            the duration of the window in which the replayed items must have been emitted
-     * @param unit
-     *            the time unit of {@code time}
+     * @param <R>        the type of items emitted by the resulting {@code Observable}
+     * @param selector   a selector function, which can use the multicasted sequence as many times as needed, without
+     *                   causing multiple subscriptions to the current {@code Observable}
+     * @param bufferSize the buffer size that limits the number of items the connectable {@code Observable} can replay
+     * @param time       the duration of the window in which the replayed items must have been emitted
+     * @param unit       the time unit of {@code time}
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code selector} or {@code unit} is {@code null}
+     * @throws NullPointerException     if {@code selector} or {@code unit} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/replay.html">ReactiveX operators documentation: Replay</a>
      */
@@ -11284,23 +10722,16 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param <R>
-     *            the type of items emitted by the resulting {@code Observable}
-     * @param selector
-     *            a selector function, which can use the multicasted sequence as many times as needed, without
-     *            causing multiple subscriptions to the current {@code Observable}
-     * @param bufferSize
-     *            the buffer size that limits the number of items the connectable {@code Observable} can replay
-     * @param time
-     *            the duration of the window in which the replayed items must have been emitted
-     * @param unit
-     *            the time unit of {@code time}
-     * @param scheduler
-     *            the {@code Scheduler} that is the time source for the window
+     * @param <R>        the type of items emitted by the resulting {@code Observable}
+     * @param selector   a selector function, which can use the multicasted sequence as many times as needed, without
+     *                   causing multiple subscriptions to the current {@code Observable}
+     * @param bufferSize the buffer size that limits the number of items the connectable {@code Observable} can replay
+     * @param time       the duration of the window in which the replayed items must have been emitted
+     * @param unit       the time unit of {@code time}
+     * @param scheduler  the {@code Scheduler} that is the time source for the window
      * @return the new {@code Observable} instance
-     * @throws IllegalArgumentException
-     *             if {@code bufferSize} is non-positive
-     * @throws NullPointerException if {@code selector}, {@code unit} or {@code scheduler} is {@code null}
+     * @throws IllegalArgumentException if {@code bufferSize} is non-positive
+     * @throws NullPointerException     if {@code selector}, {@code unit} or {@code scheduler} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/replay.html">ReactiveX operators documentation: Replay</a>
      * @see #replay(Function, int, long, TimeUnit, Scheduler, boolean)
@@ -11331,26 +10762,18 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param <R>
-     *            the type of items emitted by the resulting {@code Observable}
-     * @param selector
-     *            a selector function, which can use the multicasted sequence as many times as needed, without
-     *            causing multiple subscriptions to the current {@code Observable}
-     * @param bufferSize
-     *            the buffer size that limits the number of items the connectable {@code Observable} can replay
-     * @param time
-     *            the duration of the window in which the replayed items must have been emitted
-     * @param unit
-     *            the time unit of {@code time}
-     * @param scheduler
-     *            the {@code Scheduler} that is the time source for the window
-     * @param eagerTruncate
-     *            if {@code true}, whenever the internal buffer is truncated to the given bufferSize/age, the
-     *            oldest item will be guaranteed dereferenced, thus avoiding unexpected retention
+     * @param <R>           the type of items emitted by the resulting {@code Observable}
+     * @param selector      a selector function, which can use the multicasted sequence as many times as needed, without
+     *                      causing multiple subscriptions to the current {@code Observable}
+     * @param bufferSize    the buffer size that limits the number of items the connectable {@code Observable} can replay
+     * @param time          the duration of the window in which the replayed items must have been emitted
+     * @param unit          the time unit of {@code time}
+     * @param scheduler     the {@code Scheduler} that is the time source for the window
+     * @param eagerTruncate if {@code true}, whenever the internal buffer is truncated to the given bufferSize/age, the
+     *                      oldest item will be guaranteed dereferenced, thus avoiding unexpected retention
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code selector}, {@code unit} or {@code scheduler} is {@code null}
-     * @throws IllegalArgumentException
-     *             if {@code bufferSize} is non-positive
+     * @throws NullPointerException     if {@code selector}, {@code unit} or {@code scheduler} is {@code null}
+     * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/replay.html">ReactiveX operators documentation: Replay</a>
      */
     @CheckReturnValue
@@ -11376,15 +10799,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code replay} operates by default on the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R>
-     *            the type of items emitted by the resulting {@code Observable}
-     * @param selector
-     *            a selector function, which can use the multicasted sequence as many times as needed, without
-     *            causing multiple subscriptions to the current {@code Observable}
-     * @param time
-     *            the duration of the window in which the replayed items must have been emitted
-     * @param unit
-     *            the time unit of {@code time}
+     * @param <R>      the type of items emitted by the resulting {@code Observable}
+     * @param selector a selector function, which can use the multicasted sequence as many times as needed, without
+     *                 causing multiple subscriptions to the current {@code Observable}
+     * @param time     the duration of the window in which the replayed items must have been emitted
+     * @param unit     the time unit of {@code time}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code selector} or {@code unit} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/replay.html">ReactiveX operators documentation: Replay</a>
@@ -11407,17 +10826,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param <R>
-     *            the type of items emitted by the resulting {@code Observable}
-     * @param selector
-     *            a selector function, which can use the multicasted sequence as many times as needed, without
-     *            causing multiple subscriptions to the current {@code Observable}
-     * @param time
-     *            the duration of the window in which the replayed items must have been emitted
-     * @param unit
-     *            the time unit of {@code time}
-     * @param scheduler
-     *            the scheduler that is the time source for the window
+     * @param <R>       the type of items emitted by the resulting {@code Observable}
+     * @param selector  a selector function, which can use the multicasted sequence as many times as needed, without
+     *                  causing multiple subscriptions to the current {@code Observable}
+     * @param time      the duration of the window in which the replayed items must have been emitted
+     * @param unit      the time unit of {@code time}
+     * @param scheduler the scheduler that is the time source for the window
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code selector}, {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/replay.html">ReactiveX operators documentation: Replay</a>
@@ -11444,20 +10858,14 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param <R>
-     *            the type of items emitted by the resulting {@code Observable}
-     * @param selector
-     *            a selector function, which can use the multicasted sequence as many times as needed, without
-     *            causing multiple subscriptions to the current {@code Observable}
-     * @param time
-     *            the duration of the window in which the replayed items must have been emitted
-     * @param unit
-     *            the time unit of {@code time}
-     * @param scheduler
-     *            the scheduler that is the time source for the window
-     * @param eagerTruncate
-     *            if {@code true}, whenever the internal buffer is truncated to the given age, the
-     *            oldest item will be guaranteed dereferenced, thus avoiding unexpected retention
+     * @param <R>           the type of items emitted by the resulting {@code Observable}
+     * @param selector      a selector function, which can use the multicasted sequence as many times as needed, without
+     *                      causing multiple subscriptions to the current {@code Observable}
+     * @param time          the duration of the window in which the replayed items must have been emitted
+     * @param unit          the time unit of {@code time}
+     * @param scheduler     the scheduler that is the time source for the window
+     * @param eagerTruncate if {@code true}, whenever the internal buffer is truncated to the given age, the
+     *                      oldest item will be guaranteed dereferenced, thus avoiding unexpected retention
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code selector}, {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/replay.html">ReactiveX operators documentation: Replay</a>
@@ -11489,8 +10897,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code replay} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param bufferSize
-     *            the buffer size that limits the number of items that can be replayed
+     * @param bufferSize the buffer size that limits the number of items that can be replayed
      * @return the new {@code ConnectableObservable} instance
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/replay.html">ReactiveX operators documentation: Replay</a>
@@ -11520,11 +10927,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code replay} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param bufferSize
-     *            the buffer size that limits the number of items that can be replayed
-     * @param eagerTruncate
-     *            if {@code true}, whenever the internal buffer is truncated to the given bufferSize/age, the
-     *            oldest item will be guaranteed dereferenced, thus avoiding unexpected retention
+     * @param bufferSize    the buffer size that limits the number of items that can be replayed
+     * @param eagerTruncate if {@code true}, whenever the internal buffer is truncated to the given bufferSize/age, the
+     *                      oldest item will be guaranteed dereferenced, thus avoiding unexpected retention
      * @return the new {@code ConnectableObservable} instance
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/replay.html">ReactiveX operators documentation: Replay</a>
@@ -11554,14 +10959,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code replay} operates by default on the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param bufferSize
-     *            the buffer size that limits the number of items that can be replayed
-     * @param time
-     *            the duration of the window in which the replayed items must have been emitted
-     * @param unit
-     *            the time unit of {@code time}
+     * @param bufferSize the buffer size that limits the number of items that can be replayed
+     * @param time       the duration of the window in which the replayed items must have been emitted
+     * @param unit       the time unit of {@code time}
      * @return the new {@code ConnectableObservable} instance
-     * @throws NullPointerException if {@code unit} is {@code null}
+     * @throws NullPointerException     if {@code unit} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/replay.html">ReactiveX operators documentation: Replay</a>
      * @see #replay(int, long, TimeUnit, Scheduler, boolean)
@@ -11590,18 +10992,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param bufferSize
-     *            the buffer size that limits the number of items that can be replayed
-     * @param time
-     *            the duration of the window in which the replayed items must have been emitted
-     * @param unit
-     *            the time unit of {@code time}
-     * @param scheduler
-     *            the scheduler that is used as a time source for the window
+     * @param bufferSize the buffer size that limits the number of items that can be replayed
+     * @param time       the duration of the window in which the replayed items must have been emitted
+     * @param unit       the time unit of {@code time}
+     * @param scheduler  the scheduler that is used as a time source for the window
      * @return the new {@code ConnectableObservable} instance
-     * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
-     * @throws IllegalArgumentException
-     *             if {@code bufferSize} is non-positive
+     * @throws NullPointerException     if {@code unit} or {@code scheduler} is {@code null}
+     * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/replay.html">ReactiveX operators documentation: Replay</a>
      * @see #replay(int, long, TimeUnit, Scheduler, boolean)
      */
@@ -11632,21 +11029,15 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param bufferSize
-     *            the buffer size that limits the number of items that can be replayed
-     * @param time
-     *            the duration of the window in which the replayed items must have been emitted
-     * @param unit
-     *            the time unit of {@code time}
-     * @param scheduler
-     *            the scheduler that is used as a time source for the window
+     * @param bufferSize    the buffer size that limits the number of items that can be replayed
+     * @param time          the duration of the window in which the replayed items must have been emitted
+     * @param unit          the time unit of {@code time}
+     * @param scheduler     the scheduler that is used as a time source for the window
+     * @param eagerTruncate if {@code true}, whenever the internal buffer is truncated to the given bufferSize/age, the
+     *                      oldest item will be guaranteed dereferenced, thus avoiding unexpected retention
      * @return the new {@code ConnectableObservable} instance
-     * @param eagerTruncate
-     *            if {@code true}, whenever the internal buffer is truncated to the given bufferSize/age, the
-     *            oldest item will be guaranteed dereferenced, thus avoiding unexpected retention
-     * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
-     * @throws IllegalArgumentException
-     *             if {@code bufferSize} is non-positive
+     * @throws NullPointerException     if {@code unit} or {@code scheduler} is {@code null}
+     * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/replay.html">ReactiveX operators documentation: Replay</a>
      */
     @CheckReturnValue
@@ -11671,10 +11062,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code replay} operates by default on the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param time
-     *            the duration of the window in which the replayed items must have been emitted
-     * @param unit
-     *            the time unit of {@code time}
+     * @param time the duration of the window in which the replayed items must have been emitted
+     * @param unit the time unit of {@code time}
      * @return the new {@code ConnectableObservable} instance
      * @throws NullPointerException if {@code unit} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/replay.html">ReactiveX operators documentation: Replay</a>
@@ -11701,12 +11090,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param time
-     *            the duration of the window in which the replayed items must have been emitted
-     * @param unit
-     *            the time unit of {@code time}
-     * @param scheduler
-     *            the {@code Scheduler} that is the time source for the window
+     * @param time      the duration of the window in which the replayed items must have been emitted
+     * @param unit      the time unit of {@code time}
+     * @param scheduler the {@code Scheduler} that is the time source for the window
      * @return the new {@code ConnectableObservable} instance
      * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/replay.html">ReactiveX operators documentation: Replay</a>
@@ -11736,15 +11122,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param time
-     *            the duration of the window in which the replayed items must have been emitted
-     * @param unit
-     *            the time unit of {@code time}
-     * @param scheduler
-     *            the {@code Scheduler} that is the time source for the window
-     * @param eagerTruncate
-     *            if {@code true}, whenever the internal buffer is truncated to the given bufferSize/age, the
-     *            oldest item will be guaranteed dereferenced, thus avoiding unexpected retention
+     * @param time          the duration of the window in which the replayed items must have been emitted
+     * @param unit          the time unit of {@code time}
+     * @param scheduler     the {@code Scheduler} that is the time source for the window
+     * @param eagerTruncate if {@code true}, whenever the internal buffer is truncated to the given bufferSize/age, the
+     *                      oldest item will be guaranteed dereferenced, thus avoiding unexpected retention
      * @return the new {@code ConnectableObservable} instance
      * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/replay.html">ReactiveX operators documentation: Replay</a>
@@ -11796,9 +11178,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code retry} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param predicate
-     *            the predicate that determines if a resubscription may happen in case of a specific exception
-     *            and retry count
+     * @param predicate the predicate that determines if a resubscription may happen in case of a specific exception
+     *                  and retry count
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code predicate} is {@code null}
      * @see #retry()
@@ -11832,8 +11213,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code retry} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param times
-     *            the number of times to resubscribe if the current {@code Observable} fails
+     * @param times the number of times to resubscribe if the current {@code Observable} fails
      * @return the new {@code Observable} instance
      * @throws IllegalArgumentException if {@code times} is negative
      * @see <a href="http://reactivex.io/documentation/operators/retry.html">ReactiveX operators documentation: Retry</a>
@@ -11853,11 +11233,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code retry} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param times the number of times to resubscribe if the current {@code Observable} fails
+     *
+     * @param times     the number of times to resubscribe if the current {@code Observable} fails
      * @param predicate the predicate called with the failure {@link Throwable} and should return {@code true} to trigger a retry.
-     * @throws NullPointerException if {@code predicate} is {@code null}
-     * @throws IllegalArgumentException if {@code times} is negative
      * @return the new {@code Observable} instance
+     * @throws NullPointerException     if {@code predicate} is {@code null}
+     * @throws IllegalArgumentException if {@code times} is negative
      */
     @CheckReturnValue
     @SchedulerSupport(SchedulerSupport.NONE)
@@ -11899,6 +11280,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code retryUntil} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
+     *
      * @param stop the function that should return {@code true} to stop retrying
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code stop} is {@code null}
@@ -11922,7 +11304,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      * <img width="640" height="430" src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/retryWhen.f.v3.png" alt="">
      * <p>
      * Example:
-     *
+     * <p>
      * This retries 3 times, each time incrementing the number of seconds it waits.
      *
      * <pre><code>
@@ -11936,7 +11318,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *      });
      *  }).blockingForEach(System.out::println);
      * </code></pre>
-     *
+     * <p>
      * Output is:
      *
      * <pre> {@code
@@ -11978,9 +11360,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code retryWhen} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param handler
-     *            receives an {@code Observable} of notifications with which a user can complete or error, aborting the
-     *            retry
+     * @param handler receives an {@code Observable} of notifications with which a user can complete or error, aborting the
+     *                retry
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code handler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/retry.html">ReactiveX operators documentation: Retry</a>
@@ -12003,6 +11384,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code safeSubscribe} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
+     *
      * @param observer the incoming {@code Observer} instance
      * @throws NullPointerException if {@code observer} is {@code null}
      */
@@ -12027,10 +11409,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code sample} operates by default on the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param period
-     *            the sampling rate
-     * @param unit
-     *            the {@link TimeUnit} in which {@code period} is defined
+     * @param period the sampling rate
+     * @param unit   the {@link TimeUnit} in which {@code period} is defined
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/sample.html">ReactiveX operators documentation: Sample</a>
@@ -12054,14 +11434,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      * </dl>
      *
      * <p>History: 2.0.5 - experimental
-     * @param period
-     *            the sampling rate
-     * @param unit
-     *            the {@link TimeUnit} in which {@code period} is defined
-     * @param emitLast
-     *            if {@code true} and the upstream completes while there is still an unsampled item available,
-     *            that item is emitted to downstream before completion
-     *            if {@code false}, an unsampled last item is ignored.
+     *
+     * @param period   the sampling rate
+     * @param unit     the {@link TimeUnit} in which {@code period} is defined
+     * @param emitLast if {@code true} and the upstream completes while there is still an unsampled item available,
+     *                 that item is emitted to downstream before completion
+     *                 if {@code false}, an unsampled last item is ignored.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/sample.html">ReactiveX operators documentation: Sample</a>
@@ -12085,12 +11463,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@code Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param period
-     *            the sampling rate
-     * @param unit
-     *            the {@link TimeUnit} in which {@code period} is defined
-     * @param scheduler
-     *            the {@code Scheduler} to use when sampling
+     * @param period    the sampling rate
+     * @param unit      the {@link TimeUnit} in which {@code period} is defined
+     * @param scheduler the {@code Scheduler} to use when sampling
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/sample.html">ReactiveX operators documentation: Sample</a>
@@ -12108,7 +11483,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
     /**
      * Returns an {@code Observable} that emits the most recently emitted item (if any) emitted by the current {@code Observable}
      * within periodic time intervals, where the intervals are defined on a particular {@link Scheduler}
-     *  and optionally emit the very last upstream item when the upstream completes.
+     * and optionally emit the very last upstream item when the upstream completes.
      * <p>
      * <img width="640" height="277" src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/sample.s.emitlast.png" alt="">
      * <dl>
@@ -12117,16 +11492,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      * </dl>
      *
      * <p>History: 2.0.5 - experimental
-     * @param period
-     *            the sampling rate
-     * @param unit
-     *            the {@link TimeUnit} in which {@code period} is defined
-     * @param scheduler
-     *            the {@code Scheduler} to use when sampling
-     * @param emitLast
-     *            if {@code true} and the upstream completes while there is still an unsampled item available,
-     *            that item is emitted to downstream before completion
-     *            if {@code false}, an unsampled last item is ignored.
+     *
+     * @param period    the sampling rate
+     * @param unit      the {@link TimeUnit} in which {@code period} is defined
+     * @param scheduler the {@code Scheduler} to use when sampling
+     * @param emitLast  if {@code true} and the upstream completes while there is still an unsampled item available,
+     *                  that item is emitted to downstream before completion
+     *                  if {@code false}, an unsampled last item is ignored.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/sample.html">ReactiveX operators documentation: Sample</a>
@@ -12153,9 +11525,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code sample} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U> the element type of the sampler {@code ObservableSource}
-     * @param sampler
-     *            the {@code ObservableSource} to use for sampling the current {@code Observable}
+     * @param <U>     the element type of the sampler {@code ObservableSource}
+     * @param sampler the {@code ObservableSource} to use for sampling the current {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code sampler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/sample.html">ReactiveX operators documentation: Sample</a>
@@ -12181,13 +11552,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      * </dl>
      *
      * <p>History: 2.0.5 - experimental
-     * @param <U> the element type of the sampler {@code ObservableSource}
-     * @param sampler
-     *            the {@code ObservableSource} to use for sampling the current {@code Observable}
-     * @param emitLast
-     *            if {@code true} and the upstream completes while there is still an unsampled item available,
-     *            that item is emitted to downstream before completion
-     *            if {@code false}, an unsampled last item is ignored.
+     *
+     * @param <U>      the element type of the sampler {@code ObservableSource}
+     * @param sampler  the {@code ObservableSource} to use for sampling the current {@code Observable}
+     * @param emitLast if {@code true} and the upstream completes while there is still an unsampled item available,
+     *                 that item is emitted to downstream before completion
+     *                 if {@code false}, an unsampled last item is ignored.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code sampler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/sample.html">ReactiveX operators documentation: Sample</a>
@@ -12215,10 +11585,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code scan} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param accumulator
-     *            an accumulator function to be invoked on each item emitted by the current {@code Observable}, whose
-     *            result will be emitted to {@link Observer}s via {@link Observer#onNext onNext} and used in the
-     *            next accumulator call
+     * @param accumulator an accumulator function to be invoked on each item emitted by the current {@code Observable}, whose
+     *                    result will be emitted to {@link Observer}s via {@link Observer#onNext onNext} and used in the
+     *                    next accumulator call
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code accumulator} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/scan.html">ReactiveX operators documentation: Scan</a>
@@ -12262,13 +11631,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code scan} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R> the initial, accumulator and result type
-     * @param initialValue
-     *            the initial (seed) accumulator item
-     * @param accumulator
-     *            an accumulator function to be invoked on each item emitted by the current {@code Observable}, whose
-     *            result will be emitted to {@link Observer}s via {@link Observer#onNext onNext} and used in the
-     *            next accumulator call
+     * @param <R>          the initial, accumulator and result type
+     * @param initialValue the initial (seed) accumulator item
+     * @param accumulator  an accumulator function to be invoked on each item emitted by the current {@code Observable}, whose
+     *                     result will be emitted to {@link Observer}s via {@link Observer#onNext onNext} and used in the
+     *                     next accumulator call
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code initialValue} or {@code accumulator} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/scan.html">ReactiveX operators documentation: Scan</a>
@@ -12298,13 +11665,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code scanWith} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R> the initial, accumulator and result type
-     * @param seedSupplier
-     *            a {@link Supplier} that returns the initial (seed) accumulator item for each individual {@link Observer}
-     * @param accumulator
-     *            an accumulator function to be invoked on each item emitted by the current {@code Observable}, whose
-     *            result will be emitted to {@code Observer}s via {@link Observer#onNext onNext} and used in the
-     *            next accumulator call
+     * @param <R>          the initial, accumulator and result type
+     * @param seedSupplier a {@link Supplier} that returns the initial (seed) accumulator item for each individual {@link Observer}
+     * @param accumulator  an accumulator function to be invoked on each item emitted by the current {@code Observable}, whose
+     *                     result will be emitted to {@code Observer}s via {@link Observer#onNext onNext} and used in the
+     *                     next accumulator call
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code seedSupplier} or {@code accumulator} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/scan.html">ReactiveX operators documentation: Scan</a>
@@ -12399,8 +11764,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code single} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param defaultItem
-     *            a default value to emit if the current {@code Observable} emits no item
+     * @param defaultItem a default value to emit if the current {@code Observable} emits no item
      * @return the new {@code Single} instance
      * @throws NullPointerException if {@code defaultItem} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/first.html">ReactiveX operators documentation: First</a>
@@ -12445,8 +11809,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code skip} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param count
-     *            the number of items to skip
+     * @param count the number of items to skip
      * @return the new {@code Observable} instance
      * @throws IllegalArgumentException if {@code count} is negative
      * @see <a href="http://reactivex.io/documentation/operators/skip.html">ReactiveX operators documentation: Skip</a>
@@ -12475,10 +11838,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  from the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param time
-     *            the length of the time window to skip
-     * @param unit
-     *            the time unit of {@code time}
+     * @param time the length of the time window to skip
+     * @param unit the time unit of {@code time}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/skip.html">ReactiveX operators documentation: Skip</a>
@@ -12500,12 +11861,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@code Scheduler} this operator will use for the timed skipping</dd>
      * </dl>
      *
-     * @param time
-     *            the length of the time window to skip
-     * @param unit
-     *            the time unit of {@code time}
-     * @param scheduler
-     *            the {@code Scheduler} on which the timed wait happens
+     * @param time      the length of the time window to skip
+     * @param unit      the time unit of {@code time}
+     * @param scheduler the {@code Scheduler} on which the timed wait happens
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/skip.html">ReactiveX operators documentation: Skip</a>
@@ -12531,11 +11889,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code skipLast} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param count
-     *            number of items to drop from the end of the source sequence
+     * @param count number of items to drop from the end of the source sequence
      * @return the new {@code Observable} instance
-     * @throws IllegalArgumentException
-     *             if {@code count} is negative
+     * @throws IllegalArgumentException if {@code count} is negative
      * @see <a href="http://reactivex.io/documentation/operators/skiplast.html">ReactiveX operators documentation: SkipLast</a>
      */
     @CheckReturnValue
@@ -12564,10 +11920,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  from the {@code trampoline} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param time
-     *            the length of the time window
-     * @param unit
-     *            the time unit of {@code time}
+     * @param time the length of the time window
+     * @param unit the time unit of {@code time}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/skiplast.html">ReactiveX operators documentation: SkipLast</a>
@@ -12592,13 +11946,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  from the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param time
-     *            the length of the time window
-     * @param unit
-     *            the time unit of {@code time}
-     * @param delayError
-     *            if {@code true}, an exception signaled by the current {@code Observable} is delayed until the regular elements are consumed
-     *            by the downstream; if {@code false}, an exception is immediately signaled and all regular elements dropped
+     * @param time       the length of the time window
+     * @param unit       the time unit of {@code time}
+     * @param delayError if {@code true}, an exception signaled by the current {@code Observable} is delayed until the regular elements are consumed
+     *                   by the downstream; if {@code false}, an exception is immediately signaled and all regular elements dropped
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/skiplast.html">ReactiveX operators documentation: SkipLast</a>
@@ -12622,12 +11973,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use for tracking the current time</dd>
      * </dl>
      *
-     * @param time
-     *            the length of the time window
-     * @param unit
-     *            the time unit of {@code time}
-     * @param scheduler
-     *            the scheduler used as the time source
+     * @param time      the length of the time window
+     * @param unit      the time unit of {@code time}
+     * @param scheduler the scheduler used as the time source
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/skiplast.html">ReactiveX operators documentation: SkipLast</a>
@@ -12651,15 +11999,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use to track the current time</dd>
      * </dl>
      *
-     * @param time
-     *            the length of the time window
-     * @param unit
-     *            the time unit of {@code time}
-     * @param scheduler
-     *            the scheduler used as the time source
-     * @param delayError
-     *            if {@code true}, an exception signaled by the current {@code Observable} is delayed until the regular elements are consumed
-     *            by the downstream; if {@code false}, an exception is immediately signaled and all regular elements dropped
+     * @param time       the length of the time window
+     * @param unit       the time unit of {@code time}
+     * @param scheduler  the scheduler used as the time source
+     * @param delayError if {@code true}, an exception signaled by the current {@code Observable} is delayed until the regular elements are consumed
+     *                   by the downstream; if {@code false}, an exception is immediately signaled and all regular elements dropped
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/skiplast.html">ReactiveX operators documentation: SkipLast</a>
@@ -12683,19 +12027,14 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param time
-     *            the length of the time window
-     * @param unit
-     *            the time unit of {@code time}
-     * @param scheduler
-     *            the scheduler used as the time source
-     * @param delayError
-     *            if {@code true}, an exception signaled by the current {@code Observable} is delayed until the regular elements are consumed
-     *            by the downstream; if {@code false}, an exception is immediately signaled and all regular elements dropped
-     * @param bufferSize
-     *            the hint about how many elements to expect to be skipped
+     * @param time       the length of the time window
+     * @param unit       the time unit of {@code time}
+     * @param scheduler  the scheduler used as the time source
+     * @param delayError if {@code true}, an exception signaled by the current {@code Observable} is delayed until the regular elements are consumed
+     *                   by the downstream; if {@code false}, an exception is immediately signaled and all regular elements dropped
+     * @param bufferSize the hint about how many elements to expect to be skipped
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
+     * @throws NullPointerException     if {@code unit} or {@code scheduler} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/skiplast.html">ReactiveX operators documentation: SkipLast</a>
      */
@@ -12721,10 +12060,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code skipUntil} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U> the element type of the other {@code ObservableSource}
-     * @param other
-     *            the second {@code ObservableSource} that has to emit an item before the current {@code Observable}'s elements begin
-     *            to be mirrored by the resulting {@code Observable}
+     * @param <U>   the element type of the other {@code ObservableSource}
+     * @param other the second {@code ObservableSource} that has to emit an item before the current {@code Observable}'s elements begin
+     *              to be mirrored by the resulting {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code other} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/skipuntil.html">ReactiveX operators documentation: SkipUntil</a>
@@ -12747,8 +12085,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code skipWhile} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param predicate
-     *            a function to test each item emitted from the current {@code Observable}
+     * @param predicate a function to test each item emitted from the current {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code predicate} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/skipwhile.html">ReactiveX operators documentation: SkipWhile</a>
@@ -12779,6 +12116,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code sorted} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
+     *
      * @return the new {@code Observable} instance
      */
     @CheckReturnValue
@@ -12800,11 +12138,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code sorted} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param comparator
-     *            a function that compares two items emitted by the current {@code Observable} and returns an {@code int}
-     *            that indicates their sort order
-     * @throws NullPointerException if {@code comparator} is {@code null}
+     * @param comparator a function that compares two items emitted by the current {@code Observable} and returns an {@code int}
+     *                   that indicates their sort order
      * @return the new {@code Observable} instance
+     * @throws NullPointerException if {@code comparator} is {@code null}
      */
     @CheckReturnValue
     @SchedulerSupport(SchedulerSupport.NONE)
@@ -12824,14 +12161,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code startWithIterable} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param items
-     *            an {@code Iterable} that contains the items you want the resulting {@code Observable} to emit first
+     * @param items an {@code Iterable} that contains the items you want the resulting {@code Observable} to emit first
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code items} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/startwith.html">ReactiveX operators documentation: StartWith</a>
-     * @since 3.0.0
      * @see #startWithItem(Object)
      * @see #startWithArray(Object...)
+     * @since 3.0.0
      */
     @CheckReturnValue
     @SchedulerSupport(SchedulerSupport.NONE)
@@ -12849,6 +12185,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code startWith} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
+     *
      * @param other the other {@code CompletableSource} to run first
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code other} is {@code null}
@@ -12871,6 +12208,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code startWith} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
+     *
      * @param other the other {@code SingleSource} to run first
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code other} is {@code null}
@@ -12893,6 +12231,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code startWith} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
+     *
      * @param other the other {@code MaybeSource} to run first
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code other} is {@code null}
@@ -12916,8 +12255,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code startWith} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param other
-     *            an {@code ObservableSource} that contains the items you want the modified {@code ObservableSource} to emit first
+     * @param other an {@code ObservableSource} that contains the items you want the modified {@code ObservableSource} to emit first
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code other} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/startwith.html">ReactiveX operators documentation: StartWith</a>
@@ -12940,8 +12278,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code startWithItem} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param item
-     *            the item to emit first
+     * @param item the item to emit first
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code item} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/startwith.html">ReactiveX operators documentation: StartWith</a>
@@ -12966,8 +12303,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code startWithArray} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param items
-     *            the array of values to emit first
+     * @param items the array of values to emit first
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code items} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/startwith.html">ReactiveX operators documentation: StartWith</a>
@@ -13017,11 +12353,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code subscribe} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param onNext
-     *             the {@code Consumer<T>} you have designed to accept emissions from the current {@code Observable}
+     * @param onNext the {@code Consumer<T>} you have designed to accept emissions from the current {@code Observable}
      * @return the new {@link Disposable} instance that can be used to dispose the subscription at any time
-     * @throws NullPointerException
-     *             if {@code onNext} is {@code null}
+     * @throws NullPointerException if {@code onNext} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/subscribe.html">ReactiveX operators documentation: Subscribe</a>
      */
     @CheckReturnValue
@@ -13042,15 +12376,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code subscribe} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param onNext
-     *             the {@code Consumer<T>} you have designed to accept emissions from the current {@code Observable}
-     * @param onError
-     *             the {@code Consumer<Throwable>} you have designed to accept any error notification from the current
-     *             {@code Observable}
+     * @param onNext  the {@code Consumer<T>} you have designed to accept emissions from the current {@code Observable}
+     * @param onError the {@code Consumer<Throwable>} you have designed to accept any error notification from the current
+     *                {@code Observable}
      * @return the new {@link Disposable} instance that can be used to dispose the subscription at any time
+     * @throws NullPointerException if {@code onNext} or {@code onError} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/subscribe.html">ReactiveX operators documentation: Subscribe</a>
-     * @throws NullPointerException
-     *             if {@code onNext} or {@code onError} is {@code null}
      */
     @CheckReturnValue
     @SchedulerSupport(SchedulerSupport.NONE)
@@ -13067,17 +12398,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code subscribe} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param onNext
-     *             the {@code Consumer<T>} you have designed to accept emissions from the current {@code Observable}
-     * @param onError
-     *             the {@code Consumer<Throwable>} you have designed to accept any error notification from the current
-     *             {@code Observable}
-     * @param onComplete
-     *             the {@link Action} you have designed to accept a completion notification from the current
-     *             {@code Observable}
+     * @param onNext     the {@code Consumer<T>} you have designed to accept emissions from the current {@code Observable}
+     * @param onError    the {@code Consumer<Throwable>} you have designed to accept any error notification from the current
+     *                   {@code Observable}
+     * @param onComplete the {@link Action} you have designed to accept a completion notification from the current
+     *                   {@code Observable}
      * @return the new {@link Disposable} instance that can be used to dispose the subscription at any time
-     * @throws NullPointerException
-     *             if {@code onNext}, {@code onError} or {@code onComplete} is {@code null}
+     * @throws NullPointerException if {@code onNext}, {@code onError} or {@code onComplete} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/subscribe.html">ReactiveX operators documentation: Subscribe</a>
      */
     @CheckReturnValue
@@ -13101,6 +12428,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
 
     /**
      * 订阅
+     *
      * @param observer the {@code Observer}, not {@code null}
      */
     @SchedulerSupport(SchedulerSupport.NONE)
@@ -13137,6 +12465,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      * <p>There is no need to call any of the plugin hooks on the current {@code Observable} instance or
      * the {@code Observer}; all hooks and basic safeguards have been
      * applied by {@link #subscribe(Observer)} before this method gets called.
+     *
      * @param observer the incoming {@code Observer}, never {@code null}
      */
     protected abstract void subscribeActual(@NonNull Observer<? super T> observer);
@@ -13159,7 +12488,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code subscribeWith} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <E> the type of the {@code Observer} to use and return
+     *
+     * @param <E>      the type of the {@code Observer} to use and return
      * @param observer the {@code Observer} (subclass) to use and return, not {@code null}
      * @return the input {@code observer}
      * @throws NullPointerException if {@code observer} is {@code null}
@@ -13184,8 +12514,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@code Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param scheduler
-     *            the {@code Scheduler} to perform subscription actions on
+     * @param scheduler the {@code Scheduler} to perform subscription actions on
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/subscribeon.html">ReactiveX operators documentation: SubscribeOn</a>
@@ -13210,8 +12539,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code switchIfEmpty} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param other
-     *              the alternate {@code ObservableSource} to subscribe to if the source does not emit any items
+     * @param other the alternate {@code ObservableSource} to subscribe to if the source does not emit any items
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code other} is {@code null}
      * @since 1.1.0
@@ -13238,10 +12566,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code switchMap} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R> the element type of the inner {@code ObservableSource}s and the output
-     * @param mapper
-     *            a function that, when applied to an item emitted by the current {@code Observable}, returns an
-     *            {@code ObservableSource}
+     * @param <R>    the element type of the inner {@code ObservableSource}s and the output
+     * @param mapper a function that, when applied to an item emitted by the current {@code Observable}, returns an
+     *               {@code ObservableSource}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code mapper} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/flatmap.html">ReactiveX operators documentation: FlatMap</a>
@@ -13268,14 +12595,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code switchMap} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R> the element type of the inner {@code ObservableSource}s and the output
-     * @param mapper
-     *            a function that, when applied to an item emitted by the current {@code Observable}, returns an
-     *            {@code ObservableSource}
-     * @param bufferSize
-     *            the number of elements expected from the current active inner {@code ObservableSource} to be buffered
+     * @param <R>        the element type of the inner {@code ObservableSource}s and the output
+     * @param mapper     a function that, when applied to an item emitted by the current {@code Observable}, returns an
+     *                   {@code ObservableSource}
+     * @param bufferSize the number of elements expected from the current active inner {@code ObservableSource} to be buffered
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code mapper} is {@code null}
+     * @throws NullPointerException     if {@code mapper} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/flatmap.html">ReactiveX operators documentation: FlatMap</a>
      * @see #switchMapDelayError(Function, int)
@@ -13324,6 +12649,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  </dd>
      * </dl>
      * <p>History: 2.1.11 - experimental
+     *
      * @param mapper the function called with each upstream item and should return a
      *               {@code CompletableSource} to be subscribed to and awaited for
      *               (non blockingly) for its terminal event
@@ -13368,6 +12694,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  </dd>
      * </dl>
      * <p>History: 2.1.11 - experimental
+     *
      * @param mapper the function called with each upstream item and should return a
      *               {@code CompletableSource} to be subscribed to and awaited for
      *               (non blockingly) for its terminal event
@@ -13405,7 +12732,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  {@link UndeliverableException}</dd>
      * </dl>
      * <p>History: 2.1.11 - experimental
-     * @param <R> the output value type
+     *
+     * @param <R>    the output value type
      * @param mapper the function called with the current upstream event and should
      *               return a {@code MaybeSource} to replace the current active inner source
      *               and get subscribed to.
@@ -13433,7 +12761,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code switchMapMaybeDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.1.11 - experimental
-     * @param <R> the output value type
+     *
+     * @param <R>    the output value type
      * @param mapper the function called with the current upstream event and should
      *               return a {@code MaybeSource} to replace the current active inner source
      *               and get subscribed to.
@@ -13464,10 +12793,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code switchMapSingle} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.0.8 - experimental
-     * @param <R> the element type of the inner {@code SingleSource}s and the output
-     * @param mapper
-     *            a function that, when applied to an item emitted by the current {@code Observable}, returns a
-     *            {@code SingleSource}
+     *
+     * @param <R>    the element type of the inner {@code SingleSource}s and the output
+     * @param mapper a function that, when applied to an item emitted by the current {@code Observable}, returns a
+     *               {@code SingleSource}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code mapper} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/flatmap.html">ReactiveX operators documentation: FlatMap</a>
@@ -13497,10 +12826,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code switchMapSingleDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.0.8 - experimental
-     * @param <R> the element type of the inner {@code SingleSource}s and the output
-     * @param mapper
-     *            a function that, when applied to an item emitted by the current {@code Observable}, returns a
-     *            {@code SingleSource}
+     *
+     * @param <R>    the element type of the inner {@code SingleSource}s and the output
+     * @param mapper a function that, when applied to an item emitted by the current {@code Observable}, returns a
+     *               {@code SingleSource}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code mapper} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/flatmap.html">ReactiveX operators documentation: FlatMap</a>
@@ -13530,10 +12859,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code switchMapDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R> the element type of the inner {@code ObservableSource}s and the output
-     * @param mapper
-     *            a function that, when applied to an item emitted by the current {@code Observable}, returns an
-     *            {@code ObservableSource}
+     * @param <R>    the element type of the inner {@code ObservableSource}s and the output
+     * @param mapper a function that, when applied to an item emitted by the current {@code Observable}, returns an
+     *               {@code ObservableSource}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code mapper} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/flatmap.html">ReactiveX operators documentation: FlatMap</a>
@@ -13562,14 +12890,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code switchMapDelayError} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R> the element type of the inner {@code ObservableSource}s and the output
-     * @param mapper
-     *            a function that, when applied to an item emitted by the current {@code Observable}, returns an
-     *            {@code ObservableSource}
-     * @param bufferSize
-     *            the number of elements expected from the current active inner {@code ObservableSource} to be buffered
+     * @param <R>        the element type of the inner {@code ObservableSource}s and the output
+     * @param mapper     a function that, when applied to an item emitted by the current {@code Observable}, returns an
+     *                   {@code ObservableSource}
+     * @param bufferSize the number of elements expected from the current active inner {@code ObservableSource} to be buffered
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code mapper} is {@code null}
+     * @throws NullPointerException     if {@code mapper} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/flatmap.html">ReactiveX operators documentation: FlatMap</a>
      * @see #switchMap(Function, int)
@@ -13610,8 +12936,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code take} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param count
-     *            the maximum number of items to emit
+     * @param count the maximum number of items to emit
      * @return the new {@code Observable} instance
      * @throws IllegalArgumentException if {@code count} is negative
      * @see <a href="http://reactivex.io/documentation/operators/take.html">ReactiveX operators documentation: Take</a>
@@ -13639,10 +12964,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code take} operates by default on the {@code computation} {@code Scheduler}.</dd>
      * </dl>
      *
-     * @param time
-     *            the length of the time window
-     * @param unit
-     *            the time unit of {@code time}
+     * @param time the length of the time window
+     * @param unit the time unit of {@code time}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/take.html">ReactiveX operators documentation: Take</a>
@@ -13667,12 +12990,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@code Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param time
-     *            the length of the time window
-     * @param unit
-     *            the time unit of {@code time}
-     * @param scheduler
-     *            the {@code Scheduler} used for time source
+     * @param time      the length of the time window
+     * @param unit      the time unit of {@code time}
+     * @param scheduler the {@code Scheduler} used for time source
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/take.html">ReactiveX operators documentation: Take</a>
@@ -13694,12 +13014,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code takeLast} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param count
-     *            the maximum number of items to emit from the end of the sequence of items emitted by the current
-     *            {@code Observable}
+     * @param count the maximum number of items to emit from the end of the sequence of items emitted by the current
+     *              {@code Observable}
      * @return the new {@code Observable} instance
-     * @throws IllegalArgumentException
-     *             if {@code count} is negative
+     * @throws IllegalArgumentException if {@code count} is negative
      * @see <a href="http://reactivex.io/documentation/operators/takelast.html">ReactiveX operators documentation: TakeLast</a>
      */
     @CheckReturnValue
@@ -13729,14 +13047,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  from the {@code trampoline} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param count
-     *            the maximum number of items to emit
-     * @param time
-     *            the length of the time window
-     * @param unit
-     *            the time unit of {@code time}
+     * @param count the maximum number of items to emit
+     * @param time  the length of the time window
+     * @param unit  the time unit of {@code time}
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code unit} is {@code null}
+     * @throws NullPointerException     if {@code unit} is {@code null}
      * @throws IllegalArgumentException if {@code count} is negative
      * @see <a href="http://reactivex.io/documentation/operators/takelast.html">ReactiveX operators documentation: TakeLast</a>
      */
@@ -13758,18 +13073,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@code Scheduler} this operator will use for tracking the current time</dd>
      * </dl>
      *
-     * @param count
-     *            the maximum number of items to emit
-     * @param time
-     *            the length of the time window
-     * @param unit
-     *            the time unit of {@code time}
-     * @param scheduler
-     *            the {@code Scheduler} that provides the timestamps for the observed items
+     * @param count     the maximum number of items to emit
+     * @param time      the length of the time window
+     * @param unit      the time unit of {@code time}
+     * @param scheduler the {@code Scheduler} that provides the timestamps for the observed items
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
-     * @throws IllegalArgumentException
-     *             if {@code count} is negative
+     * @throws NullPointerException     if {@code unit} or {@code scheduler} is {@code null}
+     * @throws IllegalArgumentException if {@code count} is negative
      * @see <a href="http://reactivex.io/documentation/operators/takelast.html">ReactiveX operators documentation: TakeLast</a>
      */
     @CheckReturnValue
@@ -13790,23 +13100,16 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@code Scheduler} this operator will use for tracking the current time</dd>
      * </dl>
      *
-     * @param count
-     *            the maximum number of items to emit
-     * @param time
-     *            the length of the time window
-     * @param unit
-     *            the time unit of {@code time}
-     * @param scheduler
-     *            the {@code Scheduler} that provides the timestamps for the observed items
-     * @param delayError
-     *            if {@code true}, an exception signaled by the current {@code Observable} is delayed until the regular elements are consumed
-     *            by the downstream; if {@code false}, an exception is immediately signaled and all regular elements dropped
-     * @param bufferSize
-     *            the hint about how many elements to expect to be last
+     * @param count      the maximum number of items to emit
+     * @param time       the length of the time window
+     * @param unit       the time unit of {@code time}
+     * @param scheduler  the {@code Scheduler} that provides the timestamps for the observed items
+     * @param delayError if {@code true}, an exception signaled by the current {@code Observable} is delayed until the regular elements are consumed
+     *                   by the downstream; if {@code false}, an exception is immediately signaled and all regular elements dropped
+     * @param bufferSize the hint about how many elements to expect to be last
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
-     * @throws IllegalArgumentException
-     *             if {@code count} is negative or {@code bufferSize} is non-positive
+     * @throws NullPointerException     if {@code unit} or {@code scheduler} is {@code null}
+     * @throws IllegalArgumentException if {@code count} is negative or {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/takelast.html">ReactiveX operators documentation: TakeLast</a>
      */
     @CheckReturnValue
@@ -13833,10 +13136,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  from the {@code trampoline} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param time
-     *            the length of the time window
-     * @param unit
-     *            the time unit of {@code time}
+     * @param time the length of the time window
+     * @param unit the time unit of {@code time}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/takelast.html">ReactiveX operators documentation: TakeLast</a>
@@ -13859,15 +13160,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  from the {@code trampoline} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param time
-     *            the length of the time window
-     * @param unit
-     *            the time unit of {@code time}
-     * @param delayError
-     *            if {@code true}, an exception signaled by the current {@code Observable} is delayed until the regular elements are consumed
-     *            by the downstream; if {@code false}, an exception is immediately signaled and all regular elements dropped
+     * @param time       the length of the time window
+     * @param unit       the time unit of {@code time}
+     * @param delayError if {@code true}, an exception signaled by the current {@code Observable} is delayed until the regular elements are consumed
+     *                   by the downstream; if {@code false}, an exception is immediately signaled and all regular elements dropped
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code unit} is {@code null}
+     * @throws NullPointerException     if {@code unit} is {@code null}
      * @throws IllegalArgumentException if {@code count} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/takelast.html">ReactiveX operators documentation: TakeLast</a>
      */
@@ -13889,12 +13187,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@code Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param time
-     *            the length of the time window
-     * @param unit
-     *            the time unit of {@code time}
-     * @param scheduler
-     *            the {@code Scheduler} that provides the timestamps for the observed items
+     * @param time      the length of the time window
+     * @param unit      the time unit of {@code time}
+     * @param scheduler the {@code Scheduler} that provides the timestamps for the observed items
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/takelast.html">ReactiveX operators documentation: TakeLast</a>
@@ -13917,15 +13212,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@code Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param time
-     *            the length of the time window
-     * @param unit
-     *            the time unit of {@code time}
-     * @param scheduler
-     *            the {@code Scheduler} that provides the timestamps for the observed items
-     * @param delayError
-     *            if {@code true}, an exception signaled by the current {@code Observable} is delayed until the regular elements are consumed
-     *            by the downstream; if {@code false}, an exception is immediately signaled and all regular elements dropped
+     * @param time       the length of the time window
+     * @param unit       the time unit of {@code time}
+     * @param scheduler  the {@code Scheduler} that provides the timestamps for the observed items
+     * @param delayError if {@code true}, an exception signaled by the current {@code Observable} is delayed until the regular elements are consumed
+     *                   by the downstream; if {@code false}, an exception is immediately signaled and all regular elements dropped
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/takelast.html">ReactiveX operators documentation: TakeLast</a>
@@ -13948,19 +13239,14 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@code Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param time
-     *            the length of the time window
-     * @param unit
-     *            the time unit of {@code time}
-     * @param scheduler
-     *            the {@code Scheduler} that provides the timestamps for the observed items
-     * @param delayError
-     *            if {@code true}, an exception signaled by the current {@code Observable} is delayed until the regular elements are consumed
-     *            by the downstream; if {@code false}, an exception is immediately signaled and all regular elements dropped
-     * @param bufferSize
-     *            the hint about how many elements to expect to be last
+     * @param time       the length of the time window
+     * @param unit       the time unit of {@code time}
+     * @param scheduler  the {@code Scheduler} that provides the timestamps for the observed items
+     * @param delayError if {@code true}, an exception signaled by the current {@code Observable} is delayed until the regular elements are consumed
+     *                   by the downstream; if {@code false}, an exception is immediately signaled and all regular elements dropped
+     * @param bufferSize the hint about how many elements to expect to be last
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
+     * @throws NullPointerException     if {@code unit} or {@code scheduler} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/takelast.html">ReactiveX operators documentation: TakeLast</a>
      */
@@ -13981,11 +13267,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code takeUntil} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param other
-     *            the {@code ObservableSource} whose first emitted item will cause {@code takeUntil} to stop emitting items
-     *            from the current {@code Observable}
-     * @param <U>
-     *            the type of items emitted by {@code other}
+     * @param other the {@code ObservableSource} whose first emitted item will cause {@code takeUntil} to stop emitting items
+     *              from the current {@code Observable}
+     * @param <U>   the type of items emitted by {@code other}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code other} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/takeuntil.html">ReactiveX operators documentation: TakeUntil</a>
@@ -14012,8 +13296,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code takeUntil} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param stopPredicate
-     *            a function that evaluates an item emitted by the current {@code Observable} and returns a {@link Boolean}
+     * @param stopPredicate a function that evaluates an item emitted by the current {@code Observable} and returns a {@link Boolean}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code stopPredicate} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/takeuntil.html">ReactiveX operators documentation: TakeUntil</a>
@@ -14038,8 +13321,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code takeWhile} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param predicate
-     *            a function that evaluates an item emitted by the current {@code Observable} and returns a {@link Boolean}
+     * @param predicate a function that evaluates an item emitted by the current {@code Observable} and returns a {@link Boolean}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code predicate} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/takewhile.html">ReactiveX operators documentation: TakeWhile</a>
@@ -14066,10 +13348,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code throttleFirst} operates by default on the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param windowDuration
-     *            time to wait before emitting another item after emitting the last item
-     * @param unit
-     *            the unit of time of {@code windowDuration}
+     * @param windowDuration time to wait before emitting another item after emitting the last item
+     * @param unit           the unit of time of {@code windowDuration}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/sample.html">ReactiveX operators documentation: Sample</a>
@@ -14094,13 +13374,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@code Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param skipDuration
-     *            time to wait before emitting another item after emitting the last item
-     * @param unit
-     *            the unit of time of {@code skipDuration}
-     * @param scheduler
-     *            the {@code Scheduler} to use internally to manage the timers that handle timeout for each
-     *            event
+     * @param skipDuration time to wait before emitting another item after emitting the last item
+     * @param unit         the unit of time of {@code skipDuration}
+     * @param scheduler    the {@code Scheduler} to use internally to manage the timers that handle timeout for each
+     *                     event
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/sample.html">ReactiveX operators documentation: Sample</a>
@@ -14127,11 +13404,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code throttleLast} operates by default on the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param intervalDuration
-     *            duration of windows within which the last item emitted by the current {@code Observable} will be
-     *            emitted
-     * @param unit
-     *            the unit of time of {@code intervalDuration}
+     * @param intervalDuration duration of windows within which the last item emitted by the current {@code Observable} will be
+     *                         emitted
+     * @param unit             the unit of time of {@code intervalDuration}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/sample.html">ReactiveX operators documentation: Sample</a>
@@ -14157,14 +13432,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@code Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param intervalDuration
-     *            duration of windows within which the last item emitted by the current {@code Observable} will be
-     *            emitted
-     * @param unit
-     *            the unit of time of {@code intervalDuration}
-     * @param scheduler
-     *            the {@code Scheduler} to use internally to manage the timers that handle timeout for each
-     *            event
+     * @param intervalDuration duration of windows within which the last item emitted by the current {@code Observable} will be
+     *                         emitted
+     * @param unit             the unit of time of {@code intervalDuration}
+     * @param scheduler        the {@code Scheduler} to use internally to manage the timers that handle timeout for each
+     *                         event
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/sample.html">ReactiveX operators documentation: Sample</a>
@@ -14194,6 +13466,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code throttleLatest} operates by default on the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.1.14 - experimental
+     *
      * @param timeout the time to wait after an item emission towards the downstream
      *                before trying to emit the latest item from upstream again
      * @param unit    the time unit
@@ -14224,9 +13497,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code throttleLatest} operates by default on the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.1.14 - experimental
-     * @param timeout the time to wait after an item emission towards the downstream
-     *                before trying to emit the latest item from upstream again
-     * @param unit    the time unit
+     *
+     * @param timeout  the time to wait after an item emission towards the downstream
+     *                 before trying to emit the latest item from upstream again
+     * @param unit     the time unit
      * @param emitLast If {@code true}, the very last item from the upstream will be emitted
      *                 immediately when the upstream completes, regardless if there is
      *                 a timeout window active or not. If {@code false}, the very last
@@ -14260,9 +13534,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use.</dd>
      * </dl>
      * <p>History: 2.1.14 - experimental
-     * @param timeout the time to wait after an item emission towards the downstream
-     *                before trying to emit the latest item from upstream again
-     * @param unit    the time unit
+     *
+     * @param timeout   the time to wait after an item emission towards the downstream
+     *                  before trying to emit the latest item from upstream again
+     * @param unit      the time unit
      * @param scheduler the {@code Scheduler} where the timed wait and latest item
      *                  emission will be performed
      * @return the new {@code Observable} instance
@@ -14291,15 +13566,16 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use.</dd>
      * </dl>
      * <p>History: 2.1.14 - experimental
-     * @param timeout the time to wait after an item emission towards the downstream
-     *                before trying to emit the latest item from upstream again
-     * @param unit    the time unit
+     *
+     * @param timeout   the time to wait after an item emission towards the downstream
+     *                  before trying to emit the latest item from upstream again
+     * @param unit      the time unit
      * @param scheduler the {@code Scheduler} where the timed wait and latest item
      *                  emission will be performed
-     * @param emitLast If {@code true}, the very last item from the upstream will be emitted
-     *                 immediately when the upstream completes, regardless if there is
-     *                 a timeout window active or not. If {@code false}, the very last
-     *                 upstream item is ignored and the flow terminates.
+     * @param emitLast  If {@code true}, the very last item from the upstream will be emitted
+     *                  immediately when the upstream completes, regardless if there is
+     *                  a timeout window active or not. If {@code false}, the very last
+     *                  upstream item is ignored and the flow terminates.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @since 2.2
@@ -14327,12 +13603,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code throttleWithTimeout} operates by default on the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param timeout
-     *            the length of the window of time that must pass after the emission of an item from the current
-     *            {@code Observable}, in which the current {@code Observable} emits no items, in order for the item to be emitted by the
-     *            resulting {@code Observable}
-     * @param unit
-     *            the unit of time for the specified {@code timeout}
+     * @param timeout the length of the window of time that must pass after the emission of an item from the current
+     *                {@code Observable}, in which the current {@code Observable} emits no items, in order for the item to be emitted by the
+     *                resulting {@code Observable}
+     * @param unit    the unit of time for the specified {@code timeout}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/debounce.html">ReactiveX operators documentation: Debounce</a>
@@ -14359,15 +13633,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@code Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param timeout
-     *            the length of the window of time that must pass after the emission of an item from the current
-     *            {@code Observable}, in which the current {@code Observable} emits no items, in order for the item to be emitted by the
-     *            resulting {@code Observable}
-     * @param unit
-     *            the unit of time for the specified {@code timeout}
-     * @param scheduler
-     *            the {@code Scheduler} to use internally to manage the timers that handle the timeout for each
-     *            item
+     * @param timeout   the length of the window of time that must pass after the emission of an item from the current
+     *                  {@code Observable}, in which the current {@code Observable} emits no items, in order for the item to be emitted by the
+     *                  resulting {@code Observable}
+     * @param unit      the unit of time for the specified {@code timeout}
+     * @param scheduler the {@code Scheduler} to use internally to manage the timers that handle the timeout for each
+     *                  item
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/debounce.html">ReactiveX operators documentation: Debounce</a>
@@ -14412,8 +13683,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  from the specified {@code Scheduler}.</dd>
      * </dl>
      *
-     * @param scheduler
-     *            the {@code Scheduler} used to compute time intervals
+     * @param scheduler the {@code Scheduler} used to compute time intervals
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/timeinterval.html">ReactiveX operators documentation: TimeInterval</a>
@@ -14460,9 +13730,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  from the specified {@code Scheduler}.</dd>
      * </dl>
      *
-     * @param unit the time unit for the current time
-     * @param scheduler
-     *            the {@code Scheduler} used to compute time intervals
+     * @param unit      the time unit for the current time
+     * @param scheduler the {@code Scheduler} used to compute time intervals
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/timeinterval.html">ReactiveX operators documentation: TimeInterval</a>
@@ -14491,11 +13760,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code timeout} operates by default on the {@code immediate} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <V>
-     *            the timeout value type (ignored)
-     * @param itemTimeoutIndicator
-     *            a function that returns an {@code ObservableSource} for each item emitted by the current
-     *            {@code Observable} and that determines the timeout window for the subsequent item
+     * @param <V>                  the timeout value type (ignored)
+     * @param itemTimeoutIndicator a function that returns an {@code ObservableSource} for each item emitted by the current
+     *                             {@code Observable} and that determines the timeout window for the subsequent item
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code itemTimeoutIndicator} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/timeout.html">ReactiveX operators documentation: Timeout</a>
@@ -14521,13 +13788,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code timeout} operates by default on the {@code immediate} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <V>
-     *            the timeout value type (ignored)
-     * @param itemTimeoutIndicator
-     *            a function that returns an {@code ObservableSource}, for each item emitted by the current {@code Observable}, that
-     *            determines the timeout window for the subsequent item
-     * @param fallback
-     *            the fallback {@code ObservableSource} to switch to if the current {@code Observable} times out
+     * @param <V>                  the timeout value type (ignored)
+     * @param itemTimeoutIndicator a function that returns an {@code ObservableSource}, for each item emitted by the current {@code Observable}, that
+     *                             determines the timeout window for the subsequent item
+     * @param fallback             the fallback {@code ObservableSource} to switch to if the current {@code Observable} times out
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code itemTimeoutIndicator} or {@code fallback} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/timeout.html">ReactiveX operators documentation: Timeout</a>
@@ -14552,10 +13816,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code timeout} operates by default on the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param timeout
-     *            maximum duration between emitted items before a timeout occurs
-     * @param unit
-     *            the unit of time that applies to the {@code timeout} argument.
+     * @param timeout maximum duration between emitted items before a timeout occurs
+     * @param unit    the unit of time that applies to the {@code timeout} argument.
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/timeout.html">ReactiveX operators documentation: Timeout</a>
@@ -14579,12 +13841,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code timeout} operates by default on the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param timeout
-     *            maximum duration between items before a timeout occurs
-     * @param unit
-     *            the unit of time that applies to the {@code timeout} argument
-     * @param fallback
-     *            the fallback {@code ObservableSource} to use in case of a timeout
+     * @param timeout  maximum duration between items before a timeout occurs
+     * @param unit     the unit of time that applies to the {@code timeout} argument
+     * @param fallback the fallback {@code ObservableSource} to use in case of a timeout
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} or {@code fallback} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/timeout.html">ReactiveX operators documentation: Timeout</a>
@@ -14609,14 +13868,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@code Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param timeout
-     *            maximum duration between items before a timeout occurs
-     * @param unit
-     *            the unit of time that applies to the {@code timeout} argument
-     * @param scheduler
-     *            the {@code Scheduler} to run the timeout timers on
-     * @param fallback
-     *            the {@code ObservableSource} to use as the fallback in case of a timeout
+     * @param timeout   maximum duration between items before a timeout occurs
+     * @param unit      the unit of time that applies to the {@code timeout} argument
+     * @param scheduler the {@code Scheduler} to run the timeout timers on
+     * @param fallback  the {@code ObservableSource} to use as the fallback in case of a timeout
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit}, {@code scheduler} or {@code fallback} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/timeout.html">ReactiveX operators documentation: Timeout</a>
@@ -14641,12 +13896,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@code Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param timeout
-     *            maximum duration between items before a timeout occurs
-     * @param unit
-     *            the unit of time that applies to the {@code timeout} argument
-     * @param scheduler
-     *            the {@code Scheduler} to run the timeout timers on
+     * @param timeout   maximum duration between items before a timeout occurs
+     * @param unit      the unit of time that applies to the {@code timeout} argument
+     * @param scheduler the {@code Scheduler} to run the timeout timers on
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/timeout.html">ReactiveX operators documentation: Timeout</a>
@@ -14669,17 +13921,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code timeout} operates by default on the {@code immediate} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U>
-     *            the first timeout value type (ignored)
-     * @param <V>
-     *            the subsequent timeout value type (ignored)
-     * @param firstTimeoutIndicator
-     *            a function that returns an {@code ObservableSource} that determines the timeout window for the first source
-     *            item
-     * @param itemTimeoutIndicator
-     *            a function that returns an {@code ObservableSource} for each item emitted by the current {@code Observable} and that
-     *            determines the timeout window in which the subsequent source item must arrive in order to
-     *            continue the sequence
+     * @param <U>                   the first timeout value type (ignored)
+     * @param <V>                   the subsequent timeout value type (ignored)
+     * @param firstTimeoutIndicator a function that returns an {@code ObservableSource} that determines the timeout window for the first source
+     *                              item
+     * @param itemTimeoutIndicator  a function that returns an {@code ObservableSource} for each item emitted by the current {@code Observable} and that
+     *                              determines the timeout window in which the subsequent source item must arrive in order to
+     *                              continue the sequence
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code firstTimeoutIndicator} or {@code itemTimeoutIndicator} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/timeout.html">ReactiveX operators documentation: Timeout</a>
@@ -14704,22 +13952,16 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code timeout} operates by default on the {@code immediate} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U>
-     *            the first timeout value type (ignored)
-     * @param <V>
-     *            the subsequent timeout value type (ignored)
-     * @param firstTimeoutIndicator
-     *            a function that returns an {@code ObservableSource} which determines the timeout window for the first source
-     *            item
-     * @param itemTimeoutIndicator
-     *            a function that returns an {@code ObservableSource} for each item emitted by the current {@code Observable} and that
-     *            determines the timeout window in which the subsequent source item must arrive in order to
-     *            continue the sequence
-     * @param fallback
-     *            the fallback {@code ObservableSource} to switch to if the current {@code Observable} times out
+     * @param <U>                   the first timeout value type (ignored)
+     * @param <V>                   the subsequent timeout value type (ignored)
+     * @param firstTimeoutIndicator a function that returns an {@code ObservableSource} which determines the timeout window for the first source
+     *                              item
+     * @param itemTimeoutIndicator  a function that returns an {@code ObservableSource} for each item emitted by the current {@code Observable} and that
+     *                              determines the timeout window in which the subsequent source item must arrive in order to
+     *                              continue the sequence
+     * @param fallback              the fallback {@code ObservableSource} to switch to if the current {@code Observable} times out
      * @return the new {@code Observable} instance
-     * @throws NullPointerException
-     *             if {@code firstTimeoutIndicator}, {@code itemTimeoutIndicator} or {@code fallback} is {@code null}
+     * @throws NullPointerException if {@code firstTimeoutIndicator}, {@code itemTimeoutIndicator} or {@code fallback} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/timeout.html">ReactiveX operators documentation: Timeout</a>
      */
     @CheckReturnValue
@@ -14784,8 +14026,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  from the specified {@code Scheduler}.</dd>
      * </dl>
      *
-     * @param scheduler
-     *            the {@code Scheduler} to use as a time source
+     * @param scheduler the {@code Scheduler} to use as a time source
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/timestamp.html">ReactiveX operators documentation: Timestamp</a>
@@ -14832,9 +14073,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  from the specified {@code Scheduler}.</dd>
      * </dl>
      *
-     * @param unit the time unit for the current time
-     * @param scheduler
-     *            the {@code Scheduler} to use as a time source
+     * @param unit      the time unit for the current time
+     * @param scheduler the {@code Scheduler} to use as a time source
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/timestamp.html">ReactiveX operators documentation: Timestamp</a>
@@ -14858,7 +14098,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code to} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      * <p>History: 2.1.7 - experimental
-     * @param <R> the resulting object type
+     *
+     * @param <R>       the resulting object type
      * @param converter the function that receives the current {@code Observable} instance and returns a value
      * @return the converted value
      * @throws NullPointerException if {@code converter} is {@code null}
@@ -14921,8 +14162,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code toList} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param capacityHint
-     *         the number of elements expected from the current {@code Observable}
+     * @param capacityHint the number of elements expected from the current {@code Observable}
      * @return the new {@code Single} instance
      * @throws IllegalArgumentException if {@code capacityHint} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/to.html">ReactiveX operators documentation: To</a>
@@ -14955,9 +14195,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code toList} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U> the subclass of a collection of Ts
-     * @param collectionSupplier
-     *               the {@link Supplier} returning the collection (for each individual {@code Observer}) to be filled in
+     * @param <U>                the subclass of a collection of Ts
+     * @param collectionSupplier the {@link Supplier} returning the collection (for each individual {@code Observer}) to be filled in
      * @return the new {@code Single} instance
      * @throws NullPointerException if {@code collectionSupplier} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/to.html">ReactiveX operators documentation: To</a>
@@ -14987,9 +14226,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code toMap} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <K> the key type of the Map
-     * @param keySelector
-     *            the function that extracts the key from a source item to be used in the {@code HashMap}
+     * @param <K>         the key type of the Map
+     * @param keySelector the function that extracts the key from a source item to be used in the {@code HashMap}
      * @return the new {@code Single} instance
      * @throws NullPointerException if {@code keySelector} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/to.html">ReactiveX operators documentation: To</a>
@@ -15019,12 +14257,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code toMap} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <K> the key type of the {@code HashMap}
-     * @param <V> the value type of the {@code HashMap}
-     * @param keySelector
-     *            the function that extracts the key from a source item to be used in the {@code HashMap}
-     * @param valueSelector
-     *            the function that extracts the value from a source item to be used in the {@code HashMap}
+     * @param <K>           the key type of the {@code HashMap}
+     * @param <V>           the value type of the {@code HashMap}
+     * @param keySelector   the function that extracts the key from a source item to be used in the {@code HashMap}
+     * @param valueSelector the function that extracts the value from a source item to be used in the {@code HashMap}
      * @return the new {@code Single} instance
      * @throws NullPointerException if {@code keySelector} or {@code valueSelector} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/to.html">ReactiveX operators documentation: To</a>
@@ -15054,14 +14290,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code toMap} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <K> the key type of the {@code Map}
-     * @param <V> the value type of the {@code Map}
-     * @param keySelector
-     *            the function that extracts the key from a source item to be used in the {@code Map}
-     * @param valueSelector
-     *            the function that extracts the value from the source items to be used as value in the {@code Map}
-     * @param mapSupplier
-     *            the function that returns a {@code Map} instance to be used
+     * @param <K>           the key type of the {@code Map}
+     * @param <V>           the value type of the {@code Map}
+     * @param keySelector   the function that extracts the key from a source item to be used in the {@code Map}
+     * @param valueSelector the function that extracts the value from the source items to be used as value in the {@code Map}
+     * @param mapSupplier   the function that returns a {@code Map} instance to be used
      * @return the new {@code Single} instance
      * @throws NullPointerException if {@code keySelector}, {@code valueSelector} or {@code mapSupplier} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/to.html">ReactiveX operators documentation: To</a>
@@ -15093,9 +14326,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code toMultimap} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <K> the key type of the {@code HashMap}
-     * @param keySelector
-     *            the function that extracts the key from the source items to be used as key in the {@code HashMap}
+     * @param <K>         the key type of the {@code HashMap}
+     * @param keySelector the function that extracts the key from the source items to be used as key in the {@code HashMap}
      * @return the new {@code Single} instance
      * @throws NullPointerException if {@code keySelector} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/to.html">ReactiveX operators documentation: To</a>
@@ -15125,12 +14357,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code toMultimap} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <K> the key type of the {@code HashMap}
-     * @param <V> the value type of the {@code HashMap}
-     * @param keySelector
-     *            the function that extracts a key from the source items to be used as key in the {@code HashMap}
-     * @param valueSelector
-     *            the function that extracts a value from the source items to be used as value in the {@code HashMap}
+     * @param <K>           the key type of the {@code HashMap}
+     * @param <V>           the value type of the {@code HashMap}
+     * @param keySelector   the function that extracts a key from the source items to be used as key in the {@code HashMap}
+     * @param valueSelector the function that extracts a value from the source items to be used as value in the {@code HashMap}
      * @return the new {@code Single} instance
      * @throws NullPointerException if {@code keySelector} or {@code valueSelector} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/to.html">ReactiveX operators documentation: To</a>
@@ -15159,16 +14389,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code toMultimap} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <K> the key type of the {@code Map}
-     * @param <V> the value type of the {@code Map}
-     * @param keySelector
-     *            the function that extracts a key from the source items to be used as the key in the {@code Map}
-     * @param valueSelector
-     *            the function that extracts a value from the source items to be used as the value in the {@code Map}
-     * @param mapSupplier
-     *            the function that returns a {@code Map} instance to be used
-     * @param collectionFactory
-     *            the function that returns a {@code Collection} instance for a particular key to be used in the {@code Map}
+     * @param <K>               the key type of the {@code Map}
+     * @param <V>               the value type of the {@code Map}
+     * @param keySelector       the function that extracts a key from the source items to be used as the key in the {@code Map}
+     * @param valueSelector     the function that extracts a value from the source items to be used as the value in the {@code Map}
+     * @param mapSupplier       the function that returns a {@code Map} instance to be used
+     * @param collectionFactory the function that returns a {@code Collection} instance for a particular key to be used in the {@code Map}
      * @return the new {@code Single} instance
      * @throws NullPointerException if {@code keySelector}, {@code valueSelector}, {@code mapSupplier} or {@code collectionFactory} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/to.html">ReactiveX operators documentation: To</a>
@@ -15203,14 +14429,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code toMultimap} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <K> the key type of the {@code Map}
-     * @param <V> the value type of the {@code Map}
-     * @param keySelector
-     *            the function that extracts a key from the source items to be used as the key in the {@code Map}
-     * @param valueSelector
-     *            the function that extracts a value from the source items to be used as the value in the {@code Map}
-     * @param mapSupplier
-     *            the function that returns a {@code Map} instance to be used
+     * @param <K>           the key type of the {@code Map}
+     * @param <V>           the value type of the {@code Map}
+     * @param keySelector   the function that extracts a key from the source items to be used as the key in the {@code Map}
+     * @param valueSelector the function that extracts a value from the source items to be used as the value in the {@code Map}
+     * @param mapSupplier   the function that returns a {@code Map} instance to be used
      * @return the new {@code Single} instance
      * @throws NullPointerException if {@code keySelector}, {@code valueSelector} or {@code mapSupplier} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/to.html">ReactiveX operators documentation: To</a>
@@ -15303,6 +14526,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code toSortedList} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
+     *
      * @return the new {@code Single} instance
      * @see <a href="http://reactivex.io/documentation/operators/to.html">ReactiveX operators documentation: To</a>
      * @see #toSortedList(int)
@@ -15329,9 +14553,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code toSortedList} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param comparator
-     *            a function that compares two items emitted by the current {@code Observable} and returns an {@code int}
-     *            that indicates their sort order
+     * @param comparator a function that compares two items emitted by the current {@code Observable} and returns an {@code int}
+     *                   that indicates their sort order
      * @return the new {@code Single} instance
      * @throws NullPointerException if {@code comparator} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/to.html">ReactiveX operators documentation: To</a>
@@ -15358,13 +14581,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code toSortedList} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param comparator
-     *            a function that compares two items emitted by the current {@code Observable} and returns an {@code int}
-     *            that indicates their sort order
-     * @param capacityHint
-     *             the initial capacity of the {@code List} used to accumulate items before sorting
+     * @param comparator   a function that compares two items emitted by the current {@code Observable} and returns an {@code int}
+     *                     that indicates their sort order
+     * @param capacityHint the initial capacity of the {@code List} used to accumulate items before sorting
      * @return the new {@code Single} instance
-     * @throws NullPointerException if {@code comparator} is {@code null}
+     * @throws NullPointerException     if {@code comparator} is {@code null}
      * @throws IllegalArgumentException if {@code capacityHint} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/to.html">ReactiveX operators documentation: To</a>
      * @since 2.0
@@ -15396,13 +14617,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code toSortedList} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param capacityHint
-     *             the initial capacity of the {@code List} used to accumulate items before sorting
+     * @param capacityHint the initial capacity of the {@code List} used to accumulate items before sorting
      * @return the new {@code Single} instance
      * @throws IllegalArgumentException if {@code capacityHint} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/to.html">ReactiveX operators documentation: To</a>
-     * @since 2.0
      * @see #toSortedList(Comparator, int)
+     * @since 2.0
      */
     @CheckReturnValue
     @SchedulerSupport(SchedulerSupport.NONE)
@@ -15421,8 +14641,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@code Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param scheduler
-     *            the {@code Scheduler} to perform the call to {@code dispose()} of the upstream {@link Disposable}
+     * @param scheduler the {@code Scheduler} to perform the call to {@code dispose()} of the upstream {@link Disposable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/subscribeon.html">ReactiveX operators documentation: SubscribeOn</a>
@@ -15447,8 +14666,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code window} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param count
-     *            the maximum size of each window before it should be emitted
+     * @param count the maximum size of each window before it should be emitted
      * @return the new {@code Observable} instance
      * @throws IllegalArgumentException if {@code count} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/window.html">ReactiveX operators documentation: Window</a>
@@ -15472,11 +14690,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code window} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param count
-     *            the maximum size of each window before it should be emitted
-     * @param skip
-     *            how many items need to be skipped before starting a new window. Note that if {@code skip} and
-     *            {@code count} are equal this is the same operation as {@link #window(long)}.
+     * @param count the maximum size of each window before it should be emitted
+     * @param skip  how many items need to be skipped before starting a new window. Note that if {@code skip} and
+     *              {@code count} are equal this is the same operation as {@link #window(long)}.
      * @return the new {@code Observable} instance
      * @throws IllegalArgumentException if {@code count} or {@code skip} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/window.html">ReactiveX operators documentation: Window</a>
@@ -15500,13 +14716,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code window} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param count
-     *            the maximum size of each window before it should be emitted
-     * @param skip
-     *            how many items need to be skipped before starting a new window. Note that if {@code skip} and
-     *            {@code count} are equal this is the same operation as {@link #window(long)}.
-     * @param bufferSize
-     *            the capacity hint for the buffer in the inner windows
+     * @param count      the maximum size of each window before it should be emitted
+     * @param skip       how many items need to be skipped before starting a new window. Note that if {@code skip} and
+     *                   {@code count} are equal this is the same operation as {@link #window(long)}.
+     * @param bufferSize the capacity hint for the buffer in the inner windows
      * @return the new {@code Observable} instance
      * @throws IllegalArgumentException if {@code count}, {@code skip} or {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/window.html">ReactiveX operators documentation: Window</a>
@@ -15539,14 +14752,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code window} operates by default on the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param timespan
-     *            the period of time each window collects items before it should be emitted
-     * @param timeskip
-     *            the period of time after which a new window will be created
-     * @param unit
-     *            the unit of time that applies to the {@code timespan} and {@code timeskip} arguments
+     * @param timespan the period of time each window collects items before it should be emitted
+     * @param timeskip the period of time after which a new window will be created
+     * @param unit     the unit of time that applies to the {@code timespan} and {@code timeskip} arguments
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code unit} is {@code null}
+     * @throws NullPointerException     if {@code unit} is {@code null}
      * @throws IllegalArgumentException if {@code timespan} or {@code timeskip} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/window.html">ReactiveX operators documentation: Window</a>
      */
@@ -15575,16 +14785,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param timespan
-     *            the period of time each window collects items before it should be emitted
-     * @param timeskip
-     *            the period of time after which a new window will be created
-     * @param unit
-     *            the unit of time that applies to the {@code timespan} and {@code timeskip} arguments
-     * @param scheduler
-     *            the {@code Scheduler} to use when determining the end and start of a window
+     * @param timespan  the period of time each window collects items before it should be emitted
+     * @param timeskip  the period of time after which a new window will be created
+     * @param unit      the unit of time that applies to the {@code timespan} and {@code timeskip} arguments
+     * @param scheduler the {@code Scheduler} to use when determining the end and start of a window
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
+     * @throws NullPointerException     if {@code unit} or {@code scheduler} is {@code null}
      * @throws IllegalArgumentException if {@code timespan} or {@code timeskip} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/window.html">ReactiveX operators documentation: Window</a>
      */
@@ -15613,18 +14819,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param timespan
-     *            the period of time each window collects items before it should be emitted
-     * @param timeskip
-     *            the period of time after which a new window will be created
-     * @param unit
-     *            the unit of time that applies to the {@code timespan} and {@code timeskip} arguments
-     * @param scheduler
-     *            the {@code Scheduler} to use when determining the end and start of a window
-     * @param bufferSize
-     *            the capacity hint for the buffer in the inner windows
+     * @param timespan   the period of time each window collects items before it should be emitted
+     * @param timeskip   the period of time after which a new window will be created
+     * @param unit       the unit of time that applies to the {@code timespan} and {@code timeskip} arguments
+     * @param scheduler  the {@code Scheduler} to use when determining the end and start of a window
+     * @param bufferSize the capacity hint for the buffer in the inner windows
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
+     * @throws NullPointerException     if {@code unit} or {@code scheduler} is {@code null}
      * @throws IllegalArgumentException if {@code timespan}, {@code timeskip} or {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/window.html">ReactiveX operators documentation: Window</a>
      */
@@ -15657,11 +14858,9 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code window} operates by default on the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param timespan
-     *            the period of time each window collects items before it should be emitted and replaced with a
-     *            new window
-     * @param unit
-     *            the unit of time that applies to the {@code timespan} argument
+     * @param timespan the period of time each window collects items before it should be emitted and replaced with a
+     *                 new window
+     * @param unit     the unit of time that applies to the {@code timespan} argument
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/window.html">ReactiveX operators documentation: Window</a>
@@ -15691,15 +14890,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code window} operates by default on the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param timespan
-     *            the period of time each window collects items before it should be emitted and replaced with a
-     *            new window
-     * @param unit
-     *            the unit of time that applies to the {@code timespan} argument
-     * @param count
-     *            the maximum size of each window before it should be emitted
+     * @param timespan the period of time each window collects items before it should be emitted and replaced with a
+     *                 new window
+     * @param unit     the unit of time that applies to the {@code timespan} argument
+     * @param count    the maximum size of each window before it should be emitted
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code unit} is {@code null}
+     * @throws NullPointerException     if {@code unit} is {@code null}
      * @throws IllegalArgumentException if {@code count} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/window.html">ReactiveX operators documentation: Window</a>
      */
@@ -15729,17 +14925,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code window} operates by default on the {@code computation} {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param timespan
-     *            the period of time each window collects items before it should be emitted and replaced with a
-     *            new window
-     * @param unit
-     *            the unit of time that applies to the {@code timespan} argument
-     * @param count
-     *            the maximum size of each window before it should be emitted
-     * @param restart
-     *            if {@code true}, when a window reaches the capacity limit, the timer is restarted as well
+     * @param timespan the period of time each window collects items before it should be emitted and replaced with a
+     *                 new window
+     * @param unit     the unit of time that applies to the {@code timespan} argument
+     * @param count    the maximum size of each window before it should be emitted
+     * @param restart  if {@code true}, when a window reaches the capacity limit, the timer is restarted as well
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code unit} is {@code null}
+     * @throws NullPointerException     if {@code unit} is {@code null}
      * @throws IllegalArgumentException if {@code count} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/window.html">ReactiveX operators documentation: Window</a>
      */
@@ -15768,13 +14960,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param timespan
-     *            the period of time each window collects items before it should be emitted and replaced with a
-     *            new window
-     * @param unit
-     *            the unit of time which applies to the {@code timespan} argument
-     * @param scheduler
-     *            the {@code Scheduler} to use when determining the end and start of a window
+     * @param timespan  the period of time each window collects items before it should be emitted and replaced with a
+     *                  new window
+     * @param unit      the unit of time which applies to the {@code timespan} argument
+     * @param scheduler the {@code Scheduler} to use when determining the end and start of a window
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/window.html">ReactiveX operators documentation: Window</a>
@@ -15805,17 +14994,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param timespan
-     *            the period of time each window collects items before it should be emitted and replaced with a
-     *            new window
-     * @param unit
-     *            the unit of time which applies to the {@code timespan} argument
-     * @param count
-     *            the maximum size of each window before it should be emitted
-     * @param scheduler
-     *            the {@code Scheduler} to use when determining the end and start of a window
+     * @param timespan  the period of time each window collects items before it should be emitted and replaced with a
+     *                  new window
+     * @param unit      the unit of time which applies to the {@code timespan} argument
+     * @param count     the maximum size of each window before it should be emitted
+     * @param scheduler the {@code Scheduler} to use when determining the end and start of a window
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
+     * @throws NullPointerException     if {@code unit} or {@code scheduler} is {@code null}
      * @throws IllegalArgumentException if {@code count} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/window.html">ReactiveX operators documentation: Window</a>
      */
@@ -15845,19 +15030,14 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param timespan
-     *            the period of time each window collects items before it should be emitted and replaced with a
-     *            new window
-     * @param unit
-     *            the unit of time which applies to the {@code timespan} argument
-     * @param count
-     *            the maximum size of each window before it should be emitted
-     * @param scheduler
-     *            the {@code Scheduler} to use when determining the end and start of a window
-     * @param restart
-     *            if {@code true}, when a window reaches the capacity limit, the timer is restarted as well
+     * @param timespan  the period of time each window collects items before it should be emitted and replaced with a
+     *                  new window
+     * @param unit      the unit of time which applies to the {@code timespan} argument
+     * @param count     the maximum size of each window before it should be emitted
+     * @param scheduler the {@code Scheduler} to use when determining the end and start of a window
+     * @param restart   if {@code true}, when a window reaches the capacity limit, the timer is restarted as well
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
+     * @throws NullPointerException     if {@code unit} or {@code scheduler} is {@code null}
      * @throws IllegalArgumentException if {@code count} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/window.html">ReactiveX operators documentation: Window</a>
      */
@@ -15887,21 +15067,15 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>You specify which {@link Scheduler} this operator will use.</dd>
      * </dl>
      *
-     * @param timespan
-     *            the period of time each window collects items before it should be emitted and replaced with a
-     *            new window
-     * @param unit
-     *            the unit of time which applies to the {@code timespan} argument
-     * @param count
-     *            the maximum size of each window before it should be emitted
-     * @param scheduler
-     *            the {@code Scheduler} to use when determining the end and start of a window
-     * @param restart
-     *            if {@code true}, when a window reaches the capacity limit, the timer is restarted as well
-     * @param bufferSize
-     *            the capacity hint for the buffer in the inner windows
+     * @param timespan   the period of time each window collects items before it should be emitted and replaced with a
+     *                   new window
+     * @param unit       the unit of time which applies to the {@code timespan} argument
+     * @param count      the maximum size of each window before it should be emitted
+     * @param scheduler  the {@code Scheduler} to use when determining the end and start of a window
+     * @param restart    if {@code true}, when a window reaches the capacity limit, the timer is restarted as well
+     * @param bufferSize the capacity hint for the buffer in the inner windows
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code unit} or {@code scheduler} is {@code null}
+     * @throws NullPointerException     if {@code unit} or {@code scheduler} is {@code null}
      * @throws IllegalArgumentException if {@code count} or {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/window.html">ReactiveX operators documentation: Window</a>
      */
@@ -15934,10 +15108,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code window} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <B>
-     *            the window element type (ignored)
-     * @param boundaryIndicator
-     *            an {@code ObservableSource} whose emitted items close and open windows
+     * @param <B>               the window element type (ignored)
+     * @param boundaryIndicator an {@code ObservableSource} whose emitted items close and open windows
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code boundaryIndicator} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/window.html">ReactiveX operators documentation: Window</a>
@@ -15965,14 +15137,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code window} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <B>
-     *            the window element type (ignored)
-     * @param boundaryIndicator
-     *            an {@code ObservableSource} whose emitted items close and open windows
-     * @param bufferSize
-     *            the capacity hint for the buffer in the inner windows
+     * @param <B>               the window element type (ignored)
+     * @param boundaryIndicator an {@code ObservableSource} whose emitted items close and open windows
+     * @param bufferSize        the capacity hint for the buffer in the inner windows
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code boundaryIndicator} is {@code null}
+     * @throws NullPointerException     if {@code boundaryIndicator} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/window.html">ReactiveX operators documentation: Window</a>
      */
@@ -16002,13 +15171,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code window} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U> the element type of the window-opening {@code ObservableSource}
-     * @param <V> the element type of the window-closing {@code ObservableSource}s
-     * @param openingIndicator
-     *            an {@code ObservableSource} that, when it emits an item, causes another window to be created
-     * @param closingIndicator
-     *            a {@link Function} that produces an {@code ObservableSource} for every window created. When this indicator {@code ObservableSource}
-     *            emits an item, the associated window is completed
+     * @param <U>              the element type of the window-opening {@code ObservableSource}
+     * @param <V>              the element type of the window-closing {@code ObservableSource}s
+     * @param openingIndicator an {@code ObservableSource} that, when it emits an item, causes another window to be created
+     * @param closingIndicator a {@link Function} that produces an {@code ObservableSource} for every window created. When this indicator {@code ObservableSource}
+     *                         emits an item, the associated window is completed
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code openingIndicator} or {@code closingIndicator} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/window.html">ReactiveX operators documentation: Window</a>
@@ -16039,17 +15206,14 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This version of {@code window} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U> the element type of the window-opening {@code ObservableSource}
-     * @param <V> the element type of the window-closing {@code ObservableSource}s
-     * @param openingIndicator
-     *            an {@code ObservableSource} that, when it emits an item, causes another window to be created
-     * @param closingIndicator
-     *            a {@link Function} that produces an {@code ObservableSource} for every window created. When this indicator {@code ObservableSource}
-     *            emits an item, the associated window is completed
-     * @param bufferSize
-     *            the capacity hint for the buffer in the inner windows
+     * @param <U>              the element type of the window-opening {@code ObservableSource}
+     * @param <V>              the element type of the window-closing {@code ObservableSource}s
+     * @param openingIndicator an {@code ObservableSource} that, when it emits an item, causes another window to be created
+     * @param closingIndicator a {@link Function} that produces an {@code ObservableSource} for every window created. When this indicator {@code ObservableSource}
+     *                         emits an item, the associated window is completed
+     * @param bufferSize       the capacity hint for the buffer in the inner windows
      * @return the new {@code Observable} instance
-     * @throws NullPointerException if {@code openingIndicator} or {@code closingIndicator} is {@code null}
+     * @throws NullPointerException     if {@code openingIndicator} or {@code closingIndicator} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
      * @see <a href="http://reactivex.io/documentation/operators/window.html">ReactiveX operators documentation: Window</a>
      */
@@ -16076,17 +15240,15 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This operator, by default, doesn't run any particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U> the element type of the other {@code ObservableSource}
-     * @param <R> the result type of the combination
-     * @param other
-     *            the other {@code ObservableSource}
-     * @param combiner
-     *            the function to call when the current {@code Observable} emits an item and the other {@code ObservableSource} has already
-     *            emitted an item, to generate the item to be emitted by the resulting {@code Observable}
+     * @param <U>      the element type of the other {@code ObservableSource}
+     * @param <R>      the result type of the combination
+     * @param other    the other {@code ObservableSource}
+     * @param combiner the function to call when the current {@code Observable} emits an item and the other {@code ObservableSource} has already
+     *                 emitted an item, to generate the item to be emitted by the resulting {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code other} or {@code combiner} is {@code null}
-     * @since 2.0
      * @see <a href="http://reactivex.io/documentation/operators/combinelatest.html">ReactiveX operators documentation: CombineLatest</a>
+     * @since 2.0
      */
     @CheckReturnValue
     @SchedulerSupport(SchedulerSupport.NONE)
@@ -16113,11 +15275,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This operator does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T1> the first other source's value type
-     * @param <T2> the second other source's value type
-     * @param <R> the result value type
-     * @param source1 the first other {@code ObservableSource}
-     * @param source2 the second other {@code ObservableSource}
+     * @param <T1>     the first other source's value type
+     * @param <T2>     the second other source's value type
+     * @param <R>      the result value type
+     * @param source1  the first other {@code ObservableSource}
+     * @param source2  the second other {@code ObservableSource}
      * @param combiner the function called with an array of values from each participating {@code ObservableSource}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2} or {@code combiner} is {@code null}
@@ -16151,13 +15313,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This operator does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T1> the first other source's value type
-     * @param <T2> the second other source's value type
-     * @param <T3> the third other source's value type
-     * @param <R> the result value type
-     * @param source1 the first other {@code ObservableSource}
-     * @param source2 the second other {@code ObservableSource}
-     * @param source3 the third other {@code ObservableSource}
+     * @param <T1>     the first other source's value type
+     * @param <T2>     the second other source's value type
+     * @param <T3>     the third other source's value type
+     * @param <R>      the result value type
+     * @param source1  the first other {@code ObservableSource}
+     * @param source2  the second other {@code ObservableSource}
+     * @param source3  the third other {@code ObservableSource}
      * @param combiner the function called with an array of values from each participating {@code ObservableSource}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2}, {@code source3} or {@code combiner} is {@code null}
@@ -16193,15 +15355,15 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This operator does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <T1> the first other source's value type
-     * @param <T2> the second other source's value type
-     * @param <T3> the third other source's value type
-     * @param <T4> the fourth other source's value type
-     * @param <R> the result value type
-     * @param source1 the first other {@code ObservableSource}
-     * @param source2 the second other {@code ObservableSource}
-     * @param source3 the third other {@code ObservableSource}
-     * @param source4 the fourth other {@code ObservableSource}
+     * @param <T1>     the first other source's value type
+     * @param <T2>     the second other source's value type
+     * @param <T3>     the third other source's value type
+     * @param <T4>     the fourth other source's value type
+     * @param <R>      the result value type
+     * @param source1  the first other {@code ObservableSource}
+     * @param source2  the second other {@code ObservableSource}
+     * @param source3  the third other {@code ObservableSource}
+     * @param source4  the fourth other {@code ObservableSource}
      * @param combiner the function called with an array of values from each participating {@code ObservableSource}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code source1}, {@code source2}, {@code source3},
@@ -16239,8 +15401,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This operator does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R> the result value type
-     * @param others the array of other sources
+     * @param <R>      the result value type
+     * @param others   the array of other sources
      * @param combiner the function called with an array of values from each participating {@code ObservableSource}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code others} or {@code combiner} is {@code null}
@@ -16270,8 +15432,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>This operator does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R> the result value type
-     * @param others the iterable of other sources
+     * @param <R>      the result value type
+     * @param others   the iterable of other sources
      * @param combiner the function called with an array of values from each participating {@code ObservableSource}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code others} or {@code combiner} is {@code null}
@@ -16299,15 +15461,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code zipWith} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U>
-     *            the type of items in the {@code other} {@code Iterable}
-     * @param <R>
-     *            the type of items emitted by the resulting {@code Observable}
-     * @param other
-     *            the {@code Iterable} sequence
-     * @param zipper
-     *            a function that combines the pairs of items from the current {@code Observable} and the {@code Iterable} to generate
-     *            the items to be emitted by the resulting {@code Observable}
+     * @param <U>    the type of items in the {@code other} {@code Iterable}
+     * @param <R>    the type of items emitted by the resulting {@code Observable}
+     * @param other  the {@code Iterable} sequence
+     * @param zipper a function that combines the pairs of items from the current {@code Observable} and the {@code Iterable} to generate
+     *               the items to be emitted by the resulting {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code other} or {@code zipper} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/zip.html">ReactiveX operators documentation: Zip</a>
@@ -16343,15 +15501,11 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code zipWith} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U>
-     *            the type of items emitted by the {@code other} {@code ObservableSource}
-     * @param <R>
-     *            the type of items emitted by the resulting {@code Observable}
-     * @param other
-     *            the other {@code ObservableSource}
-     * @param zipper
-     *            a function that combines the pairs of items from the current {@code Observable} and the other {@code ObservableSource} to generate the items to
-     *            be emitted by the resulting {@code Observable}
+     * @param <U>    the type of items emitted by the {@code other} {@code ObservableSource}
+     * @param <R>    the type of items emitted by the resulting {@code Observable}
+     * @param other  the other {@code ObservableSource}
+     * @param zipper a function that combines the pairs of items from the current {@code Observable} and the other {@code ObservableSource} to generate the items to
+     *               be emitted by the resulting {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code other} or {@code zipper} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/zip.html">ReactiveX operators documentation: Zip</a>
@@ -16387,17 +15541,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code zipWith} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U>
-     *            the type of items emitted by the {@code other} {@code ObservableSource}
-     * @param <R>
-     *            the type of items emitted by the resulting {@code Observable}
-     * @param other
-     *            the other {@code ObservableSource}
-     * @param zipper
-     *            a function that combines the pairs of items from the current {@code Observable} and the other {@code ObservableSource} to generate the items to
-     *            be emitted by the resulting {@code Observable}
-     * @param delayError
-     *            if {@code true}, errors from the current {@code Observable} or the other {@code ObservableSource} is delayed until both terminate
+     * @param <U>        the type of items emitted by the {@code other} {@code ObservableSource}
+     * @param <R>        the type of items emitted by the resulting {@code Observable}
+     * @param other      the other {@code ObservableSource}
+     * @param zipper     a function that combines the pairs of items from the current {@code Observable} and the other {@code ObservableSource} to generate the items to
+     *                   be emitted by the resulting {@code Observable}
+     * @param delayError if {@code true}, errors from the current {@code Observable} or the other {@code ObservableSource} is delayed until both terminate
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code other} or {@code zipper} is {@code null}
      * @see <a href="http://reactivex.io/documentation/operators/zip.html">ReactiveX operators documentation: Zip</a>
@@ -16433,23 +15582,17 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code zipWith} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <U>
-     *            the type of items emitted by the {@code other} {@code ObservableSource}
-     * @param <R>
-     *            the type of items emitted by the resulting {@code Observable}
-     * @param other
-     *            the other {@code ObservableSource}
-     * @param zipper
-     *            a function that combines the pairs of items from the current {@code Observable} and the other {@code ObservableSource} to generate the items to
-     *            be emitted by the resulting {@code Observable}
-     * @param bufferSize
-     *            the capacity hint for the buffer in the inner windows
-     * @param delayError
-     *            if {@code true}, errors from the current {@code Observable} or the other {@code ObservableSource} is delayed until both terminate
+     * @param <U>        the type of items emitted by the {@code other} {@code ObservableSource}
+     * @param <R>        the type of items emitted by the resulting {@code Observable}
+     * @param other      the other {@code ObservableSource}
+     * @param zipper     a function that combines the pairs of items from the current {@code Observable} and the other {@code ObservableSource} to generate the items to
+     *                   be emitted by the resulting {@code Observable}
+     * @param bufferSize the capacity hint for the buffer in the inner windows
+     * @param delayError if {@code true}, errors from the current {@code Observable} or the other {@code ObservableSource} is delayed until both terminate
      * @return the new {@code Observable} instance
-     * @see <a href="http://reactivex.io/documentation/operators/zip.html">ReactiveX operators documentation: Zip</a>
-     * @throws NullPointerException if {@code other} or {@code zipper} is {@code null}
+     * @throws NullPointerException     if {@code other} or {@code zipper} is {@code null}
      * @throws IllegalArgumentException if {@code bufferSize} is non-positive
+     * @see <a href="http://reactivex.io/documentation/operators/zip.html">ReactiveX operators documentation: Zip</a>
      * @since 2.0
      */
     @CheckReturnValue
@@ -16470,6 +15613,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code test} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
+     *
      * @return the new {@code TestObserver} instance
      * @since 2.0
      */
@@ -16490,6 +15634,7 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code test} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
+     *
      * @param dispose indicates if the {@code TestObserver} should be disposed before
      *                it is subscribed to the current {@code Observable}
      * @return the new {@code TestObserver} instance
@@ -16527,13 +15672,14 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code fromOptional} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <T> the element type of the optional value
+     *
+     * @param <T>      the element type of the optional value
      * @param optional the optional value to convert into an {@code Observable}
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code optional} is {@code null}
-     * @since 3.0.0
      * @see #just(Object)
      * @see #empty()
+     * @since 3.0.0
      */
     @CheckReturnValue
     @SchedulerSupport(SchedulerSupport.NONE)
@@ -16563,7 +15709,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code fromCompletionStage} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <T> the element type of the {@code CompletionStage}
+     *
+     * @param <T>   the element type of the {@code CompletionStage}
      * @param stage the {@code CompletionStage} to convert to {@code Observable} and signal its terminal value or error
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code stage} is {@code null}
@@ -16605,12 +15752,13 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code fromStream} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <T> the element type of the source {@code Stream}
+     *
+     * @param <T>    the element type of the source {@code Stream}
      * @param stream the {@code Stream} of values to emit
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code stream} is {@code null}
-     * @since 3.0.0
      * @see #fromIterable(Iterable)
+     * @since 3.0.0
      */
     @CheckReturnValue
     @SchedulerSupport(SchedulerSupport.NONE)
@@ -16629,14 +15777,15 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code mapOptional} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <R> the non-{@code null} output type
+     *
+     * @param <R>    the non-{@code null} output type
      * @param mapper the function that receives the upstream item and should return a <em>non-empty</em> {@code Optional}
-     * to emit as the output or an <em>empty</em> {@code Optional} to skip to the next upstream value
+     *               to emit as the output or an <em>empty</em> {@code Optional} to skip to the next upstream value
      * @return the new {@code Observable} instance
      * @throws NullPointerException if {@code mapper} is {@code null}
-     * @since 3.0.0
      * @see #map(Function)
      * @see #filter(Predicate)
+     * @since 3.0.0
      */
     @CheckReturnValue
     @SchedulerSupport(SchedulerSupport.NONE)
@@ -16656,15 +15805,16 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code collect} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
-     * @param <R> the non-{@code null} result type
-     * @param <A> the intermediate container type used for the accumulation
+     *
+     * @param <R>       the non-{@code null} result type
+     * @param <A>       the intermediate container type used for the accumulation
      * @param collector the interface defining the container supplier, accumulator and finisher functions;
-     * see {@link Collectors} for some standard implementations
+     *                  see {@link Collectors} for some standard implementations
      * @return the new {@code Single} instance
      * @throws NullPointerException if {@code collector} is {@code null}
-     * @since 3.0.0
      * @see Collectors
      * @see #collect(Supplier, BiConsumer)
+     * @since 3.0.0
      */
     @CheckReturnValue
     @SchedulerSupport(SchedulerSupport.NONE)
@@ -16695,11 +15845,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code firstStage} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
+     *
      * @param defaultItem the item to signal if the upstream is empty
      * @return the new {@code CompletionStage} instance
      * @throws NullPointerException if {@code defaultItem} is {@code null}
-     * @since 3.0.0
      * @see #firstOrErrorStage()
+     * @since 3.0.0
      */
     @CheckReturnValue
     @SchedulerSupport(SchedulerSupport.NONE)
@@ -16730,11 +15881,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code singleStage} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
+     *
      * @param defaultItem the item to signal if the upstream is empty
      * @return the new {@code CompletionStage} instance
      * @throws NullPointerException if {@code defaultItem} is {@code null}
-     * @since 3.0.0
      * @see #singleOrErrorStage()
+     * @since 3.0.0
      */
     @CheckReturnValue
     @SchedulerSupport(SchedulerSupport.NONE)
@@ -16764,11 +15916,12 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code lastStage} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
+     *
      * @param defaultItem the item to signal if the upstream is empty
      * @return the new {@code CompletionStage} instance
      * @throws NullPointerException if {@code defaultItem} is {@code null}
-     * @since 3.0.0
      * @see #lastOrErrorStage()
+     * @since 3.0.0
      */
     @CheckReturnValue
     @SchedulerSupport(SchedulerSupport.NONE)
@@ -16792,9 +15945,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code firstOrErrorStage} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
+     *
      * @return the new {@code CompletionStage} instance
-     * @since 3.0.0
      * @see #firstStage(Object)
+     * @since 3.0.0
      */
     @CheckReturnValue
     @SchedulerSupport(SchedulerSupport.NONE)
@@ -16819,9 +15973,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code singleOrErrorStage} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
+     *
      * @return the new {@code CompletionStage} instance
-     * @since 3.0.0
      * @see #singleStage(Object)
+     * @since 3.0.0
      */
     @CheckReturnValue
     @SchedulerSupport(SchedulerSupport.NONE)
@@ -16845,9 +16000,10 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dt><b>Scheduler:</b></dt>
      *  <dd>{@code lastOrErrorStage} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
+     *
      * @return the new {@code CompletionStage} instance
-     * @since 3.0.0
      * @see #lastStage(Object)
+     * @since 3.0.0
      */
     @CheckReturnValue
     @SchedulerSupport(SchedulerSupport.NONE)
@@ -16878,8 +16034,8 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      * </dl>
      *
      * @return the new {@code Stream} instance
-     * @since 3.0.0
      * @see #blockingStream(int)
+     * @since 3.0.0
      */
     @CheckReturnValue
     @SchedulerSupport(SchedulerSupport.NONE)
@@ -16954,15 +16110,15 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code concatMapStream} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R> the element type of the {@code Stream}s and the result
+     * @param <R>    the element type of the {@code Stream}s and the result
      * @param mapper the function that receives an upstream item and should return a {@code Stream} whose elements
-     * will be emitted to the downstream
+     *               will be emitted to the downstream
      * @return the new {@code Observable} instance
-     * @since 3.0.0
      * @throws NullPointerException if {@code mapper} is {@code null}
      * @see #concatMap(Function)
      * @see #concatMapIterable(Function)
      * @see #flatMapStream(Function)
+     * @since 3.0.0
      */
     @CheckReturnValue
     @SchedulerSupport(SchedulerSupport.NONE)
@@ -17002,14 +16158,14 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      *  <dd>{@code flatMapStream} does not operate by default on a particular {@link Scheduler}.</dd>
      * </dl>
      *
-     * @param <R> the element type of the {@code Stream}s and the result
+     * @param <R>    the element type of the {@code Stream}s and the result
      * @param mapper the function that receives an upstream item and should return a {@code Stream} whose elements
-     * will be emitted to the downstream
+     *               will be emitted to the downstream
      * @return the new {@code Observable} instance
-     * @since 3.0.0
      * @throws NullPointerException if {@code mapper} is {@code null}
      * @see #flatMap(Function)
      * @see #flatMapIterable(Function)
+     * @since 3.0.0
      */
     @CheckReturnValue
     @SchedulerSupport(SchedulerSupport.NONE)

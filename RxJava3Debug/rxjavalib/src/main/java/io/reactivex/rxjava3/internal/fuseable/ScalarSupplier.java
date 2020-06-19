@@ -29,6 +29,8 @@ import io.reactivex.rxjava3.functions.Supplier;
  * single-element sources uniformly.
  * <p>
  * @param <T> the scalar value type held by the implementing reactive type
+ *
+ * 数量确定的 Observable 标识
  */
 @FunctionalInterface
 public interface ScalarSupplier<@NonNull T> extends Supplier<T> {

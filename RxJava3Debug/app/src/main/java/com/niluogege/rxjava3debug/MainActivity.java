@@ -168,20 +168,38 @@ public class MainActivity extends AppCompatActivity {
      * 该方法的含义是 飞机先变成汽车 ，汽车在变成 变形金刚 ，然后去打仗 （领会精神就行）
      */
     private void transforms() {
-        //1. 创建一个 ObservableJust
-        //2. 将 item 保存到  ObservableJust 中
-        //3. 返回 ObservableJust
-        Observable<Arplane> arplaneObservable = Observable.just(new Arplane());
+//        //1. 创建一个 ObservableJust
+//        //2. 将 item 保存到  ObservableJust 中
+//        //3. 返回 ObservableJust
+//        Observable<Arplane> arplaneObservable = Observable.just(new Arplane());
 
+
+        //1. 创建一个 ObservableCreate 对象（Observable的子类）
+        //2. ObservableOnSubscribe 赋值为 1 中 ObservableCreate的成员变量 source
+        //3. 返回 ObservableCreate 对象
+        Observable<Arplane> arplaneObservable = Observable.create(new ObservableOnSubscribe<Arplane>() {
+
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<Arplane> emitter) throws Throwable {
+                emitter.onNext(new Arplane());
+            }
+        });
+
+
+        //1. 创建一个 ObservableFlatMap 用于封装 上一个 Observable ，变换方法 ，还有一些 配置
+        //2. 返回 ObservableFlatMap
         Observable<Car> carObservable = arplaneObservable.flatMap(new Function<Arplane, ObservableSource<Car>>() {
 
             @Override
             public ObservableSource<Car> apply(Arplane arplane) throws Throwable {
-                @NonNull Observable<Car> carObservable = Observable.just(new Car());
-                return carObservable;
+                //创建一个 ObservableJust 并返回
+                return  Observable.just(new Car());
             }
         });
 
+        //1. 创建一个 ObservableMap
+        //2. 将创建的 function 记录到 ObservableMap 中
+        //3. 返回 ObservableMap
         Observable<Transformer> transformerObservable = carObservable.map(new Function<Car, Transformer>() {
             @Override
             public Transformer apply(Car car) throws Throwable {
@@ -189,6 +207,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //1. 创建一个 Observer 对象
+        //2. 调用到 ObservableMap 的 subscribeActual 方法进行真正的 订阅
+        //3. 创建一个 MapObserver 用于封装 下游观察者 和 自身的转换方法
+        //4. 调用上游 Observable(ObservableFlatMap) 的 subscribe,回到用到 subscribeActual 方法
+        //5. 创建一个 MergeObserver 用于封装  下游观察者 , 转换方法 和替他变量
+        //6. 调用到 ObservableCreate 的 subscribeActual 方法进行真正的 订阅
+        //7. 创建一个 CreateEmitter 用于增强 下游观察者
+
+
+        //8. 调用 MergeObserver 的 onSubscribe 方法
+        //9. 调用 MapObserver 的 onSubscribe 方法
+        //10. 调用 1中自己 创建的  Observer 的 onSubscribe 方法
+        //11. 执行 我们最开始创建的 ObservableOnSubscribe 的 subscribe 方法
+
+
+        //12. 我们执行了  CreateEmitter.onNext （从这里开始就 一路向下 开始执行每一个 observer的 onNext）
+        //13. 执行 MergeObserver.onNext
+        //14. 触发 apply 方法 ，创建一个 ObservableJust 并返回
+        //15. 执行 MergeObserver.subscribeInner
+        //16. 执行 MergeObserver.tryEmitScalar
+        //17. 执行 MapObserver.onNext
+        //18. 执行 apply 变换方法
+        //19. 执行 下游观察者（我们自定义的 Observer的）onNext方法
+
+        //从这调用链可以清楚的看到在 subscribe 以后
+        //Rxjava内部调用链显示从 下到上确定执行顺序，在 从上到下 真正的执行代码。
         transformerObservable.subscribe(new Observer<Transformer>() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {

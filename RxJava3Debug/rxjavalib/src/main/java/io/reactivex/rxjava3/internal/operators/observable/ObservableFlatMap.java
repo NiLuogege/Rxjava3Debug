@@ -36,7 +36,9 @@ public final class ObservableFlatMap<T, U> extends AbstractObservableWithUpstrea
     public ObservableFlatMap(ObservableSource<T> source,
             Function<? super T, ? extends ObservableSource<? extends U>> mapper,
             boolean delayErrors, int maxConcurrency, int bufferSize) {
+        //记录上一个 Observable
         super(source);
+        //变换方法
         this.mapper = mapper;
         this.delayErrors = delayErrors;
         this.maxConcurrency = maxConcurrency;
@@ -46,10 +48,13 @@ public final class ObservableFlatMap<T, U> extends AbstractObservableWithUpstrea
     @Override
     public void subscribeActual(Observer<? super U> t) {
 
+        //尝试使用 ObservableScalarXMap 进行事件变换
         if (ObservableScalarXMap.tryScalarXMapSubscribe(source, t, mapper)) {
             return;
         }
 
+        //1. 创建一个 MergeObserver 用于封装  下游观察者 , 转换方法 和替他变量
+        //2. 调用上游 Observable 的 subscribe
         source.subscribe(new MergeObserver<>(t, mapper, delayErrors, maxConcurrency, bufferSize));
     }
 
@@ -57,6 +62,7 @@ public final class ObservableFlatMap<T, U> extends AbstractObservableWithUpstrea
 
         private static final long serialVersionUID = -2117620485640801370L;
 
+        //下游观察者
         final Observer<? super U> downstream;
         final Function<? super T, ? extends ObservableSource<? extends U>> mapper;
         final boolean delayErrors;
@@ -88,6 +94,7 @@ public final class ObservableFlatMap<T, U> extends AbstractObservableWithUpstrea
 
         MergeObserver(Observer<? super U> actual, Function<? super T, ? extends ObservableSource<? extends U>> mapper,
                 boolean delayErrors, int maxConcurrency, int bufferSize) {
+            //记录下游观察者
             this.downstream = actual;
             this.mapper = mapper;
             this.delayErrors = delayErrors;
@@ -103,6 +110,7 @@ public final class ObservableFlatMap<T, U> extends AbstractObservableWithUpstrea
         public void onSubscribe(Disposable d) {
             if (DisposableHelper.validate(this.upstream, d)) {
                 this.upstream = d;
+                //调用 下游观察者的 onSubscribe
                 downstream.onSubscribe(this);
             }
         }
@@ -115,6 +123,7 @@ public final class ObservableFlatMap<T, U> extends AbstractObservableWithUpstrea
             }
             ObservableSource<? extends U> p;
             try {
+                //执行变换函数
                 p = Objects.requireNonNull(mapper.apply(t), "The mapper returned a null ObservableSource");
             } catch (Throwable e) {
                 Exceptions.throwIfFatal(e);
@@ -159,6 +168,7 @@ public final class ObservableFlatMap<T, U> extends AbstractObservableWithUpstrea
                 } else {
                     InnerObserver<T, U> inner = new InnerObserver<>(this, uniqueId++);
                     if (addInner(inner)) {
+                        //执行下一个 observer的 subscribe
                         p.subscribe(inner);
                     }
                     break;
@@ -227,6 +237,7 @@ public final class ObservableFlatMap<T, U> extends AbstractObservableWithUpstrea
             }
 
             if (get() == 0 && compareAndSet(0, 1)) {
+                //执行下游观察者 onNext
                 downstream.onNext(u);
                 if (decrementAndGet() == 0) {
                     return true;
@@ -333,6 +344,7 @@ public final class ObservableFlatMap<T, U> extends AbstractObservableWithUpstrea
                             break;
                         }
 
+                        //执行下一个observer的 onNext
                         child.onNext(o);
                         innerCompleted++;
                     }

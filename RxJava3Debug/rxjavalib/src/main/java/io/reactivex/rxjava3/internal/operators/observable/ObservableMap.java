@@ -61,6 +61,7 @@ public final class ObservableMap<T, U> extends AbstractObservableWithUpstream<T,
             }
 
             if (sourceMode != NONE) {
+                //执行下游观察者 的 onNext
                 downstream.onNext(null);
                 return;
             }
