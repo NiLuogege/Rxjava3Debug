@@ -37,4 +37,11 @@
         android:text="线程切换" />
 
 
+    <Button
+        android:id="@+id/btn_test"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="执行多线程测试" />
+
+
 </LinearLayout>

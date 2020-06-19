@@ -17,6 +17,8 @@ import com.niluogege.rxjava3debug.bean.Arplane;
 import com.niluogege.rxjava3debug.bean.Car;
 import com.niluogege.rxjava3debug.bean.Transformer;
 
+import org.w3c.dom.Text;
+
 import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.ObservableEmitter;
@@ -70,6 +72,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 scheduler();
+            }
+        });
+
+
+        findViewById(R.id.btn_test).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Test test = new Test();
+                test.startTask();
             }
         });
 
