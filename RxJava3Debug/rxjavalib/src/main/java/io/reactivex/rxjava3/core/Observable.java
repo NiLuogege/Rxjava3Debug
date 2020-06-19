@@ -12520,12 +12520,15 @@ public abstract class Observable<@NonNull T> implements ObservableSource<T> {
      * @see <a href="http://reactivex.io/documentation/operators/subscribeon.html">ReactiveX operators documentation: SubscribeOn</a>
      * @see <a href="http://www.grahamlea.com/2014/07/rxjava-threading-examples/">RxJava Threading Examples</a>
      * @see #observeOn
+     *
+     *  指定subscribe 方法调用的 线程
      */
     @CheckReturnValue
     @SchedulerSupport(SchedulerSupport.CUSTOM)
     @NonNull
     public final Observable<T> subscribeOn(@NonNull Scheduler scheduler) {
         Objects.requireNonNull(scheduler, "scheduler is null");
+        //创建一个 ObservableSubscribeOn 并记录上一个 被观察者 和 调度器
         return RxJavaPlugins.onAssembly(new ObservableSubscribeOn<>(this, scheduler));
     }
 

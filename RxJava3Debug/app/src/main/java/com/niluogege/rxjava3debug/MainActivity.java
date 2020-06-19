@@ -23,6 +23,7 @@ import io.reactivex.rxjava3.core.ObservableEmitter;
 import io.reactivex.rxjava3.core.ObservableOnSubscribe;
 import io.reactivex.rxjava3.core.ObservableSource;
 import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.core.Scheduler;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.functions.Consumer;
 import io.reactivex.rxjava3.functions.Function;
@@ -201,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public ObservableSource<Car> apply(Arplane arplane) throws Throwable {
                 //创建一个 ObservableJust 并返回
-                return  Observable.just(new Car());
+                return Observable.just(new Car());
             }
         });
 
@@ -269,9 +270,49 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 线程调度
+     * 简单线程调度
      */
-    public void scheduler(){
+    public void scheduler() {
 
+
+        //1. 创建一个 ObservableOnSubscribe 对象
+        //2. 创建一个 ObservableCreate 对象，并返回
+        Observable<Integer> createObservable = Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<Integer> emitter) throws Throwable {
+                log("subscribe Thread= " + Thread.currentThread().getName());
+                emitter.onNext(R.drawable.ic_launcher);
+                emitter.onComplete();
+            }
+        });
+
+        Observable<Integer> subscribeOnObservable = createObservable.subscribeOn(Schedulers.io());
+
+
+        Observable<Integer> observeOnObservable = subscribeOnObservable.observeOn(Schedulers.single());
+
+
+        Observer<Integer> observer = observeOnObservable.subscribeWith(new Observer<Integer>() {
+            @Override
+            public void onSubscribe(@NonNull Disposable d) {
+                log("onSubscribe Thread= " + Thread.currentThread().getName());
+            }
+
+            @Override
+            public void onNext(@NonNull Integer integer) {
+                log("onNext Thread= " + Thread.currentThread().getName() + " onNext= " + integer);
+//                Toast.makeText(MainActivity.this, "integer= " + integer, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onError(@NonNull Throwable e) {
+                log("onError= " + e.getLocalizedMessage());
+            }
+
+            @Override
+            public void onComplete() {
+                log("onComplete Thread= " + Thread.currentThread().getName());
+            }
+        });
     }
 }
