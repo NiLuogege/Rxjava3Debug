@@ -24,6 +24,7 @@ import io.reactivex.rxjava3.plugins.RxJavaPlugins;
  * A Callable to be submitted to an ExecutorService that runs a Runnable
  * action and manages completion/cancellation.
  * @since 2.0.8
+ *
  */
 public final class ScheduledDirectTask extends AbstractDirectTask implements Callable<Void> {
 

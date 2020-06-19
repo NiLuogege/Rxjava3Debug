@@ -37,6 +37,8 @@ public final class ObservableSubscribeOn<T> extends AbstractObservableWithUpstre
         // 这也是为什么 观察者 的 onSubscribe 是不会受 线程切换影响的原因
         observer.onSubscribe(parent);
 
+        //1. 创建一个  SubscribeTask （Runnable 对象）封装 上面创建的 SubscribeOnObserver 对象
+        //2. scheduler 开始调度
         parent.setDisposable(scheduler.scheduleDirect(new SubscribeTask(parent)));
     }
 

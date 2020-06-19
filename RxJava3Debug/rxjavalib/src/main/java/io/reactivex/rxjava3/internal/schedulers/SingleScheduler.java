@@ -102,18 +102,31 @@ public final class SingleScheduler extends Scheduler {
         return new ScheduledWorker(executor.get());
     }
 
+    /**
+     * 直接调度 没有延迟
+     * @param run the task to schedule
+     * @param delay the delay amount, non-positive values indicate non-delayed scheduling
+     * @param unit the unit of measure of the delay amount
+     * @return
+     */
     @NonNull
     @Override
     public Disposable scheduleDirect(@NonNull Runnable run, long delay, TimeUnit unit) {
+
+        //1. 调用钩子函数
+        //2. 创建 ScheduledDirectTask
         ScheduledDirectTask task = new ScheduledDirectTask(RxJavaPlugins.onSchedule(run));
         try {
             Future<?> f;
-            if (delay <= 0L) {
+            if (delay <= 0L) {//无延迟 直接 submit
+                //将 task 添加到 队列中 并返回 执行结果 f
                 f = executor.get().submit(task);
             } else {
                 f = executor.get().schedule(task, delay, unit);
             }
+            //将执行结果 保存到 ScheduledDirectTask 中
             task.setFuture(f);
+            // 返回 ScheduledDirectTask
             return task;
         } catch (RejectedExecutionException ex) {
             RxJavaPlugins.onError(ex);

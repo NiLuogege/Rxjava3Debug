@@ -26,6 +26,7 @@ import io.reactivex.rxjava3.schedulers.SchedulerRunnableIntrospection;
 /**
  * Base functionality for direct tasks that manage a runnable and cancellation/completion.
  * @since 2.0.8
+ * 既是 任务 有保存了 执行结果
  */
 abstract class AbstractDirectTask
 extends AtomicReference<Future<?>>
