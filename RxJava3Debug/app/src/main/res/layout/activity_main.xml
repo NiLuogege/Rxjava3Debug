@@ -30,5 +30,11 @@
         android:layout_height="50dp"
         android:text="多次事件变换" />
 
+    <Button
+        android:id="@+id/btn_scheduler"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="线程切换" />
+
 
 </LinearLayout>

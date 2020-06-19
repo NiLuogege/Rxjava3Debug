@@ -26,6 +26,7 @@ import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.functions.Consumer;
 import io.reactivex.rxjava3.functions.Function;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -59,6 +60,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 transforms();
+            }
+        });
+
+        findViewById(R.id.btn_scheduler).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                scheduler();
             }
         });
 
@@ -207,6 +215,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //从下到上确定顺序
         //1. 创建一个 Observer 对象
         //2. 调用到 ObservableMap 的 subscribeActual 方法进行真正的 订阅
         //3. 创建一个 MapObserver 用于封装 下游观察者 和 自身的转换方法
@@ -216,12 +225,14 @@ public class MainActivity extends AppCompatActivity {
         //7. 创建一个 CreateEmitter 用于增强 下游观察者
 
 
+        //从上到下执行 被观察者的 onSubscribe
         //8. 调用 MergeObserver 的 onSubscribe 方法
         //9. 调用 MapObserver 的 onSubscribe 方法
         //10. 调用 1中自己 创建的  Observer 的 onSubscribe 方法
         //11. 执行 我们最开始创建的 ObservableOnSubscribe 的 subscribe 方法
 
 
+        //从上到下 执行 观察者的 onNext 方法
         //12. 我们执行了  CreateEmitter.onNext （从这里开始就 一路向下 开始执行每一个 observer的 onNext）
         //13. 执行 MergeObserver.onNext
         //14. 触发 apply 方法 ，创建一个 ObservableJust 并返回
@@ -254,5 +265,12 @@ public class MainActivity extends AppCompatActivity {
                 log("onComplete");
             }
         });
+    }
+
+    /**
+     * 线程调度
+     */
+    public void scheduler(){
+
     }
 }
