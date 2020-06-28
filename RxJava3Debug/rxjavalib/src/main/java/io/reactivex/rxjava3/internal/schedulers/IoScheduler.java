@@ -230,6 +230,7 @@ public final class IoScheduler extends Scheduler {
                 return EmptyDisposable.INSTANCE;
             }
 
+            //调用 threadWorker.scheduleActual
             return threadWorker.scheduleActual(action, delayTime, unit, tasks);
         }
     }
