@@ -30,7 +30,7 @@ public final class ObservableSubscribeOn<T> extends AbstractObservableWithUpstre
 
     @Override
     public void subscribeActual(final Observer<? super T> observer) {
-        //创建一个 SubscribeOnObserver 类型的observer 封装 下游传上了的 observer
+        //创建一个 SubscribeOnObserver 类型的observer 封装 下游传上来的 observer
         final SubscribeOnObserver<T> parent = new SubscribeOnObserver<>(observer);
 
         //调用 下游 observer 的  onSubscribe 方法
@@ -62,6 +62,7 @@ public final class ObservableSubscribeOn<T> extends AbstractObservableWithUpstre
 
         @Override
         public void onNext(T t) {
+            //执行 下游observer 的onNext
             downstream.onNext(t);
         }
 

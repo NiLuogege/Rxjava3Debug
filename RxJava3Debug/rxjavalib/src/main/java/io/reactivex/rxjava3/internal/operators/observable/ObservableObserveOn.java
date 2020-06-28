@@ -162,6 +162,7 @@ public final class ObservableObserveOn<T> extends AbstractObservableWithUpstream
 
         void schedule() {
             if (getAndIncrement() == 0) {
+                //执行 run方法
                 worker.schedule(this);
             }
         }
@@ -170,6 +171,7 @@ public final class ObservableObserveOn<T> extends AbstractObservableWithUpstream
             int missed = 1;
 
             final SimpleQueue<T> q = queue;
+            //获取下油 Observer
             final Observer<? super T> a = downstream;
 
             for (;;) {
@@ -202,6 +204,7 @@ public final class ObservableObserveOn<T> extends AbstractObservableWithUpstream
                         break;
                     }
 
+                    //执行下游 observer的onNext
                     a.onNext(v);
                 }
 

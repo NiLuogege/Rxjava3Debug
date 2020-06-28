@@ -140,6 +140,7 @@ public class NewThreadWorker extends Scheduler.Worker implements Disposable {
 
         Future<?> f;
         try {
+            //直接或者 延时执行 sr
             if (delayTime <= 0) {
                 f = executor.submit((Callable<Object>)sr);
             } else {
