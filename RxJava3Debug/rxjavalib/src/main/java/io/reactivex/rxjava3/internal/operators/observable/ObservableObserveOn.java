@@ -54,7 +54,7 @@ public final class ObservableObserveOn<T> extends AbstractObservableWithUpstream
     implements Observer<T>, Runnable {
 
         private static final long serialVersionUID = 6576896619930983584L;
-        //下游observer（真正的Observer）
+        //下游observer
         final Observer<? super T> downstream;
         final Scheduler.Worker worker;
         final boolean delayError;
@@ -84,7 +84,7 @@ public final class ObservableObserveOn<T> extends AbstractObservableWithUpstream
         public void onSubscribe(Disposable d) {
             if (DisposableHelper.validate(this.upstream, d)) {
                 this.upstream = d;
-                if (d instanceof QueueDisposable) {
+                if (d instanceof QueueDisposable) {//是否是 QueueDisposable
                     @SuppressWarnings("unchecked")
                     QueueDisposable<T> qd = (QueueDisposable<T>) d;
 
@@ -105,9 +105,9 @@ public final class ObservableObserveOn<T> extends AbstractObservableWithUpstream
                         return;
                     }
                 }
-
+                //创建 queue
                 queue = new SpscLinkedArrayQueue<>(bufferSize);
-
+                //调用下游Observer 的  onSubscribe
                 downstream.onSubscribe(this);
             }
         }

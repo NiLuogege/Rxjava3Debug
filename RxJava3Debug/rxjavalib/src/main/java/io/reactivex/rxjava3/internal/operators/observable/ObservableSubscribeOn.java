@@ -46,6 +46,7 @@ public final class ObservableSubscribeOn<T> extends AbstractObservableWithUpstre
     static final class SubscribeOnObserver<T> extends AtomicReference<Disposable> implements Observer<T>, Disposable {
 
         private static final long serialVersionUID = 8094547886072529208L;
+        //下游 观察者
         final Observer<? super T> downstream;
 
         final AtomicReference<Disposable> upstream;

@@ -23,7 +23,7 @@ public final class ScheduledRunnable extends AtomicReferenceArray<Object>
 implements Runnable, Callable<Object>, Disposable {
 
     private static final long serialVersionUID = -6120223772001106981L;
-    final Runnable actual;
+    final Runnable actual;//Observer 的封装
 
     /** Indicates that the parent tracking this task has been notified about its completion. */
     static final Object PARENT_DISPOSED = new Object();
@@ -52,7 +52,7 @@ implements Runnable, Callable<Object>, Disposable {
 
     @Override
     public Object call() {
-        // Being Callable saves an allocation in ThreadPoolExecutor
+        //调用 run 方法
         run();
         return null;
     }

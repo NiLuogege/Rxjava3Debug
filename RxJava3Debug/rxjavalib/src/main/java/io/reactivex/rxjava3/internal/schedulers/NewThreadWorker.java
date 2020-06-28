@@ -129,7 +129,7 @@ public class NewThreadWorker extends Scheduler.Worker implements Disposable {
     @NonNull
     public ScheduledRunnable scheduleActual(final Runnable run, long delayTime, @NonNull TimeUnit unit, @Nullable DisposableContainer parent) {
         Runnable decoratedRun = RxJavaPlugins.onSchedule(run);
-
+        //创建 ScheduledRunnable
         ScheduledRunnable sr = new ScheduledRunnable(decoratedRun, parent);
 
         if (parent != null) {

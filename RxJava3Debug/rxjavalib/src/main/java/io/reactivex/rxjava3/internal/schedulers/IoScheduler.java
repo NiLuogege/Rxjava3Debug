@@ -187,6 +187,7 @@ public final class IoScheduler extends Scheduler {
     @NonNull
     @Override
     public Worker createWorker() {
+        //创建 EventLoopWorker 这个 worker
         return new EventLoopWorker(pool.get());
     }
 
