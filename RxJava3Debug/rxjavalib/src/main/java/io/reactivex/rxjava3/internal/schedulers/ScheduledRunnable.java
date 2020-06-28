@@ -62,6 +62,7 @@ implements Runnable, Callable<Object>, Disposable {
         lazySet(THREAD_INDEX, Thread.currentThread());
         try {
             try {
+                //真正执行任务
                 actual.run();
             } catch (Throwable e) {
                 // Exceptions.throwIfFatal(e); nowhere to go

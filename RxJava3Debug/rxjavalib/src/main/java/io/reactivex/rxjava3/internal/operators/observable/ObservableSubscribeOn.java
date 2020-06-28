@@ -39,6 +39,7 @@ public final class ObservableSubscribeOn<T> extends AbstractObservableWithUpstre
 
         //1. 创建一个  SubscribeTask （Runnable 对象）封装 上面创建的 SubscribeOnObserver 对象
         //2. scheduler 开始调度
+        //3. 设置 parent 的 Disposable
         parent.setDisposable(scheduler.scheduleDirect(new SubscribeTask(parent)));
     }
 
@@ -99,6 +100,7 @@ public final class ObservableSubscribeOn<T> extends AbstractObservableWithUpstre
 
         @Override
         public void run() {
+            //调用上游被观察者的 subscribe 方法并把 parent  传递下去
             source.subscribe(parent);
         }
     }

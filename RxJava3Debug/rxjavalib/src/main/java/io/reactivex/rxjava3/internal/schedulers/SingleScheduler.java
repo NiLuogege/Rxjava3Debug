@@ -189,19 +189,23 @@ public final class SingleScheduler extends Scheduler {
                 return EmptyDisposable.INSTANCE;
             }
 
+            //hook Runnable
             Runnable decoratedRun = RxJavaPlugins.onSchedule(run);
 
+            //将 Runnable 和 tasks 封装成 ScheduledRunnable
             ScheduledRunnable sr = new ScheduledRunnable(decoratedRun, tasks);
             tasks.add(sr);
 
             try {
                 Future<?> f;
                 if (delay <= 0L) {
+                    //将 任务加入到 线程池中
                     f = executor.submit((Callable<Object>)sr);
                 } else {
                     f = executor.schedule((Callable<Object>)sr, delay, unit);
                 }
 
+                //将future 设置到 ScheduledRunnable 中
                 sr.setFuture(f);
             } catch (RejectedExecutionException ex) {
                 dispose();
@@ -209,6 +213,7 @@ public final class SingleScheduler extends Scheduler {
                 return EmptyDisposable.INSTANCE;
             }
 
+            //返回 sr
             return sr;
         }
 

@@ -294,6 +294,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void subscribe(@NonNull ObservableEmitter<Integer> emitter) throws Throwable {
                 log("subscribe Thread= " + Thread.currentThread().getName());
+
+                //执行 CreateEmitter 的onNext
                 emitter.onNext(R.drawable.ic_launcher);
                 emitter.onComplete();
             }

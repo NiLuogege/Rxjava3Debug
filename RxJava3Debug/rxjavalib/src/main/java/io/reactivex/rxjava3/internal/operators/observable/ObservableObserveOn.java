@@ -44,7 +44,7 @@ public final class ObservableObserveOn<T> extends AbstractObservableWithUpstream
             //创建一个 Scheduler.Worker
             Scheduler.Worker w = scheduler.createWorker();
 
-            //1. 创建一个 ObserveOnObserver 的 observer 用于保存 下游的 observer
+            //1. 创建一个 ObserveOnObserver 的 observer 用于保存 下游的 observer  和 创建的 worker(线程的封装)
             //2. 调用上游  被观察者  subscribe
             source.subscribe(new ObserveOnObserver<>(observer, w, delayError, bufferSize));
         }

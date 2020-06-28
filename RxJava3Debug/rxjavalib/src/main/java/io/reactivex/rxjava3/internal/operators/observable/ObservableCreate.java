@@ -37,7 +37,7 @@ public final class ObservableCreate<T> extends Observable<T> {
      */
     @Override
     protected void subscribeActual(Observer<? super T> observer) {
-        //创建一个
+        //创建一个 CreateEmitter 用于封装传递过来的 observer
         CreateEmitter<T> parent = new CreateEmitter<>(observer);
 
         //回调 观察者的 onSubscribe 方法
@@ -71,6 +71,7 @@ public final class ObservableCreate<T> extends Observable<T> {
                 return;
             }
             if (!isDisposed()) {
+                //执行 observer的 onNext
                 observer.onNext(t);
             }
         }

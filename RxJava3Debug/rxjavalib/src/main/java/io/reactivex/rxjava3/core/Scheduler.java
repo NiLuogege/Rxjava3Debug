@@ -225,10 +225,13 @@ public abstract class Scheduler {
 
         final Runnable decoratedRun = RxJavaPlugins.onSchedule(run);
 
+        //将 runnable 和 线程工作者w 封装到 DisposeTask 中
         DisposeTask task = new DisposeTask(decoratedRun, w);
 
+        //调用worker 的 schedule 方法
         w.schedule(task, delay, unit);
 
+        //返回 task
         return task;
     }
 
