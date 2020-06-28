@@ -289,8 +289,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //1. 创建一个 ObservableOnSubscribe 对象
-        //2. 创建一个 ObservableCreate 对象，并返回
-        Observable<Integer> createObservable = Observable.create(new ObservableOnSubscribe<Integer>() {
+        ObservableOnSubscribe<Integer> observableOnSubscribe = new ObservableOnSubscribe<Integer>() {
             @Override
             public void subscribe(@NonNull ObservableEmitter<Integer> emitter) throws Throwable {
                 log("subscribe Thread= " + Thread.currentThread().getName());
@@ -299,7 +298,10 @@ public class MainActivity extends AppCompatActivity {
                 emitter.onNext(R.drawable.ic_launcher);
                 emitter.onComplete();
             }
-        });
+        };
+
+        //2. 创建一个 ObservableCreate 对象，并返回
+        Observable<Integer> createObservable = Observable.create(observableOnSubscribe);
 
         IoScheduler ioScheduler = (IoScheduler) Schedulers.io();
         Observable<Integer> subscribeOnObservable = createObservable.subscribeOn(ioScheduler);
@@ -309,7 +311,7 @@ public class MainActivity extends AppCompatActivity {
         Observable<Integer> observeOnObservable = subscribeOnObservable.observeOn(singleScheduler);
 
 
-        Observer<Integer> observer = observeOnObservable.subscribeWith(new Observer<Integer>() {
+        Observer<Integer> observer = new Observer<Integer>() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {
                 log("onSubscribe Thread= " + Thread.currentThread().getName());
@@ -330,6 +332,8 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete() {
                 log("onComplete Thread= " + Thread.currentThread().getName());
             }
-        });
+        };
+
+        observer = observeOnObservable.subscribeWith(observer);
     }
 }
