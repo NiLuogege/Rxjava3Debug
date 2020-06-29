@@ -391,7 +391,13 @@ public class MainActivity extends AppCompatActivity {
      * 为什么observeOn多次执行多次有效
      */
     private void btnWhyObserveOnCanMore() {
-        Observable.just(1)
+        Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<Integer> emitter) throws Throwable {
+                log("subscribe:" + Thread.currentThread().getName());
+                emitter.onNext(1);
+            }
+        }).observeOn(Schedulers.computation())
                 .map(new Function<Integer, Integer>() {
                     @Override
                     public Integer apply(@NonNull Integer integer) throws Exception {
@@ -404,14 +410,6 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public Integer apply(@NonNull Integer integer) throws Exception {
                         log("map-2:" + Thread.currentThread().getName());
-                        return integer;
-                    }
-                })
-                .observeOn(Schedulers.io())
-                .map(new Function<Integer, Integer>() {
-                    @Override
-                    public Integer apply(@NonNull Integer integer) throws Exception {
-                        log("map-3:" + Thread.currentThread().getName());
                         return integer;
                     }
                 })
