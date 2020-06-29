@@ -358,6 +358,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void btnWhySubscribeOnCanOnly() {
         Observable.just(1)
+                .subscribeOn(Schedulers.computation())
                 .map(new Function<Integer, Integer>() {
                     @Override
                     public Integer apply(@NonNull Integer integer) throws Exception {
