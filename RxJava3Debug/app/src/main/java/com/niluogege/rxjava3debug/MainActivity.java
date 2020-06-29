@@ -355,6 +355,9 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * 为什么subscribeOn多次执行只有一次有效
+     *
+     * 答：因为 `subscribe` 以后 订阅是从下往上发生的（下游订阅上游），而且 `subscribeOn` 是调用后立马切换线程，
+     * 这就会出现多次调用`subscribeOn`后线程嵌套的现象（俄罗斯套娃一样）从而导致 只有第一个 `subscribeOn` 生效的现象
      */
     private void btnWhySubscribeOnCanOnly() {
         Observable.create(new ObservableOnSubscribe<Integer>() {
