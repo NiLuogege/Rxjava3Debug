@@ -366,7 +366,7 @@ public class MainActivity extends AppCompatActivity {
                         return integer;
                     }
                 })
-                .subscribeOn(Schedulers.newThread())
+                .subscribeOn(Schedulers.single())
                 .map(new Function<Integer, Integer>() {
                     @Override
                     public Integer apply(@NonNull Integer integer) throws Exception {
@@ -374,15 +374,6 @@ public class MainActivity extends AppCompatActivity {
                         return integer;
                     }
                 })
-                .subscribeOn(Schedulers.io())
-                .map(new Function<Integer, Integer>() {
-                    @Override
-                    public Integer apply(@NonNull Integer integer) throws Exception {
-                        log("map-3:" + Thread.currentThread().getName());
-                        return integer;
-                    }
-                })
-                .subscribeOn(Schedulers.single())
                 .subscribe(new Consumer<Integer>() {
                     @Override
                     public void accept(@NonNull Integer integer) throws Exception {
