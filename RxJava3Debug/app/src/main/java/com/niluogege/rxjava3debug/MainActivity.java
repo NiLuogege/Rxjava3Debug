@@ -85,7 +85,23 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        findViewById(R.id.btn_why_subscribeOn_can_only).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnWhySubscribeOnCanOnly();
+            }
+        });
+
+        findViewById(R.id.btn_why_observeOn_can_more).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnWhyObserveOnCanMore();
+            }
+        });
+
+
     }
+
 
     /**
      * 最简单的用例分析
@@ -335,5 +351,80 @@ public class MainActivity extends AppCompatActivity {
         };
 
         observer = observeOnObservable.subscribeWith(observer);
+    }
+
+    /**
+     * 为什么subscribeOn多次执行只有一次有效
+     */
+    private void btnWhySubscribeOnCanOnly() {
+        Observable.just(1)
+                .map(new Function<Integer, Integer>() {
+                    @Override
+                    public Integer apply(@NonNull Integer integer) throws Exception {
+                        log("map-1:" + Thread.currentThread().getName());
+                        return integer;
+                    }
+                })
+                .subscribeOn(Schedulers.newThread())
+                .map(new Function<Integer, Integer>() {
+                    @Override
+                    public Integer apply(@NonNull Integer integer) throws Exception {
+                        log("map-2:" + Thread.currentThread().getName());
+                        return integer;
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .map(new Function<Integer, Integer>() {
+                    @Override
+                    public Integer apply(@NonNull Integer integer) throws Exception {
+                        log("map-3:" + Thread.currentThread().getName());
+                        return integer;
+                    }
+                })
+                .subscribeOn(Schedulers.single())
+                .subscribe(new Consumer<Integer>() {
+                    @Override
+                    public void accept(@NonNull Integer integer) throws Exception {
+                        log("subscribe:" + Thread.currentThread().getName());
+                    }
+                });
+
+    }
+
+    /**
+     * 为什么observeOn多次执行多次有效
+     */
+    private void btnWhyObserveOnCanMore() {
+        Observable.just(1)
+                .map(new Function<Integer, Integer>() {
+                    @Override
+                    public Integer apply(@NonNull Integer integer) throws Exception {
+                        log( "map-1:"+Thread.currentThread().getName());
+                        return integer;
+                    }
+                })
+                .observeOn(Schedulers.newThread())
+                .map(new Function<Integer, Integer>() {
+                    @Override
+                    public Integer apply(@NonNull Integer integer) throws Exception {
+                        log( "map-2:"+Thread.currentThread().getName());
+                        return integer;
+                    }
+                })
+                .observeOn(Schedulers.io())
+                .map(new Function<Integer, Integer>() {
+                    @Override
+                    public Integer apply(@NonNull Integer integer) throws Exception {
+                        log( "map-3:"+Thread.currentThread().getName());
+                        return integer;
+                    }
+                })
+                .observeOn(Schedulers.single())
+                .subscribe(new Consumer<Integer>() {
+                    @Override
+                    public void accept(@NonNull Integer integer) throws Exception {
+                        log( "subscribe:"+Thread.currentThread().getName());
+                    }
+                });
     }
 }

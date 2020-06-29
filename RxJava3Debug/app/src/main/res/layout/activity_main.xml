@@ -43,5 +43,17 @@
         android:layout_height="50dp"
         android:text="执行多线程测试" />
 
+    <Button
+        android:id="@+id/btn_why_subscribeOn_can_only"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="为什么subscribeOn多次执行只有一次有效" />
+
+    <Button
+        android:id="@+id/btn_why_observeOn_can_more"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="为什么observeOn多次执行多次有效" />
+
 
 </LinearLayout>
