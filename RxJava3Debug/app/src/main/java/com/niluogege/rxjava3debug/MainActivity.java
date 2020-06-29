@@ -357,8 +357,13 @@ public class MainActivity extends AppCompatActivity {
      * 为什么subscribeOn多次执行只有一次有效
      */
     private void btnWhySubscribeOnCanOnly() {
-        Observable.just(1)
-                .subscribeOn(Schedulers.computation())
+        Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<Integer> emitter) throws Throwable {
+                log("subscribe:" + Thread.currentThread().getName());
+                emitter.onNext(1);
+            }
+        }).subscribeOn(Schedulers.computation())
                 .map(new Function<Integer, Integer>() {
                     @Override
                     public Integer apply(@NonNull Integer integer) throws Exception {
@@ -380,7 +385,6 @@ public class MainActivity extends AppCompatActivity {
                         log("subscribe:" + Thread.currentThread().getName());
                     }
                 });
-
     }
 
     /**
@@ -391,7 +395,7 @@ public class MainActivity extends AppCompatActivity {
                 .map(new Function<Integer, Integer>() {
                     @Override
                     public Integer apply(@NonNull Integer integer) throws Exception {
-                        log( "map-1:"+Thread.currentThread().getName());
+                        log("map-1:" + Thread.currentThread().getName());
                         return integer;
                     }
                 })
@@ -399,7 +403,7 @@ public class MainActivity extends AppCompatActivity {
                 .map(new Function<Integer, Integer>() {
                     @Override
                     public Integer apply(@NonNull Integer integer) throws Exception {
-                        log( "map-2:"+Thread.currentThread().getName());
+                        log("map-2:" + Thread.currentThread().getName());
                         return integer;
                     }
                 })
@@ -407,7 +411,7 @@ public class MainActivity extends AppCompatActivity {
                 .map(new Function<Integer, Integer>() {
                     @Override
                     public Integer apply(@NonNull Integer integer) throws Exception {
-                        log( "map-3:"+Thread.currentThread().getName());
+                        log("map-3:" + Thread.currentThread().getName());
                         return integer;
                     }
                 })
@@ -415,7 +419,7 @@ public class MainActivity extends AppCompatActivity {
                 .subscribe(new Consumer<Integer>() {
                     @Override
                     public void accept(@NonNull Integer integer) throws Exception {
-                        log( "subscribe:"+Thread.currentThread().getName());
+                        log("subscribe:" + Thread.currentThread().getName());
                     }
                 });
     }
