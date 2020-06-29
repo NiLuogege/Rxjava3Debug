@@ -392,6 +392,10 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * 为什么observeOn多次执行多次有效
+     *
+     * 答：当Observable(订阅者)订阅完毕后, Observer（每个 Observable 都拥有一个 Observer） 就会从上往下执行。
+     * 而且observeOn 是在 Observer 的onNext 方法中进行线程切换，切换成功成功后再执行下一个 Observer. 的onNext，
+     * 这也就解释了 为什么observeOn 可以多次调用而且 之影响 其下游的 Observer.
      */
     private void btnWhyObserveOnCanMore() {
         Observable.create(new ObservableOnSubscribe<Integer>() {
