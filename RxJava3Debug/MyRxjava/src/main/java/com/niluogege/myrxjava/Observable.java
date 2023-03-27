@@ -28,5 +28,8 @@ public abstract class Observable<T> implements ObservableSource<T> {
     public Observable<T> subscribeOn(Scheduler scheduler) {
         return new ObservableSubstribeOn<T>(this, scheduler);
     }
+    public Observable<T> ObserveOn(Scheduler scheduler) {
+        return new ObservableObserveOn<>(this, scheduler);
+    }
 
 }

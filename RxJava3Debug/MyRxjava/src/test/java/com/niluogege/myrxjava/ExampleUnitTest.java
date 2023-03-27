@@ -83,12 +83,14 @@ public class ExampleUnitTest {
             public void subscribe(Emitter<Integer> emitter) {
                 emitter.onNext(111);
             }
-        }).map(new Function<Integer, String>() {
-            @Override
-            public String apply(Integer s) {
-                return "变换啦" + s;
-            }
         }).subscribeOn(Schedulers.io)
+                .ObserveOn(Schedulers.MAIN_THREAD)
+                .map(new Function<Integer, String>() {
+                    @Override
+                    public String apply(Integer s) {
+                        return "变换啦" + s;
+                    }
+                })
                 .subscribe(observer);
 
         Thread.sleep(2000);
