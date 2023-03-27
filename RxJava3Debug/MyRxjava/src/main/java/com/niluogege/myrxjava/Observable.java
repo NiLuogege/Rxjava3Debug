@@ -7,14 +7,19 @@ public abstract class Observable<T> implements ObservableSource<T> {
 
     @Override
     public void subscribe(Observer<T> observer) {
+        System.out.println("---- Observable subscribe() ->" + this);
         //交给子类自己实现
         subscribeActual(observer);
     }
 
     abstract void subscribeActual(Observer<T> observer);
 
-    public static <T>  Observable<T> create(ObservableOnSubscribe<T> source){
+    public static <T> Observable<T> create(ObservableOnSubscribe<T> source) {
         return new ObservableCreate<T>(source);
+    }
+
+    public <U> Observable<U> map(Function<T, U> mapper) {
+        return new ObservableMap<T, U>(this, mapper);
     }
 
 }
