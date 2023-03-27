@@ -10,6 +10,7 @@ public class ObservableCreate<T> extends Observable<T> {
 
 
     public ObservableCreate(ObservableOnSubscribe<T> source) {
+        System.out.println("---- ObservableCreate构造方法 ->" + this);
         //上游被订阅者，这个一般就是顶层被订阅者了。就是事件产生的地方
         this.source = source;
     }

@@ -10,6 +10,7 @@ public abstract class AbstractObservableWithUpStream<T,U> extends Observable<U>{
     Observable<T> source;
 
     public AbstractObservableWithUpStream(Observable<T> source) {
+        System.out.println("---- AbstractObservableWithUpStream 构造方法 ->" + this);
         this.source = source;
     }
 }
