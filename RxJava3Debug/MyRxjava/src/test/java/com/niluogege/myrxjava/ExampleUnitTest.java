@@ -2,7 +2,6 @@ package com.niluogege.myrxjava;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -10,8 +9,13 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
+
+    /**
+     * 最简单的使用，
+     * 其实就是通过 ObservableOnSubscribe 和 Emitter 将 订阅者和被订阅者链接起来
+     */
     @Test
-    public void addition_isCorrect() {
+    public void simpleTest() {
         Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(Emitter<String> emitter) {
