@@ -62,8 +62,6 @@ public class ExampleUnitTest {
             @Override
             public void subscribe(Emitter<Integer> emitter) {
                 emitter.onNext(111);
-                emitter.onNext(222);
-                emitter.onComplete();
             }
         }).map(new Function<Integer, String>() {
             @Override

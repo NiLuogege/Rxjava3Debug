@@ -39,6 +39,7 @@ public class ObservableCreate<T> extends Observable<T> {
         @Override
         public void onNext(T t) {
             if (done) return;
+            System.out.println("---- onNext ->" + this);
             downStream.onNext(t);
         }
 
