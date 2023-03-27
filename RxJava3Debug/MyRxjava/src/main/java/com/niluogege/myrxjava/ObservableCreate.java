@@ -10,7 +10,7 @@ public class ObservableCreate<T> extends Observable<T> {
 
 
     public ObservableCreate(ObservableOnSubscribe<T> source) {
-        System.out.println("---- ObservableCreate构造方法 ->" + this);
+        System.out.println("---- ObservableCreate构造方法 ->" + this+ " threadName=" + Thread.currentThread().getName());
         //上游被订阅者，这个一般就是顶层被订阅者了。就是事件产生的地方
         this.source = source;
     }
@@ -39,7 +39,7 @@ public class ObservableCreate<T> extends Observable<T> {
         @Override
         public void onNext(T t) {
             if (done) return;
-            System.out.println("---- onNext ->" + this);
+            System.out.println("---- onNext ->" + this + " threadName=" + Thread.currentThread().getName());
             downStream.onNext(t);
         }
 

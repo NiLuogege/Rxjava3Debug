@@ -40,7 +40,7 @@ public class ObservableMap<T, U> extends AbstractObservableWithUpStream<T, U> {
 
         @Override
         public void onNext(T t) {
-            System.out.println("---- onNext ->" + this);
+            System.out.println("---- onNext ->" + this+ " threadName=" + Thread.currentThread().getName());
             downStream.onNext(mapper.apply(t));
         }
 

@@ -1,5 +1,7 @@
 package com.niluogege.myrxjava;
 
+import com.niluogege.myrxjava.scheduler.Schedulers;
+
 import org.junit.Test;
 
 
@@ -69,5 +71,26 @@ public class ExampleUnitTest {
                 return "变换啦" + s;
             }
         }).subscribe(observer);
+    }
+
+    /**
+     * 线程调度测试
+     */
+    @Test
+    public void scheduleTest() throws InterruptedException {
+        Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(Emitter<Integer> emitter) {
+                emitter.onNext(111);
+            }
+        }).map(new Function<Integer, String>() {
+            @Override
+            public String apply(Integer s) {
+                return "变换啦" + s;
+            }
+        }).subscribeOn(Schedulers.io)
+                .subscribe(observer);
+
+        Thread.sleep(2000);
     }
 }
