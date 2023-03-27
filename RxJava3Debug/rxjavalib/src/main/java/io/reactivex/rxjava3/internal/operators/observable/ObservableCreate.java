@@ -37,14 +37,14 @@ public final class ObservableCreate<T> extends Observable<T> {
      */
     @Override
     protected void subscribeActual(Observer<? super T> observer) {
-        //创建一个 CreateEmitter 用于封装传递过来的 observer
+        //创建发射器，并把下游observer给发射器。
         CreateEmitter<T> parent = new CreateEmitter<>(observer);
 
         //回调 观察者的 onSubscribe 方法
         observer.onSubscribe(parent);
 
         try {
-            //进行真正的订阅
+            //给上游的被观察者（source）进行订阅操作 ，
             source.subscribe(parent);
         } catch (Throwable ex) {
             Exceptions.throwIfFatal(ex);

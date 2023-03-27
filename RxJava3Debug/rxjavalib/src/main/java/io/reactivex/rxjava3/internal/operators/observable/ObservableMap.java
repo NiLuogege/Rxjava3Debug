@@ -48,7 +48,7 @@ public final class ObservableMap<T, U> extends AbstractObservableWithUpstream<T,
          * @param mapper 转换方法
          */
         MapObserver(Observer<? super U> actual, Function<? super T, ? extends U> mapper) {
-            //actual 会赋值给 父类的 downstream
+            //actual 是下游观察者
             super(actual);
             //记录转换方法
             this.mapper = mapper;

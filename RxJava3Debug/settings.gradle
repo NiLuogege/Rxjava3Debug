@@ -1,3 +1,4 @@
 rootProject.name='RxJava3Debug'
 include ':app'
 include ':rxjavalib'
+include ':MyRxjava'

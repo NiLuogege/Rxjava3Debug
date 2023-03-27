@@ -35,6 +35,7 @@ public final class DisposableLambdaObserver<T> implements Observer<T>, Disposabl
         this.onDispose = onDispose;
     }
 
+    //这个方法最终执行其实就是 最上层的 Observable 的  subscribe 方法。所以他能监听到所有的 线程切换。
     @Override
     public void onSubscribe(Disposable d) {
         // this way, multiple calls to onSubscribe can show up in tests that use doOnSubscribe to validate behavior

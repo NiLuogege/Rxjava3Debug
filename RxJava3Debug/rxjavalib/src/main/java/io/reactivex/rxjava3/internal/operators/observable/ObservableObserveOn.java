@@ -39,6 +39,7 @@ public final class ObservableObserveOn<T> extends AbstractObservableWithUpstream
     @Override
     protected void subscribeActual(Observer<? super T> observer) {
         if (scheduler instanceof TrampolineScheduler) {//如果是 TrampolineScheduler
+            //source 是上游的被观察者 ，observer是下游的观察者
             source.subscribe(observer);
         } else {
             //创建一个 Scheduler.Worker
