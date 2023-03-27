@@ -24,7 +24,7 @@ public class ObservableCreate<T> extends Observable<T> {
         //创建一个发射器将 下游observer 穿进去
         CreateEmitter<T> emitter = new CreateEmitter<>(observer);
 
-        //新建的发射器传给ObservableOnSubscribe ，其实这里就相当于 订阅者和被订阅者产生了关系。
+        //调用上游被订阅者的订阅方法 并传入新建的Emitter，将订阅操作向上推进。
         source.subscribe(emitter);
     }
 

@@ -16,7 +16,9 @@ public class ObservableMap<T, U> extends AbstractObservableWithUpStream<T, U> {
     //传入的是下游订阅者
     @Override
     void subscribeActual(Observer<U> observer) {
+        //创建自己的订阅者，并持有下游订阅者
         ObserverMap<T, U> observerMap = new ObserverMap<>(observer, mapper);
+        //调用上游被订阅者的订阅方法 并传入新建的订阅者，将订阅操作向上推进。
         source.subscribe(observerMap);
 
     }
